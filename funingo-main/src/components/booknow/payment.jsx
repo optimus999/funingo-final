@@ -372,7 +372,7 @@ const PaymentButton = ({
     // summation -= funingocoinsfrombooknow || 0;
     summation += Math.ceil(0.18 * summation);
     summation = Math.round((summation + Number.EPSILON) * 100) / 100;
-    console.log("summation"+summation);2
+    console.log("summation"+summation);
     setTotal(summation)
 
     return { details, total };

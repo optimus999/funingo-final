@@ -45,7 +45,7 @@ const PurchaseBtn = ({
               short_id: id,
               ...counters
             });
-
+            console.log("id printing",id);
             alert(resp ? 'Payment is successful' : 'Payment is unsuccessful');
             if (resp) {
               setCounter({

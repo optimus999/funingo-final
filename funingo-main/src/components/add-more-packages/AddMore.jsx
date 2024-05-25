@@ -533,6 +533,7 @@ import PurchaseBtn from './PurchaseBtn';
 import { Tour } from '@mui/icons-material';
 import axios from 'axios';
 import { apiUrl, flag_prices } from '../../constants';
+import Coin from "../admin/Coin"
 
 const AddMore = () => {
   const { id } = useParams();
@@ -751,11 +752,7 @@ const AddMore = () => {
               }}
             >
               {ticketData.yellow}
-              <Tour
-                sx={{
-                  color: 'yellow'
-                }}
-              />
+              <Coin size="5rem" />
             </Typography>
             {/* <Typography
               display={'flex'}
@@ -852,17 +849,18 @@ const AddMore = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                     gap: '10px',
-                    fontSize: '14px',
+                    fontSize: '13px',
                     lineHeight: '15px'
                   }}
                 >
 
                   Add More Coins
-                  <Tour
+                  {/* <Tour
                     sx={{
                       color: item?.bg
                     }}
-                  />
+                  /> */}
+                  <Coin size="20px" />
                 </Typography>
                 <Typography
                   sx={{

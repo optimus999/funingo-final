@@ -9,7 +9,8 @@ export const bookTicket = async (req, res) => {
   const { details, total_amount, phone_no, payment_mode } = req.body;
   let totalAmount = 0;
   const user = await User.findOne({ phone_no });
-
+  console.log("user",user);
+  console.log("details",details);
   const newDetails = await Promise.all(
     details.map(async person => {
       const existing = person?.freebie;
@@ -34,7 +35,6 @@ export const bookTicket = async (req, res) => {
       person.extra_red += freebies?.red ?? 0;
       person.extra_green += freebies?.green ?? 0;
       person.extra_yellow += freebies?.yellow ?? 0;
-
       return person;
     })
   );
@@ -42,12 +42,17 @@ export const bookTicket = async (req, res) => {
   totalAmount += 0.18 * totalAmount;
   totalAmount = Math.round((totalAmount + Number.EPSILON) * 100) / 100;
 
+  console.log("totalAmount",totalAmount);
+
   if (totalAmount !== total_amount) {
     throw new ExpressError("Total amount doesn't match index.js", 400);
   }
+ 
   const new_short_id = new ShortUniqueId({
-    dictionary: 'number'
+    dictionary: 'number',
+    // length: 3
   });
+
 
   const newTicket = new Ticket({
     fun_date: new Date(),
@@ -60,6 +65,8 @@ export const bookTicket = async (req, res) => {
     payment_mode,
     phone_no: phone_no ?? ''
   });
+
+  console.log("newTicket",newTicket);
 
   await newTicket.save();
 

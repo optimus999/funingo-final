@@ -70,7 +70,8 @@ export const Ticket = ({
     if (ticketRef?.current && downloadable) {
       downloadImage(ticketRef.current, 'funingo-ticket.png');
     }
-    navigate('/profile')
+    navigate('/profile');
+    window.location.reload();
   };
 
   const extraFlagValue = useMemo(() => {
@@ -216,7 +217,7 @@ export const Ticket = ({
                 textOverflow: 'ellipsis'
               }}
             >
-              {extraFlagValue || 'No Extra Flags'}
+              {extraFlagValue || 'No Extra coins'}
             </Value>
           </Container>
         </Grid>

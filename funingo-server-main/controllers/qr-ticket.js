@@ -49,6 +49,7 @@ export const redeemFlags = async (req, res) => {
 };
 
 export const createQRTicketOrder = async (req, res) => {
+  console.log("request from qrtcket creatiion",req);
   const { total_amount, red, green, yellow, golden, short_id, premium } =
     req.body;
   let totalAmount = 0;

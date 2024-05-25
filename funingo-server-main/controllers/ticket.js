@@ -434,10 +434,13 @@ export const getQRTickets = async (req, res) => {
 
   const resp = await Promise.all(
     ticket.details.map(async tic => {
+      console.log("tic",tic);
       const new_short_id = new ShortUniqueId({
-        dictionary: 'number'
+        dictionary: 'hex',
+        length: 3
       });
-      if (tic.qr_ticket) {
+      
+      if (tic.qr_ticket) { 
         return {
           ticketDetails: tic.qr_ticket.toJSON(),
           qr: `http://api.qrserver.com/v1/create-qr-code/?data=${constants.website_url}/e/redeem?tid=${tic.qr_ticket.short_id}`
@@ -496,7 +499,6 @@ export const createTicketOrder = async (req, res) => {
   } = req.body;
 
   const { user } = req;
-  console.log("request.body",req.body);
   let totalAmount = 0;
   let is_premium = false;
   let premium_types = [];
@@ -526,9 +528,9 @@ export const createTicketOrder = async (req, res) => {
         amount +=
           constants.red_flag_price *
           Math.max(person.extra_red - (freebies?.red ?? 0), 0);
-        amount +=
-          constants.yellow_flag_price *
-          Math.max(person.extra_yellow - (freebies?.yellow ?? 0), 0);
+        // amount +=
+        //   constants.yellow_flag_price *
+        //   Math.max(person.extra_yellow - (freebies?.yellow ?? 0), 0);
         amount +=
           constants.green_flag_price *
           Math.max(person.extra_green - (freebies?.green ?? 0), 0);

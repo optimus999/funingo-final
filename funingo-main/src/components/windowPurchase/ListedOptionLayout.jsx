@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import { Tour } from "@mui/icons-material";
+import Coin from "../admin/Coin"
 
 const capitalizeFirstLetter = (inputString) => {
   return (
@@ -36,7 +37,7 @@ const ListedOptionLayout = ({ data, boolFlag }) => {
           </Typography>
         </Grid>
         <Grid display={"flex"} justifyContent={"center"} alignItems={"center"} gap={'5px'}>
-          <Typography
+          {/* <Typography
             fontWeight={"600"}
             display={"flex"}
             justifyContent={"center"}
@@ -48,9 +49,9 @@ const ListedOptionLayout = ({ data, boolFlag }) => {
                 color: "#fa1942",
               }}
             />
-          </Typography>
+          </Typography> */}
 
-          <Typography
+          {/* <Typography
             fontWeight={"600"}
             display={"flex"}
             justifyContent={"center"}
@@ -62,7 +63,7 @@ const ListedOptionLayout = ({ data, boolFlag }) => {
                 color: "#76de9a",
               }}
             />
-          </Typography>
+          </Typography> */}
           <Typography
             fontWeight={"600"}
             display={"flex"}
@@ -70,11 +71,7 @@ const ListedOptionLayout = ({ data, boolFlag }) => {
             alignItems={"center"}
           >
             {data?.yellow}&nbsp;{" "}
-            <Tour
-              sx={{
-                color: "#fac219",
-              }}
-            />
+            <Coin/>
           </Typography>
         </Grid>
       </Grid>

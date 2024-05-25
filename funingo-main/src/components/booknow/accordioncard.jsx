@@ -137,14 +137,14 @@ const AccordionList = ({
                     >
                       <EditIcon color='black' />
                     </IconButton> */}
-                    <IconButton
+                    {/* <IconButton
                       onClick={e => {
                         e.stopPropagation();
                         removeItemHandler(person.id);
                       }}
                     >
                       <CloseIcon color='black' />
-                    </IconButton>
+                    </IconButton> */}
                   </Grid>
 
                   {person.selectedPremium?.premium_type === '50%' ? (

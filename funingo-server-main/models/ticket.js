@@ -217,7 +217,7 @@ const ticketSchema = new mongoose.Schema(
     },
     payment_mode: {
       type: String,
-      enum: ['razorpay', 'online', 'cash'],
+      enum: ['razorpay', 'online', 'cash','card'],
       default: 'razorpay'
     },
     freebies_added: {

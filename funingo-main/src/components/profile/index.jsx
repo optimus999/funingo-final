@@ -52,6 +52,7 @@ const Profile = () => {
           token: token
         });
         setTickets(resp?.tickets);
+        console.log(tickets);
       }
     })();
   }, [isLoggedIn, user]);
@@ -77,7 +78,7 @@ const Profile = () => {
       <TicketModal
         open={expandedTicket !== null}
         onClose={() => {
-          console.log("cliclked here beta");
+          // console.log("cliclked here beta");
           setExpandedTicket(null)}}
         ticket={expandedTicket}
         downloadable={active === 1}
@@ -225,7 +226,9 @@ const Profile = () => {
                             new Date(ticket.fun_date).setHours(23, 59, 59, 0)
                           ) < new Date()
                     )
+                    
                     .map((ticket, ind) => (
+                      
                       <TableRow
                         key={ticket.short_id}
                         sx={{

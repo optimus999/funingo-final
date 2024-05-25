@@ -40,7 +40,7 @@ const ConfirmationModal = ({ open, onClose, handlePurchase }) => {
         });
       } catch (err) {
         alert(err);
-        console.log(err);
+        console.log("err from modal.js",err);
       }
     }
   };

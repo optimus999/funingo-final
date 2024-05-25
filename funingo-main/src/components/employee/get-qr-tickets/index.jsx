@@ -376,6 +376,7 @@ const GetQRTickets = () => {
           token
         }
       });
+      console.log("response",resp);
       setQrTickets(resp.data.data);
     } catch (err) {
       setError(err.response.data);
@@ -608,7 +609,9 @@ const GetQRTickets = () => {
             width: '300px'
           }}
         >
+          
           {allTickets.map(ticket => (
+            
             <Grid key={ticket.short_id}>
               <Typography>Ticket id: {ticket.short_id}</Typography>
               <Typography>

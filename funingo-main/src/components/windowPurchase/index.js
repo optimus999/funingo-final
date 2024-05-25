@@ -3,6 +3,7 @@ import { validatePhoneNumber } from '../../utils/validators/validate';
 import shortid from 'shortid';
 import axios from 'axios';
 import { apiUrl, flag_prices, payment_modes } from '../../constants';
+import Coin from "../admin/Coin"
 import {
   TextField,
   InputLabel,
@@ -44,6 +45,9 @@ const WindowPurchase = () => {
   const [shortId, setShortId] = useState(null);
   const [paymentMode, setPaymentMode] = useState(null);
   const [confirmationModalOpen, setConfirmationModalOpen] = useState(false);
+  const [namefilled,setnamefilled]=useState('');
+  const [agefilled,setagefilled]=useState('');
+  const [genderfilled,setgenderfilled]=useState('');
 
   const [dummyFreebiesData, setDummyFreebiesData] = useState([]);
 
@@ -53,9 +57,9 @@ const WindowPurchase = () => {
   }));
 
   const genderOptions = [
-    { value: 'Male', label: 'Male' },
-    { value: 'Female', label: 'Female' },
-    { value: 'Others', label: 'Others' }
+    { value: 'male', label: 'Male' },
+    { value: 'female', label: 'Female' },
+    { value: 'others', label: 'Others' }
   ];
 
   const handlePhoneNumberChange = e => {
@@ -124,7 +128,7 @@ const WindowPurchase = () => {
             extra_green: 0,
             extra_yellow: 0,
             golden_flag: 0,
-            name: '',
+            person_name: '',
             age: '',
             gender: ''
           });
@@ -211,25 +215,31 @@ const WindowPurchase = () => {
       })
     );
   };
-
   const handlePurchase = async callback => {
     const details = selectedSlots.map(data => ({
       ...data,
       package: data.package._id
     }));
-    console.log(details);
-    const response = await windowPurchase({
-      total_amount: totalPrice,
-      details,
-      token,
-      phone_no: phoneNumber ? '+91-' + phoneNumber : undefined,
-      payment_mode: paymentMode.value
-    });
-    if (response.success) {
-      setShortId(response.short_id);
-      callback?.(response.short_id);
-      setConfirmationModalOpen(false);
-    }
+    console.log("details",details);
+    try {
+      const response = await windowPurchase({
+        total_amount: totalPrice,
+        details,
+        token,
+        phone_no: phoneNumber ? '+91-' + phoneNumber : undefined,
+        payment_mode: paymentMode.value
+      });
+     
+      if (response.success) {
+        setShortId(response.short_id);
+        callback?.(response.short_id);
+        setConfirmationModalOpen(false);
+      }
+     } catch (error) {
+      // Handle the error here, e.g., display an error message to the user or log the error for troubleshooting
+      console.error("Please fill all the fields");
+      // Add your error handling logic here
+     }
   };
 
   useEffect(() => {
@@ -328,7 +338,7 @@ const WindowPurchase = () => {
           </FormControl>
           <FormControl sx={{ width: { xs: '100%', lg: '50%' } }}>
             <TextField
-              label='Check Freebies via Number'
+              label='Enter valid Phone Number'
               type='number'
               value={phoneNumber}
               onChange={handlePhoneNumberChange}
@@ -454,7 +464,7 @@ const WindowPurchase = () => {
                         <em>
                           {getAvailablePackageOptions &&
                           getAvailablePackageOptions.length === 0
-                            ? 'No Packages Available Now'
+                            ? 'Deselect packages'
                             : 'None'}
                         </em>
                       </MenuItem>
@@ -474,7 +484,7 @@ const WindowPurchase = () => {
                     gap: '10px'
                   }}
                 >
-                  <FormControl fullWidth>
+                  {/* <FormControl fullWidth>
                     <InputLabel>Select Freebies</InputLabel>
                     <Select
                       label='Select Freebies'
@@ -495,7 +505,7 @@ const WindowPurchase = () => {
                         </MenuItem>
                       ))}
                     </Select>
-                  </FormControl>
+                  </FormControl> */}
                 </Grid>
               </Grid>
               <Grid
@@ -504,7 +514,7 @@ const WindowPurchase = () => {
                 width={'100%'}
               >
                 <Grid className='input-freebies' width={'100%'}>
-                  <Typography mb='5px'>Add Individual Flags</Typography>
+                  {/* <Typography mb='5px'>Add More Coins</Typography>
                   <Grid
                     sx={{
                       display: 'flex',
@@ -513,8 +523,8 @@ const WindowPurchase = () => {
                       alignItems: 'center',
                       gap: '10px'
                     }}
-                  >
-                    <IndividualFlag
+                  > */}
+                    {/* <IndividualFlag
                       label={
                         <Tour
                           sx={{
@@ -530,14 +540,10 @@ const WindowPurchase = () => {
                           extra_red: val
                         })
                       }
-                    />
-                    <IndividualFlag
+                    /> */}
+                    {/* <IndividualFlag
                       label={
-                        <Tour
-                          sx={{
-                            color: '#e7e710'
-                          }}
-                        />
+                        <Coin/>
                       }
                       mode='dark'
                       value={selectedSlot.extra_yellow}
@@ -547,8 +553,8 @@ const WindowPurchase = () => {
                           extra_yellow: val
                         })
                       }
-                    />
-                    <IndividualFlag
+                    /> */}
+                    {/* <IndividualFlag
                       label={
                         <Tour
                           sx={{
@@ -564,9 +570,9 @@ const WindowPurchase = () => {
                           extra_green: val
                         })
                       }
-                    />
-                  </Grid>
-                  <Grid mt='15px'>
+                    /> */}
+                  {/* </Grid> */}
+                  {/* <Grid mt='15px'>
                     <Typography className='book-now-label' fontSize={'16px'}>
                       For Trampoline Park{' '}
                       <Typography component={'span'} fontSize={'12px'}>
@@ -590,11 +596,11 @@ const WindowPurchase = () => {
                         })
                       }
                     />
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
               <Grid width={'100%'}>
-                <Typography mb='5px'>Optional Fields</Typography>
+                <Typography mb='5px'>Required Fields</Typography>
                 <Grid
                   display={'flex'}
                   justifyContent={'space-between'}
@@ -605,15 +611,15 @@ const WindowPurchase = () => {
                 >
                   <Grid flexGrow={1}>
                     <TextField
-                      name='name'
+                      name='person_name'
                       type='text'
                       placeholder='Name'
-                      value={selectedSlot.name}
+                      value={selectedSlot.person_name}
                       onChange={e =>
-                        handleChange(index, {
+                        {setnamefilled(e.target.value);handleChange(index, {
                           ...selectedSlot,
-                          name: e.target.value
-                        })
+                          person_name: e.target.value
+                        })}
                       }
                       required={true}
                       fullWidth
@@ -626,10 +632,10 @@ const WindowPurchase = () => {
                       placeholder='Age'
                       value={selectedSlot.age}
                       onChange={e =>
-                        handleChange(index, {
+                        {setagefilled(e.target.value);handleChange(index, {
                           ...selectedSlot,
                           age: e.target.value
-                        })
+                        })}
                       }
                       required={true}
                       fullWidth
@@ -644,6 +650,7 @@ const WindowPurchase = () => {
                         option => option?.value === selectedSlot.gender
                       )}
                       onChange={e => {
+                        setgenderfilled(e?.value);
                         handleChange(index, {
                           ...selectedSlot,
                           gender: e?.value
@@ -748,7 +755,7 @@ const WindowPurchase = () => {
           <Grid mb='20px'>
             <ReactSelect
               options={paymentModes}
-              onChange={e => setPaymentMode(e)}
+              onChange={e => {setPaymentMode(e)}}
               placeholder='Payment mode'
               value={paymentMode}
               styles={{
@@ -770,7 +777,7 @@ const WindowPurchase = () => {
               }}
             >
               <Typography>
-                Your ticket is booked. TicketId: {shortId}
+                Your ticket is booked. <b>TicketId: {shortId}</b>
               </Typography>
               <Button
                 onClick={() => navigate(`/we/get-qr-tickets?tid=${shortId}`)}
@@ -783,6 +790,7 @@ const WindowPurchase = () => {
               onClick={() => setConfirmationModalOpen(true)}
               variant='contained'
               fullWidth
+              disabled={!paymentMode||count===0||phoneNumber===''||namefilled===''||agefilled===''||genderfilled===''}
             >
               Buy Now
             </Button>

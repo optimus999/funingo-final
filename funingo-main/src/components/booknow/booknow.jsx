@@ -121,8 +121,8 @@ const Booknow = () => {
 
 
   useEffect(() => {
-    // Set usedFuningoMoney to values.totalfuningocoinsassigned initially
-    setUseFuningoMoney(values.totalfuningocoinsassigned);
+    // Set usedFuningoMoney to Number(values.totalfuningocoinsassigned) initially
+    setUseFuningoMoney(Number(values.totalfuningocoinsassigned));
   });
 
   const [inputValue, setInputValue] = useState('');
@@ -182,22 +182,21 @@ const Booknow = () => {
         }
 
         if (
-          values.funingocoins > userData?.funingo_money ||
-          values.funingocoins < 0
+          Number(values.funingocoins) > userData?.funingo_money ||
+          Number(values.funingocoins) < 0
         ) {
-          // console.log("here");
           setErrorMsg({
             ...setErrorMsg,
             funingocoins: "Invalid Funingo Coins",
           });
           errmessage += "Invalid Funingo Coins";
         }
-        console.log("userData?.funingo_money" + userData?.funingo_money);
-        if (
-          values.totalfuningocoinsassigned + values.funingocoins >
-          userData?.funingo_money
-        ) {
-          console.log("here222");
+        
+        if ((Number(values.totalfuningocoinsassigned)) + Number((values.funingocoins)) > userData?.funingo_money)
+           {
+          console.log("Number(values.totalfuningocoinsassigned)", (Number(values.totalfuningocoinsassigned)));
+          console.log("Number(values.funingocoins)", Number(values.funingocoins));
+          console.log("userData?.funingo_money" , userData?.funingo_money);
           setErrorMsg({
             ...setErrorMsg,
             totalfuningocoinsassigned: "Funingo Coins exceeded",
@@ -212,12 +211,12 @@ const Booknow = () => {
         if (errmessage.length == 0) {
           let weekdayprice = values.isChecked == true ? weekdaypackageprice : 0;
           values.extra_yellow =
-            values.extra_yellow + values.funingocoins + weekdayprice;
-          values.totalfuningocoinsassigned =
-            values.totalfuningocoinsassigned + values.funingocoins;
-          console.log("values.extra_yellowyoyo" + values.extra_yellow);
+            values.extra_yellow + Number(values.funingocoins) ;
+          (values.totalfuningocoinsassigned) =
+            Number(values.totalfuningocoinsassigned) + Number(values.funingocoins);
+          console.log("values.extra_yellow" + values.extra_yellow);
           console.log(
-            "totalfuningocoins assigned" + values.totalfuningocoinsassigned
+            "totalfuningocoins assigned" + Number(values.totalfuningocoinsassigned)
           );
         }
 
@@ -238,7 +237,7 @@ const Booknow = () => {
           price:
             (pkgObj?.price ?? 0) +
             (values.extra_red * flag_prices.red_flag_price +
-              values.extra_yellow * flag_prices.yellow_flag_price +
+              // values.extra_yellow * flag_prices.yellow_flag_price +      //since funingo coins are of user only hence no need to add that amount
               values.extra_green * flag_prices.green_flag_price +
               values.golden_flag * flag_prices.golden_flag_price),
           selectedPremium,
@@ -341,7 +340,7 @@ const Booknow = () => {
     resetForm(initialValues);
   };
 
-  // const [funingocoinvalues, setfuningocoinvalues] = useState(initialValues.funingocoins);
+  // const [funingocoinvalues, setfuningocoinvalues] = useState(initialNumber(values.funingocoins));
 
   // const handleFuningoCoin = (event) => {
   //   const { name, funingocoinvalues } = event.target;
@@ -373,10 +372,12 @@ const Booknow = () => {
       premiumDiscount = 0;
 
     persons.forEach((person) => {
+      console.log("person here",person);
       total += person.price;
       if (person.selectedPremium?.premium_type === "50%")
         premiumDiscount += Math.floor(person.price / 2);
     });
+    
 
     setTotalPremiumDiscount(premiumDiscount);
     setTotalPrice(total);
@@ -787,7 +788,7 @@ const Booknow = () => {
                         },
                       }),
                     }}
-                    required={values.totalfuningocoinsassigned >200 }
+                    required={Number(values.totalfuningocoinsassigned) >200 }
                     isSearchable={false}
                     options={packageOptions}
                     isClearable
@@ -935,7 +936,7 @@ const Booknow = () => {
                         name="funingocoins"
                         type="number"
                         placeholder="Add your Funingo Coins here."
-                        value={Math.max(0, values.funingocoins)}
+                        value={Math.max(0, Number(values.funingocoins))}
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
@@ -1035,7 +1036,7 @@ const Booknow = () => {
                         name="funingocoins"
                         // type="number"
                         placeholder="Add your Funingo Coins here."
-                        value={values.funingocoins}
+                        value={Number(values.funingocoins)}
                         onChange={handleChange}
                         // onClick={handleFuningoCoin}
                         onBlur={handleBlur}
@@ -1065,7 +1066,7 @@ const Booknow = () => {
 
               {/* weekend start */}
 
-              {!isWeekend && (
+              {/* {!isWeekend && (
               <Grid
                 display={"flex"}
                 justifyContent={"space-between"}
@@ -1085,7 +1086,7 @@ const Booknow = () => {
                       </label>
                 </Grid>
               </Grid>   
-              )}
+              )} */}
               {/* weekend end */}
               {/* testing end */}
 
@@ -1230,7 +1231,7 @@ const Booknow = () => {
                   }}
                   onClick={disablevariable}
                 >
-                  + Add Person
+                  Save Details/Add Person
                 </Button>
               </Grid>
 
@@ -1246,7 +1247,6 @@ const Booknow = () => {
                 <Grid className="input-date">
                   <label className="book-now-label">Date </label>
                   <input
-                    disabled={disablevar}
                     name="date"
                     className="date-inp"
                     type="date"
@@ -1301,7 +1301,7 @@ const Booknow = () => {
                     isSearchable={false}
                     isClearable
                     options={timeOptions}
-                    isDisabled={disablevar}
+                    // isDisabled={disablevar}
                   />
                 </Grid>
               </Grid>
@@ -1412,14 +1412,15 @@ const Booknow = () => {
                       {
                         setUseFuningoMoney(
                         e.target.checked
-                          ? values.totalfuningocoinsassigned
-                          : values.totalfuningocoinsassigned
+                          ? Number(values.totalfuningocoinsassigned)
+                          : Number(values.totalfuningocoinsassigned)
                       )
                       console.log("usedFuningoMoney",usedFuningoMoney);
                     }
                     }
                     checked={usedFuningoMoney !== 0}
                     id='funingo-money'
+                    
                   />
                   {/* <Typography component={'label'} htmlFor='funingo-money'>
                     Use {percent_of_fm_to_use}% of your funingo money.
@@ -1437,6 +1438,8 @@ const Booknow = () => {
                 >
                   <Typography>Subtotal </Typography>
                   <Typography>Rs {totalPrice} </Typography>
+
+
                 </Grid>
 
                 <Grid

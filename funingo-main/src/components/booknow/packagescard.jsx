@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { Tour } from "@mui/icons-material";
+// import { Tour } from "@mui/icons-material";
+import Coin from '../admin/Coin.jsx'
 
 const capitalizeFirstLetter = (inputString) => {
   return (
@@ -77,11 +78,7 @@ const Packagecard = ({ data, boolFlag }) => {
           alignItems={"center"}
         >
           {data?.yellow}&nbsp;{" "}
-          <Tour
-            sx={{
-              color: "#fac219",
-            }}
-          />
+          <Coin/>
         </Typography>
       </Grid>
     </Grid>
