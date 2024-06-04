@@ -185,6 +185,7 @@ import { v4 as uuidv4 } from 'uuid';
 import cloudinary from '../cloudinary/index.js';
 
 export const sendMessageToPhone = async ({ phone_no, message }) => {
+  console.log("entering the function");
   const params = {
     Message: message,
     PhoneNumber: phone_no,
@@ -196,9 +197,9 @@ export const sendMessageToPhone = async ({ phone_no, message }) => {
     }
   };
   // Sending SMS
-  if (process.env.NODE_ENV === 'production') {
+  // if (process.env.NODE_ENV === 'production') {
     await sns_client.send(new PublishCommand(params));
-  }
+  // }
 };
 
 export const calculateDiscountPrice = async ({ code, total_amount }) => {

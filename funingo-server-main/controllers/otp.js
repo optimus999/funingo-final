@@ -3,6 +3,8 @@ import OtpVerification from '../models/otp-verification.js';
 import ExpressError from '../utilities/express-error.js';
 import { sendMessageToPhone } from '../utilities/utils.js';
 
+let otpgenerated=0;
+
 export const sendOtpToPhone = async (req, res) => {
   const { user } = req;
   const { phone_no } = user;
@@ -14,7 +16,7 @@ export const sendOtpToPhone = async (req, res) => {
     specialChars: false,
     lowerCaseAlphabets: false
   });
-
+  otpgenerated=otp;
   await sendMessageToPhone({
     phone_no,
     message: `This is your One Time Password for Funingo: ${otp}`
@@ -47,7 +49,7 @@ export const validateOtp = async (req, res) => {
 
   const otpVerification = await OtpVerification.findOne({ user: user._id });
   if (process.env.NODE_ENV !== 'production') {
-    if (otp === '1234') {
+    if (otp === otpgenerated) {
       user.verified = true;
       await user.save();
       res.status(200).send({

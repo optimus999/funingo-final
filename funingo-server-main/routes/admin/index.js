@@ -18,7 +18,8 @@ import {
   userGenderDetails,
   userLocationDetails,
   usersWRTPremium,
-  usersWithUpcomingBday
+  usersWithUpcomingBday,
+  Getdetailfunction
 } from '../../controllers/admin/index.js';
 
 const router = express.Router();
@@ -46,17 +47,20 @@ router.get(
   catchAsync(getWeekdayMonthlyStatistics)
 );
 router.get(
+  '/getDetails',
+  authenticateAdmin,
+  catchAsync(Getdetailfunction)
+);
+router.get(
   '/booking-frequency',
   authenticateAdmin,
   catchAsync(getBookingFrequency)
 );
-
 router.get(
   '/users-wrt-fm',
   authenticateAdmin,
   catchAsync(getUsersWRTFuningoMoney)
 );
-
 router.get(
   '/users-wrt-freebies',
   authenticateAdmin,

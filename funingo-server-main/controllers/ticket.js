@@ -573,16 +573,16 @@ export const createTicketOrder = async (req, res) => {
 //   }
 
   if (coupon) {
-    console.log("discount applied");
-    console.log("amount before discount",totalAmount);
+    // console.log("discount applied");
+    // console.log("amount before discount",totalAmount);
     const discount = await calculateDiscountPrice({
       code: coupon,
       total_amount: totalAmount
     });
     totalAmount -= discount.discount;
     total_amount -= discount.discount;
-    console.log("amount after discount",totalAmount);
-    // console.log("amount after yoyo",total_amount);
+    // console.log("amount after discount",totalAmount);
+    // console.log("amount after",total_amount);
   }
 
   // totalAmount -= used_funingo_money;

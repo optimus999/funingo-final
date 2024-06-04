@@ -4,6 +4,7 @@ import shortid from 'shortid';
 import axios from 'axios';
 import { apiUrl, flag_prices, payment_modes } from '../../constants';
 import Coin from "../admin/Coin"
+import { getDiscount } from "../../actions/ticket";
 import {
   TextField,
   InputLabel,
@@ -26,12 +27,17 @@ import { useNavigate } from 'react-router-dom';
 import ReactSelect from 'react-select';
 import ConfirmationModal from './modal';
 import IndividualFlag from '../booknow/individualFlags';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
+import {
+  InputAdornment,
+} from "@mui/material";
 
 const WindowPurchase = () => {
   const navigate = useNavigate();
 
   const [selectedSlots, setSelectedSlots] = useState([]);
+  const [couponDiscount, setCouponDiscount] = useState({});
+  const [code, setCode] = useState("");
   const [count, setCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
@@ -46,9 +52,9 @@ const WindowPurchase = () => {
   const [paymentMode, setPaymentMode] = useState(null);
   const [confirmationModalOpen, setConfirmationModalOpen] = useState(false);
   const [namefilled,setnamefilled]=useState('');
+  const [promocode,setpromocode]=useState('');
   const [agefilled,setagefilled]=useState('');
   const [genderfilled,setgenderfilled]=useState('');
-
   const [dummyFreebiesData, setDummyFreebiesData] = useState([]);
 
   const paymentModes = payment_modes.map(paymentMode => ({
@@ -108,7 +114,10 @@ const WindowPurchase = () => {
     }
     fetchData();
   };
-
+  
+  const handlediscountChange=event=>{
+    setDiscount(Math.max((event.target.value),0));
+  }
   const handleCountChange = event => {
     const newCount = parseInt(event.target.value, 10);
     if (newCount < 0 || newCount > 10) {
@@ -130,13 +139,25 @@ const WindowPurchase = () => {
             golden_flag: 0,
             person_name: '',
             age: '',
-            gender: ''
+            gender: '',
+            discount:discount,
+            promo_code:''
           });
         }
         return updatedSelectedSlots;
       }
     });
   };
+  const getDiscountUsingCoupon = async (event) => {
+    const resp = await getDiscount({
+      token,
+      code,
+      total_amount: totalPrice,
+    })
+    setDiscount(resp.discount);
+    console.log("resp.discount",resp.discount);
+    setCouponDiscount({ discount: resp.discount, message: resp.msg, code });
+};
 
   const handleChange = (index, newSelectedSlot) => {
     setSelectedSlots(prev =>
@@ -220,6 +241,8 @@ const WindowPurchase = () => {
       ...data,
       package: data.package._id
     }));
+    details[0].discount=discount;
+    details[0].promo_code=code;
     console.log("details",details);
     try {
       const response = await windowPurchase({
@@ -274,8 +297,9 @@ const WindowPurchase = () => {
     });
     const gst = Math.round((0.18 * totalPrice + Number.EPSILON) * 100) / 100;
     setGstPrice(gst);
-    setTotalPrice(totalPrice + gst);
-  }, [selectedSlots]);
+    console.log("totalPrice + gst-discount",totalPrice + gst-discount);
+    setTotalPrice(totalPrice + gst-discount);
+  }, [selectedSlots,discount]);
 
   return (
     <Grid
@@ -336,6 +360,14 @@ const WindowPurchase = () => {
               onChange={handleCountChange}
             />
           </FormControl>
+          {/* <FormControl sx={{ width: { xs: '100%', lg: '50%' } }}>
+            <TextField
+              label='Discount'
+              type='number'
+              value={discount}
+              onChange={handlediscountChange}
+            />
+          </FormControl> */}
           <FormControl sx={{ width: { xs: '100%', lg: '50%' } }}>
             <TextField
               label='Enter valid Phone Number'
@@ -721,7 +753,64 @@ const WindowPurchase = () => {
             <Typography>Rs {totalPrice - gstPrice} </Typography>
           </Grid>
 
-          <Grid
+          {/* <Grid width={"100%"} mb={"15px"} gap={"0px"}>
+                <label className="book-now-label">Promo Code</label>
+                <TextField
+                  fullWidth
+                  sx={{
+                    background: "white",
+                    borderRadius: "5px",
+                    mt: "5px",
+                    zIndex: 0,
+                    "&:hover": {
+                      "& fieldset": {
+                        borderColor: "rgba(0, 0, 0, 0.23)",
+                      },
+                    },
+                  }}
+                  placeholder="Have a promo code?"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Button onClick={() => getDiscountUsingCoupon()}>
+                          Apply
+                        </Button>
+                      </InputAdornment>
+                    ),
+                  }}
+                  inputProps={{
+                    sx: {
+                      border: "none !important",
+                      zIndex: "0 !important",
+                    },
+                  }}
+                />
+                {!!couponDiscount.message && (
+                  <Typography
+                    sx={{
+                      color: "red",
+                      fontSize: "12px",
+                      mt: "5px",
+                    }}
+                  >
+                    {couponDiscount.message}
+                  </Typography>
+                )}
+                {!!couponDiscount.discount && (
+                  <Typography
+                    sx={{
+                      color: "green",
+                      fontSize: "12px",
+                      mt: "5px",
+                    }}
+                  >
+                    Promo code applied!!
+                  </Typography>
+                )}
+              </Grid> */}
+               <Grid
             width={'100%'}
             display={'flex'}
             justifyContent={'space-between'}
@@ -748,9 +837,65 @@ const WindowPurchase = () => {
             paddingTop={'5px'}
           >
             <Typography>Total </Typography>
-            <Typography>Rs {totalPrice - discount}</Typography>
+            <Typography>Rs {Math.max((totalPrice),0)}</Typography>
           </Grid>
         </Grid>
+        <Grid width={"100%"}>
+                <TextField
+                  fullWidth
+                  sx={{
+                    background: "white",
+                    borderRadius: "5px",
+                    mt: "0px",
+                    zIndex: 0,
+                    "&:hover": {
+                      "& fieldset": {
+                        borderColor: "rgba(0, 0, 0, 0.23)",
+                      },
+                    },
+                  }}
+                  placeholder="Have a promo code?"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Button onClick={() => getDiscountUsingCoupon()}>
+                          Apply
+                        </Button>
+                      </InputAdornment>
+                    ),
+                  }}
+                  inputProps={{
+                    sx: {
+                      border: "none !important",
+                      zIndex: "0 !important",
+                    },
+                  }}
+                />
+                {!!couponDiscount.message && (
+                  <Typography
+                    sx={{
+                      color: "red",
+                      fontSize: "12px",
+                      mt: "5px",
+                    }}
+                  >
+                    {couponDiscount.message}
+                  </Typography>
+                )}
+                {!!couponDiscount.discount && (
+                  <Typography
+                    sx={{
+                      color: "green",
+                      fontSize: "12px",
+                      mt: "5px",
+                    }}
+                  >
+                    Promo code applied!!
+                  </Typography>
+                )}
+              </Grid>
         <Grid>
           <Grid mb='20px'>
             <ReactSelect

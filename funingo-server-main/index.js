@@ -18,6 +18,8 @@ import phoneNoRouter from './routes/phone-no.js';
 import franchiseRouter from './routes/franchise.js';
 import careerApplicationSchema from './routes/career-application.js';
 import { saveFreebiesAutomationFunction } from './utilities/utils.js';
+// import { getAddedFreebies } from './controllers/admin/index.js'; // Import the function
+import Ticket from './models/ticket.js'
 
 if (['production', 'development'].includes(process.env.NODE_ENV)) {
   dotenv.config();
@@ -36,10 +38,16 @@ export const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_API_KEY_SECRET
 });
 
+const entrySchema = new mongoose.Schema({
+  payment_mode: String,
+  total_amount: Number,
+});
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(cors());
 
 app.use('/user', userRouter);
@@ -57,6 +65,14 @@ app.use('/career-application', careerApplicationSchema);
 app.get('/', async (req, res) => {
   res.status(200).send(`Server up and running on ${process.env.NODE_ENV}!`);
 });
+
+app.get('/getDetails',async (req,res)=>{
+  console.log("entering");
+  Ticket.find()
+  .then(Ticket=>{return res.json(Ticket)})
+  .catch(err=>{console.log("error find ticket",err);return res.json(err)})
+})
+
 
 app.all('*', async (req, res) => {
   res.status(404).send({ error: 'Url not found!' });
@@ -79,3 +95,8 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
+
+
+
+
+

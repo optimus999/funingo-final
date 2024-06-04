@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { apiUrl } from '../constants';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { useEffect, useState } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 
 export const getStatistics = async ({
   token,
@@ -410,6 +414,7 @@ export const getAddedFreebies = createAsyncThunk(
       `${apiUrl}/admin/added-freebies?years=${years}&is_premium=${is_premium}`,
       { headers: { token } }
     );
+    console.log("checking response",response);
     return response.data;
   }
 );

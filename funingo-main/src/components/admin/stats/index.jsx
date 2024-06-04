@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import './style.css'
+import { apiUrl } from '../../../constants';
 import {
   getAddedFreebies,
   getMonthlyStats,
@@ -9,7 +11,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import { Switch } from './style';
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,6 +27,7 @@ import { Bar, Line } from 'react-chartjs-2';
 import { Box, Grid, Typography } from '@mui/material';
 import UserBase from './user';
 import PlayerBase from './player';
+import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(
   CategoryScale,
@@ -115,6 +117,11 @@ const quarterOptions = [
 ];
 
 const Stats = () => {
+  const navigate = useNavigate();
+
+  const handleGetDetailsClick = () => {
+    navigate(`/admin/showdetails`);
+  }
   const dispatch = useDispatch();
   const [years, setYear] = useState(new Date().getFullYear().toString());
   const [selectedYear, setSelectedYear] = useState(
@@ -936,10 +943,9 @@ const Stats = () => {
                     gap: '20px'
                   }}
                 >
-                  <Typography>Monthly Freebies Added</Typography>
-                  <Bar options={options} data={monthlyAddedFreebiesData} />
+                  <div><button className="btn-get-details" onClick={handleGetDetailsClick}>GET DETAILS</button></div>
                 </Box>
-                <Box
+                {/* <Box
                   minWidth='600px'
                   maxHeight='500px'
                   sx={{
@@ -951,8 +957,8 @@ const Stats = () => {
                 >
                   <Typography>Quarterly Freebies Added</Typography>
                   <Bar options={options} data={quarterlyAddedFreebiesData} />
-                </Box>
-                <Box
+                </Box> */}
+                {/* <Box
                   minWidth='600px'
                   maxHeight='500px'
                   sx={{
@@ -964,7 +970,7 @@ const Stats = () => {
                 >
                   <Typography>Monthly Average Freebies Added</Typography>
                   <Bar options={options} data={monthlyAvgAddedFreebiesData} />
-                </Box>
+                </Box> */}
               </>
             )}
             {(weekdays || weekends) && (
@@ -1024,6 +1030,7 @@ const Stats = () => {
       )}
     </Grid>
   );
+  
 };
 
 export default Stats;

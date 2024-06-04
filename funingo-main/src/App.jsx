@@ -22,6 +22,7 @@ import Corporate from './components/corporate/corporate';
 import Gallery from './components/gallery';
 import Packages from './components/package/package';
 import Booknow from './components/booknow/booknow';
+import Showdetails from './actions/showdetails';
 import Icon from './components/icon/icon';
 import RedeemTicket from './components/employee/redeem-tickets';
 import {
@@ -270,7 +271,15 @@ export const router = createBrowserRouter([
           {
             path: 'stats',
             element: <Stats />
-          }
+          },
+          {
+            path: 'getDetails',
+            element: <Showdetails/>
+          },
+          {
+            path:'showdetails',
+            element: <Showdetails/>
+          },
         ]
       }
     ]

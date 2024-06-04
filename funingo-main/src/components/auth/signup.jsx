@@ -463,6 +463,8 @@ const Register = () => {
               navigate('/admin');
               return;
             }
+            else
+            navigate('/zone');
           } catch (error) {
             setIsSnack(true);
             setSnackDetails({
@@ -516,6 +518,7 @@ const Register = () => {
               });
               dispatch(setLoggedIn(true));
               dispatch(setVerified(true));
+              navigate('/zone');
             } else {
               setSnackDetails({
                 msg: 'OTP is Wrong',

@@ -1576,6 +1576,7 @@ import QRTicket from '../../models/qr-ticket.js';
 import Ticket from '../../models/ticket.js';
 import User from '../../models/user.js';
 import { monthDataToGroupOfWeeks } from '../../utilities/utils.js';
+import Entry from '../../models/entry.js';
 
 export const getStatistics = async (req, res) => {
   const year = parseInt(req.query.year);
@@ -1757,6 +1758,13 @@ export const checkConsent = async (req, res) => {
     success: true,
     ticket: ticket
   });
+};
+
+export const Getdetailfunction = async (req, res) => {
+  console.log("entring");
+  Ticket.find()
+  .then(Ticket=>{console.log(Ticket);return res.json(Ticket)})
+  .catch(err=>{console.log("error find ticket",err);return res.json(err)})
 };
 
 export const getMonthlyStatistics = async (req, res) => {
@@ -2856,6 +2864,17 @@ export const getAddedFreebies = async (req, res) => {
 
   res.json(response);
 };
+
+
+// export const getAddedFreebies = async (req, res) => {
+//   try {
+//     const entries = await Entry.find({});
+//     // console.log("entries",entries);
+//     res.json(entries);
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// };
 
 export const usersWRTPremium = async (req, res) => {
   const users = await User.aggregate([

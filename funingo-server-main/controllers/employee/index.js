@@ -3,10 +3,11 @@ import User from '../../models/user.js';
 import Package from '../../models/package.js';
 import ExpressError from '../../utilities/express-error.js';
 import Ticket from '../../models/ticket.js';
+import Coupon from '../../models/coupon.js';
 import constants from '../../constants.js';
 
 export const bookTicket = async (req, res) => {
-  const { details, total_amount, phone_no, payment_mode } = req.body;
+  let { details, total_amount, phone_no, payment_mode } = req.body;
   let totalAmount = 0;
   const user = await User.findOne({ phone_no });
   console.log("user",user);
@@ -40,9 +41,13 @@ export const bookTicket = async (req, res) => {
   );
 
   totalAmount += 0.18 * totalAmount;
+  totalAmount-=details[0].discount;
   totalAmount = Math.round((totalAmount + Number.EPSILON) * 100) / 100;
 
+
+  // totalAmount=total_amount;
   console.log("totalAmount",totalAmount);
+  console.log("total_amount",total_amount);
 
   if (totalAmount !== total_amount) {
     throw new ExpressError("Total amount doesn't match index.js", 400);
@@ -69,6 +74,25 @@ export const bookTicket = async (req, res) => {
   console.log("newTicket",newTicket);
 
   await newTicket.save();
+
+  if(details[0].discount>0)
+    {
+      const coupon2 = await Coupon.findOne({code:details[0].promo_code});
+
+  if (!coupon2) {
+    return res.status(404).json({ success: false, error: 'Coupon not found ticket.js' });
+  }
+  if (coupon2.count > 0) {
+    coupon2.count -= 1;
+    if(coupon2.count==0)
+    await Coupon.findOneAndDelete({ code:text });
+  } 
+
+  // Save the changes to the database
+
+  if(coupon2.count>0)
+  await coupon2.save();
+    }
 
   res.status(200).send({
     short_id: newTicket.short_id,
