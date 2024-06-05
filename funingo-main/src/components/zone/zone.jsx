@@ -1,724 +1,361 @@
-import React from 'react';
-import { Grid, Typography, Button } from '@mui/material';
-import img1 from './images/top.png';
-import './style.scss';
-import img2 from './images/zone1.png';
-import img3 from './images/zone2.png';
-import { Tour } from "@mui/icons-material";
-import inflatable from '../../assets/Meltdown.jpeg'
-import img4 from './images/zone3.png';
-import climb from '../../assets/quoridor-giant-board-game-2-lg.jpg'
-import race from '../../assets/rc-race-transformed.jpeg'
-import rc from '../../assets/hoping race.png'
-import car from '../../assets/kids go cart.png'
-// import bg1 from './images/top2.png';
-import fhek from '../../assets/throw.jpg'
-import game from "../../assets/quoridor-giant-board-game-2-lg.jpg"
-import court from '../../assets/Segway image edit.png'
-import gg from '../../assets/Chess-edit-image.jpg'
-// import NavigationIcon from '@mui/icons-material/Navigation';
-import bg1 from './Zone Background images/zone 1 back image.png'
-import bg2 from './Zone Background images/zone 2 back image.png'
-import bg3 from './Zone Background images/zone 3 back image.png'
-import bg4 from './Zone Background images/zone 4 back image.png'
-import bg5 from './Zone Background images/zone 5 back image.png'
-import bg6 from './Zone Background images/zone 6 back image.png'
-import bg7 from './Zone Background images/zone 7 back image.png'
-import bg8 from './Zone Background images/zone 8 back image.png'
-import NavigationIcon from '@mui/icons-material/Navigation';
-import { useNavigate } from 'react-router';
-import Coin from './Coin'
-import zone7 from '../../assets/img/zone7.jpg'
-import zone1 from '../../assets/img/zone1.jpg'
-import zone2 from '../../assets/img/zone2.jpg'
-import zone3 from '../../assets/img/zone3.jpg'
-import zone4 from '../../assets/img/zone4.jpg'
-import zone5 from '../../assets/img/zone5.jpg'
-import zone6 from '../../assets/img/zone6.jpg'
-import zone8 from '../../assets/img/zone8.jpg'
-const zoneData = [
-  {
-    name: 'Zone 1',
-    subhead: 'Bounce Harbor',
-    top1: zone1,
-    bg: bg1,
-    Activity1: "Trampoline Treasure Island",
-    Activity1Prop: {
-      value: 2500
-    },
-    Activity2: "",
-    Activity2Prop: {
-      value: 2500
-    },
-    Activity3: "",
-    Activity4: "",
-    Activity5: "",
-    Activity6: "",
+import React from 'react'
+import './pages.css'
+import { P1000, P1500, P2000, P2500, P3000, P500, P5000, activityZoneText, bookNow, keyIcon, sec11, sec12 } from '../../assets'
 
-
-  },
-  {
-    name: 'Zone 2',
-    subhead: 'Battlefront Bay ',
-    top1: zone2,
-    bg: bg2,
-
-    Activity1: "Paintball Arena",
-    Activity1Prop: {
-      value: 2500
-    },
-    Activity2: "Get Blast Arena",
-    Activity2Prop: {
-      value: 1500
-    },
-    Activity3: "",
-    Activity3Prop: {
-      value: 2500
-    },
-    Activity4: "",
-    Activity4Prop: {
-      value: 2500
-    },
-    Activity5: "",
-    Activity6: "",
-  },
-  {
-    name: 'Zone 3',
-    subhead: 'Ropes & Ridges ',
-    top1: zone3,
-    bg: bg3,
-
-    Activity1: "Low Ropes Challenge",
-    Activity1Prop: {
-      value: 1500
-    },
-    Activity2:  " High Ropes Haven ",
-    Activity2Prop: {
-      value: 1500
-    },
-    Activity3: "",
-    Activity3Prop: {
-      value: 2500
-    },
-    Activity4: "",
-    Activity5: "",
-    Activity6: "",
-  },
-  {
-    name: 'Zone 4',
-    subhead: 'Thrill Peaks ',
-    top1: zone4,
-    bg: bg4,
-
-    Activity1: "Gaint Swing Skybound",
-    Activity1Prop: {
-      value: 5000
-    },
-    Activity2: "Sky Cyclist's Trail",
-    Activity2Prop: {
-      value: 3000
-    },
-    Activity3: "Commando Climb Net",
-    Activity3Prop: {
-      value: 500
-    },
-    Activity4: "Peak Rock Climb",
-    Activity4Prop: {
-      value: 2000
-    },
-    Activity5: "",
-    Activity6: "",
-  },
-  {
-    name: 'Zone 5',
-    subhead: 'Inflatable Isle ',
-    top1: zone5,
-    bg: bg5,
-
-    Activity1: "Meltdown Madness",
-    Activity1Prop: {
-      value: 1000
-    },
-    Activity2: "Bucking Bull Arena",
-    Activity2Prop: {
-      value: 1000
-    },
-    Activity3: "Kids Obstacle Odysse",
-    Activity3Prop: {
-      value: 500
-    },
-    Activity4: "Sumo Showdown",
-    Activity4Prop: {
-      value: 500
-    },
-    Activity5: "",
-    // Activity5Prop: {
-    //   red: 0,
-    //   green: 0,
-    //   yellow: 1
-    // },
-    Activity6: "",
-  },
-  {
-    name: 'Zone 6',
-    subhead: `Marksman's Meadow`,
-    top1: zone6,
-    bg: bg6,
-
-    Activity1: "Archery Alley",
-    Activity1Prop: {
-      value: 500
-    },
-    Activity2: "Shooter's Range",
-    Activity2Prop: {
-      value: 1000
-    },
-    Activity3: "",
-    Activity3Prop: {
-    },
-    Activity4: "",
-    Activity5: "",
-    Activity6: "",
-  },
-  {
-    name: 'Zone 7',
-    subhead: `Speedster's Circuit `,
-    top1: zone7,
-    bg: bg7,
-
-    Activity1: "Pedal Power Go Kart",
-    Activity1Prop: {
-      value: 1000
-
-    },
-    Activity2: "",
-    Activity2Prop: {
-      value: 2500
-
-    },
-    Activity3: "",
-    Activity3Prop: {
-      value: 2500
-
-    },
-    Activity4: "",
-    // Activity4Prop: {
-    //   red: 0,
-    //   green: 0,
-    //   yellow: 1
-    // },
-    Activity5: "",
-    // Activity5Prop: {
-    //   red: 0,
-    //   green: 0,
-    //   yellow: 1
-    // },
-    Activity6: "",
-    // Activity6Prop: {
-    //   red: 0,
-    //   green: 1,
-    //   yellow: 0
-    // },
-  },
-  {
-    name: 'Zone 8',
-    subhead: 'Adrenaline Airspace',
-    top1: zone8,
-    bg: bg8,
-
-    Activity1: "Rocket Ejector Launch ",
-    Activity1Prop: {
-      value: 2500
-
-    },
-    Activity2: " Cyclone Cycle 360",
-    Activity2Prop: {
-      value: 1500
-
-    },
-    Activity3: "Gyro Sphere 360",
-    Activity3Prop: {
-      value: 1000
-
-    },
-    Activity4: "",
-    Activity5: "",
-    Activity6: "",
-  },
-  // {
-  //   name: 'Zone 9',
-  //   subhead: 'Giant Games ',
-  //   top1: gg,
-  //   bg: bg1,
-
-  //   Activity1: "Giant Tic Tae Toe",
-  //   Activity1Prop: {
-  //     red: 0,
-  //     green: 1,
-  //     yellow: 0
-  //   },
-
-  //   Activity2: "Giant Chess",
-  //   Activity2Prop: {
-  //     red: 0,
-  //     green: 1,
-  //     yellow: 0
-  //   },
-  //   Activity3: "Ring Toss",
-  //   Activity3Prop: {
-  //     red: 0,
-  //     green: 1,
-  //     yellow: 0
-  //   },
-  //   Activity4: "Giant snake and Ladder",
-  //   Activity4Prop: {
-  //     red: 0,
-  //     green: 1,
-  //     yellow: 0
-  //   },
-  //   Activity5: "",
-  //   Activity6: "",
-  // },
-  // {
-  //   name: 'Zone 10',
-  //   subhead: 'Food Court ',
-  //   top1: court,
-  //   bg: bg1,
-
-  //   Activity1: "Brand 1",
-  //   Activity2: "Brand 2",
-  //   Activity3: "Brand 3",
-  //   Activity4: "Brand 4",
-  //   Activity5: "",
-  //   Activity6: "",
-  // }
-
-];
-
-const Zone = () => {
-  const navigate = useNavigate();
+const zone = () => {
   return (
-    <Grid className='homes'>
-      {/* first box */}
-      <Grid height='70vh' className='top'>
-        <Typography height='60vh' className='heading'>
-          Activity Zones
-        </Typography>
-      </Grid>
-      {/* first box end  */}
-
-      {/* second box */}
-      {zoneData.map((data, i) => (
-        <Grid className='top2' mt='30px' key={i}>
-          <img src={data.bg} alt='background-img' className='background-event' />
-          <Grid className='first'>
-            <Typography className='sub'>{data.name}</Typography>
-            <Typography className='sub1'>{data.subhead}</Typography>
+    <div className=''>
+      <section className='section0 w-full'>
+        <div className='div1'>
+          <div className=" flex justify-center mt-20">
+            <img src={activityZoneText} alt="" />
+          </div>
+        </div>
+      </section>
 
 
-            {data.Activity1 !== "" && (
-              <Typography className='sub2' mt='10px' display={"flex"}
-                gap="10px"
-                paddingX={"4px"}
-                fontSize={"24px"}
-                 margin-right={"35rem"}
-                alignItems={"center"}>
-                <NavigationIcon sx={{ transform: 'rotate(90deg)' , color: '#186FFF '}} />
-                 {data.Activity1}
-                <Grid display={"flex"}
-                  gap="10px"
-                  paddingX={"4px"}
-                  alignItems={"center"}>
-                  {data?.Activity1Prop?.["red"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity1Prop?.["red"]}&nbsp;
-                    {/* <Tour
-                      sx={{
-                        color: "#fa1942",
-                      }}
-                    /> */}
-                    <Coin 
-                    value={data.Activity1Prop.value}
-                    />
+      <section >
+        <div className='div2 flex justify-center align-middle items-center pl-20 space-x-52'>
+          <div className='block text-left'>
+            <h3 className='text-primary'>Zone 1</h3>
+            <h4 className='text-secondary'>Bounce Harbor</h4>
+            <div className="flex items-center">
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className="text-2xl keys">Trampoline Treasure Island</p>
+            </div>
+
+            <div className=" mt-8">
+              {/* Your logo goes here */}
+              <img src={P2500} className='pointIcon' alt="Logo" />
+            </div>
+            <button className="book-now mt-8">
+              <img src={bookNow} alt="" />
+            </button>
+          </div>
+
+          <div className='block'>
+            <div className='sec11 '>
+              {/* Image for sec11 */}
+            </div>
+            <div className='sec12 w-[500px]'>
+              {/* Image for sec12 */}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2 Starting  */}
+      <section>
+        <div className=' div3 flex justify-center align-middle items-center space-x-32'>
+          <div className='block text-left'>
+            <h3 className='text-primary'>Zone 2</h3>
+            <h4 className='text-secondary'>Battlefront Bay</h4>
+
+            <div className="flex items-center mt-10">
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className="text-2xl keys">Paintball Arena</p>
+              <img className='pointIcon' src={P2500} alt="" />
+            </div>
+            <div className='flex items-center'>
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className='text-2xl keys'>Gel Blast Arena</p>
+              <img className='pointIcon' src={P1500} alt="" />
+            </div>
+
+            <button className="book-now mt-8">
+              <img src={bookNow} alt="" />
+            </button>
+          </div>
+
+          <div className=' flex'>
+            <div className='sec21'>
+              {/* Image for sec11 */}
+            </div>
+            <div className='sec22'>
+              {/* Image for sec12 */}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3 starting  */}
+
+      <section>
+        <div className='div4 flex justify-center align-middle items-center space-x-32'>
+          <div className='block text-left'>
+            <h3 className='text-primary'>Zone 3</h3>
+            <h4 className='text-secondary'>Ropes & Ridges</h4>
+
+            <div className="flex items-center mt-10">
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className="text-2xl keys">Low Ropes <br /> Challenge</p>
+              <img className='pointIcon ml-5' src={P2500} alt="" />
+            </div>
+            <div className='flex items-center'>
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className='text-2xl keys'>High Ropes <br /> Haven</p>
+              <img className='pointIcon ml-3' src={P1500} alt="" />
+            </div>
+
+            <button className="book-now mt-8">
+              <img src={bookNow} alt="" />
+            </button>
+          </div>
+
+          <div className=' flex'>
+            <div className='sec31'>
+              {/* Image for sec11 */}
+            </div>
+            <div className='sec32'>
+              {/* Image for sec12 */}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Zone 4 starting  */}
+
+      <section className='section4'>
+        <div className='div5 flex justify-center align-middle items-center space-x-52'>
+          <div className='block text-left'>
+            <h3 className='text-primary'>Zone 4</h3>
+            <h4 className='text-secondary'>Thrill Peaks</h4>
+
+            <div>
+              <div className="flex items-center mt-10">
+                <img src={keyIcon} alt="" className="mr-2" />
+                <p className="text-2xl keys">Giant Swing <br /> Skybound</p>
+                <img className='pointIcon ml-24' src={P5000} alt="" />
+              </div>
+              <div className='flex items-center'>
+                <img src={keyIcon} alt="" className="mr-2" />
+                <p className='text-2xl keys'>Sky Cyclist's Trail</p>
+                <img className='pointIcon ml-12' src={P3000} alt="" />
+              </div>
+              <div className="flex items-center">
+                <img src={keyIcon} alt="" className="mr-2" />
+                <p className="text-2xl keys">Commando Climb <br /> Net</p>
+                <img className='pointIcon ml-8' src={P500} alt="" />
+              </div>
+              <div className='flex items-center'>
+                <img src={keyIcon} alt="" className="mr-2" />
+                <p className='text-2xl keys'>Peak Rock Climb</p>
+                <img className='pointIcon ml-12' src={P2000} alt="" />
+              </div>
+            </div>
+
+            <div className="logo mt-8">
+              {/* Your logo goes here */}
+
+            </div>
+            <button className="book-now mt-8">
+              <img src={bookNow} alt="" />
+            </button>
+          </div>
+
+          <div className=' space-y-5'>
+            <div className=' flex'>
+              <div className='sec41'>
+                {/* Image for sec11 */}
+              </div>
+              <div className='sec42'>
+                {/* Image for sec12 */}
+              </div>
+            </div>
+
+            <div className=' flex'>
+              <div className='sec43'>
+                {/* Image for sec11 */}
+              </div>
+              <div className='sec44'>
+                {/* Image for sec12 */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Zone 5 Starting  */}
+
+      <section className='section5'>
+        <div className='div6 flex justify-center align-middle items-center space-x-52'>
+          <div className='block text-left'>
+            <h3 className='text-primary'>Zone 5</h3>
+            <h4 className='text-secondary'>Inflatable Isle</h4>
+
+            <div>
+              <div className="flex items-center mt-10">
+                <img src={keyIcon} alt="" className="mr-2" />
+                <p className="text-2xl keys">Meltdown <br /> Madness</p>
+                <img className='pointIcon ml-[120px]' src={P1000} alt="" />
+              </div>
+              <div className='flex items-center'>
+                <img src={keyIcon} alt="" className="mr-2" />
+                <p className='text-2xl keys'>Bucking Bull <br /> Arena</p>
+                <img className='pointIcon ml-24' src={P1000} alt="" />
+              </div>
+              <div className="flex items-center">
+                <img src={keyIcon} alt="" className="mr-2" />
+                <p className="text-2xl keys">Kid's Obstacle <br /> Odysse</p>
+                <img className='pointIcon ml-20' src={P500} alt="" />
+              </div>
+              <div className='flex items-center'>
+                <img src={keyIcon} alt="" className="mr-2" />
+                <p className='text-2xl keys'>Sumo Showdown</p>
+                <img className='pointIcon ml-12' src={P500} alt="" />
+              </div>
+            </div>
+
+            <button className="book-now mt-8">
+              <img src={bookNow} alt="" />
+            </button>
+          </div>
+
+          <div className=' space-y-5'>
+            <div className=' flex'>
+              <div className='sec51'>
+                {/* Image for sec11 */}
+              </div>
+              <div className='sec52'>
+                {/* Image for sec12 */}
+              </div>
+            </div>
+
+            <div className=' flex'>
+              <div className='sec53'>
+                {/* Image for sec11 */}
+              </div>
+              <div className='sec54'>
+                {/* Image for sec12 */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Zone 6 starting  */}
+
+      <section className='section6'>
+        <div className='div7 flex justify-center align-middle items-center space-x-32'>
+          <div className='block align-middle text-left'>
+            <h3 className='text-primary'>Zone 6</h3>
+            <h4 className='text-secondary'>Marksman's Meadow</h4>
 
 
-                  </Typography>}
+            <div className="flex items-center mt-10">
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className="text-2xl keys">Archery Alley</p>
+              <img className='pointIcon ml-12' src={P500} alt="" />
+            </div>
+            <div className='flex items-center'>
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className='text-2xl keys'>Shooter's Range</p>
+              <img className='pointIcon ml-5' src={P1000} alt="" />
+            </div>
 
-                  {/* {data?.Activity1Prop?.["green"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity1Prop?.['green']}&nbsp;{" "}
-                    <Tour
-                      sx={{
-                        color: "#76de9a",
-                      }}
-                    />
-                  </Typography>}
-                  {data?.Activity1Prop?.["yellow"] !== 0 &&
-                    <Typography
-                      fontWeight={"600"}
-                      display={"flex"}
-                      justifyContent={"center"}
-                      alignItems={"center"}
-                    >
-                      {data?.Activity1Prop?.['yellow']}&nbsp;{" "}
-                      <Tour
-                        sx={{
-                          color: "#fac219",
-                        }}
-                      />
-                    </Typography>} */}
-                </Grid>
-              </Typography>
-            )}
+            <div className="logo mt-8">
+              {/* Your logo goes here */}
 
+            </div>
+            <button className="book-now mt-8">
+              <img src={bookNow} alt="" />
+            </button>
+          </div>
 
-            {data.Activity2 !== "" && (
-              <Typography className='sub2' mt='10px' display={"flex"}
-                gap="10px"
-                paddingX={"4px"}
-                fontSize={"24px"}
-                margin-right={"35rem"}
+          <div className=' flex'>
+            <div className='sec61'>
+              {/* Image  */}
+            </div>
+            <div className='sec62'>
+              {/* Image  */}
+            </div>
+          </div>
+        </div>
+      </section>
 
-                alignItems={"center"}>
-                <NavigationIcon sx={{ transform: 'rotate(90deg)' , color: '#186FFF '}} />
+      {/* Zone 7 Starting  */}
 
-                 {data.Activity2}
-                <Grid display={"flex"}
-                  gap="10px"
-                  paddingX={"4px"}
-
-                  alignItems={"center"}>
-                    
-                   {data?.Activity2Prop?.["red"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity2Prop?.["red"]}&nbsp;
-                    <Coin 
-                   value={data.Activity2Prop.value}
-                    />
-                  </Typography>}
-                  
-
-                   {/*  {data?.Activity2Prop?.["green"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity2Prop?.['green']}&nbsp;{" "}
-                    <Tour
-                      sx={{
-                        color: "#76de9a",
-                      }}
-                    />
-                  </Typography>}
-                  {data?.Activity2Prop?.["yellow"] !== 0 &&
-                    <Typography
-                      fontWeight={"600"}
-                      display={"flex"}
-                      justifyContent={"center"}
-                      alignItems={"center"}
-                    >
-                      {data?.Activity2Prop?.['yellow']}&nbsp;{" "}
-                      <Tour
-                        sx={{
-                          color: "#fac219",
-                        }}
-                      />
-                    </Typography>} */}
-                </Grid>
-              </Typography>
-            )}
+      <section className='section7'>
+      <div className='div8 flex justify-center align-middle items-center space-x-32'>
+          <div className='block align-middle text-left'>
+            <h3 className='text-primary'>Zone 7</h3>
+            <h4 className='text-secondary'>Speedster's Circuit</h4>
 
 
+            <div className="flex items-center mt-10">
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className="text-2xl keys">Pedal Power Go Kart</p>
+            </div>
+            <img className='pointIcon mt-5' src={P1000} alt="" />
 
-            {data.Activity3 !== "" && (
-              <Typography className='sub2' mt='10px' display={"flex"}
-                gap="10px"
-                paddingX={"4px"}
-                fontSize={"24px"}
-                margin-right={"30rem"}
+            <div className="logo mt-8">
+              {/* Your logo goes here */}
 
-                alignItems={"center"}>
-                <NavigationIcon sx={{ transform: 'rotate(90deg)' , color: '#186FFF '}} />
+            </div>
+            <button className="book-now mt-8">
+              <img src={bookNow} alt="" />
+            </button>
+          </div>
 
-                {data.Activity3}
-                <Grid display={"flex"}
-                  gap="10px"
-                  paddingX={"4px"}
+          <div className=' flex'>
+            <div className='sec71'>
+              {/* Image  */}
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  alignItems={"center"}>
-                  {data?.Activity3Prop?.["red"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity3Prop?.["red"]}&nbsp;
-                    <Coin 
-                    value={data.Activity3Prop.value}
-                    />
-                  </Typography>}
+      {/* Zone 8 Starting  */}
 
-                  {/* {data?.Activity3Prop?.["green"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity3Prop?.['green']}&nbsp;{" "}
-                    <Tour
-                      sx={{
-                        color: "#76de9a",
-                      }}
-                    />
-                  </Typography>}
-                  {data?.Activity3Prop?.["yellow"] !== 0 &&
-                    <Typography
-                      fontWeight={"600"}
-                      display={"flex"}
-                      justifyContent={"center"}
-                      alignItems={"center"}
-                    >
-                      {data?.Activity3Prop?.['yellow']}&nbsp;{" "}
-                      <Tour
-                        sx={{
-                          color: "#fac219",
-                        }}
-                      />
-                    </Typography>} */}
-                </Grid>
-              </Typography>
-            )}
+      <section className='section8'>
+        <div className='div9 flex justify-center text-left align-middle items-center space-x-52'>
+          <div className='block align-middle'>
+            <h3 className='text-primary'>Zone 8</h3>
+            <h4 className='text-secondary'>Adrenaline Airspace</h4>
+            
+            <div className="flex items-center mt-10">
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className="text-2xl keys">Rocket Ejector <br />Launch</p>
+              <img className='pointIcon ml-12' src={P2500} alt="" />
+            </div>
+            <div className='flex items-center'>
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className='text-2xl keys'>Gyro Sphere 360</p>
+              <img className='pointIcon ml-5' src={P1500} alt="" />
+            </div>
+            <div className='flex items-center'>
+              <img src={keyIcon} alt="" className="mr-2" />
+              <p className='text-2xl keys'>Cyclone cycle 360</p>
+              <img className='pointIcon ml-5' src={P1000} alt="" />
+            </div>
 
+            <button className="book-now mt-8">
+              <img src={bookNow} alt="" />
+            </button>
+          </div>
 
+          <div className=' space-y-5'>
+            <div className=' block'>
+              <div className=' flex flex-wrap space-x-5'>
+                <div className='sec81'>
+                  {/* <img src="" alt="" /> */}
+                </div>
+                <div className='sec82'>
+                  {/* <img src="" alt="" /> */}
+                </div>
+              </div>
+            </div>
 
-            {data.Activity4 !== "" && (
-              <Typography className='sub2' mt='10px' display={"flex"}
-              gap="10px"
-              paddingX={"4px"}
-              fontSize={"24px"}
-              margin-right={"30rem"}
+            <div className='flex justify-center align-middle'>
+              <div className='sec83'>
+                {/* <img src="" alt="" /> */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
 
-
-              alignItems={"center"}>
-                  {data.Activity4 != "" ? 
-                <NavigationIcon sx={{ transform: 'rotate(90deg)' , color: '#186FFF '}} />
-                : null}
-
-                 {data.Activity4}
-                <Grid display={"flex"}
-                  gap="10px"
-                  paddingX={"4px"}
-                  
-                  alignItems={"center"}>
-                   {data?.Activity4Prop?.["red"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity4Prop?.["red"]}&nbsp;
-                    <Coin 
-                     value={data.Activity4Prop.value}
-                    />
-                  </Typography>}
-
-                   {/*{data?.Activity4Prop?.["green"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity4Prop?.['green']}&nbsp;{" "}
-                    <Tour
-                      sx={{
-                        color: "#76de9a",
-                      }}
-                    />
-                  </Typography>}
-                  {data?.Activity4Prop?.["yellow"] !== 0 &&
-                    <Typography
-                      fontWeight={"600"}
-                      display={"flex"}
-                      justifyContent={"center"}
-                      alignItems={"center"}
-                    >
-                      {data?.Activity4Prop?.['yellow']}&nbsp;{" "}
-                      <Tour
-                        sx={{
-                          color: "#fac219",
-                        }}
-                      />
-                    </Typography>} */}
-                </Grid> 
-
-              </Typography>
-            )} 
-
-
-            {data.Activity5 !== "" && (
-              <Typography className='sub2' mt='10px' display={"flex"}
-                gap="10px"
-                paddingX={"4px"}
-                fontSize={"24px"}
-                margin-right={"30rem"}
-
-                alignItems={"center"}>
-                <NavigationIcon sx={{ transform: 'rotate(90deg)' , color: '#186FFF '}} />
-
-                {data.Activity5}
-                <Grid display={"flex"}
-                  gap="10px"
-                  paddingX={"4px"}
-
-                  alignItems={"center"}>
-                   {data?.Activity5Prop?.["red"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity5Prop?.["red"]}&nbsp;
-                    <Coin 
-                     value={data.Activity5Prop.value}
-                    />
-                  </Typography>}
-
-                  {/* {data?.Activity5Prop?.["green"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity5Prop?.['green']}&nbsp;{" "}
-                    <Tour
-                      sx={{
-                        color: "#76de9a",
-                      }}
-                    />
-                  </Typography>}
-                  {data?.Activity5Prop?.["yellow"] !== 0 &&
-                    <Typography
-                      fontWeight={"600"}
-                      display={"flex"}
-                      justifyContent={"center"}
-                      alignItems={"center"}
-                    >
-                      {data?.Activity5Prop?.['yellow']}&nbsp;{" "}
-                      <Tour
-                        sx={{
-                          color: "#fac219",
-                        }}
-                      />
-                    </Typography>} */}
-                </Grid>
-              </Typography>
-            )}
-
-
-            {data.Activity6 !== "" && (
-              <Typography className='sub2' mt='10px' display={"flex"}
-              gap="10px"
-              paddingX={"4px"}
-              fontSize={"24px"}
-              margin={"30rem"}
-
-              alignItems={"center"}>
-                <NavigationIcon sx={{ transform: 'rotate(90deg)' , color: '#186FFF '}} />
-
-                 {data.Activity6}
-                <Grid display={"flex"}
-                  gap="10px"
-                  paddingX={"4px"}
-                  alignItems={"center"}>
-                  {data?.Activity6Prop?.["red"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity6Prop?.["red"]}&nbsp;
-                    <Coin 
-                     value={data.Activity6Prop.value}
-                    />
-                  </Typography>}
-
-                  {/* {data?.Activity6Prop?.["green"] !== 0 && <Typography
-                    fontWeight={"600"}
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    {data?.Activity6Prop?.['green']}&nbsp;{" "}
-                    <Tour
-                      sx={{
-                        color: "#76de9a",
-                      }}
-                    />
-                  </Typography>}
-                  {data?.Activity6Prop?.["yellow"] !== 0 &&
-                    <Typography
-                      fontWeight={"600"}
-                      display={"flex"}
-                      justifyContent={"center"}
-                      alignItems={"center"}
-                    >
-                      {data?.Activity6Prop?.['yellow']}&nbsp;{" "}
-                      <Tour
-                        sx={{
-                          color: "#fac219",
-                        }}
-                      />
-                    </Typography>} */}
-                </Grid>
-              </Typography>
-            )}
-
-            <Button
-              variant='contained'
-              sx={{
-                background: '#2CC248',
-                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
-                borderRadius: '50px',
-                padding: '10px 50px',
-                fontFamily: 'Luckiest Guy',
-                fontSize: '24px',
-                marginTop: '20px',
-
-                '&:hover': {
-                  background: '#1e8e33'
-                }
-              }}
-              onClick={() => {
-                navigate('/book');
-              }}
-            >
-              Book Now
-            </Button>
-          </Grid>
-          {/* <div className='image-grid'>
-          {Array.isArray(data.top1) && data.top1.map((image, index) => (
-  <img key={index} className='imgtop2' src={image} alt={`Zone Area ${index}`} />
-))}
-          </div> */}
-          <img className='imgtop2' src={data.top1} alt={'Zone Area'} style={{ width: '364px', height: '250px', paddingBottom:'100px' }} />
-
-        </Grid>
-      ))}
-    </Grid>
-  );
-};
-
-export default Zone;
+export default zone
