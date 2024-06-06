@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Jaro:opsz@6..72&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
-.title{
-  font-family: "Jaro", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-size: 120px;
-  font-style: normal;
+.title {
+    font-family: "Jaro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 120px;
+    font-style: normal;
 }
 
 .div1 {
@@ -17,7 +17,7 @@
     background-size: cover;
 }
 
-.div2{
+.div2 {
     height: 170vh;
     width: 100%;
     background-image: url("../../assets/bg2.png");
@@ -82,20 +82,20 @@
     background-position: center;
 }
 
-.text-primary{
+.text-primary {
     font-size: 45px;
     color: white;
     font-family: Poppins;
 }
 
-.text-secondary{
+.text-secondary {
     font-size: 45px;
     color: #3fcf3a;
     font-family: Poppins;
     font-weight: 200;
 }
 
-.keys{
+.keys {
     color: white;
     font-family: Poppins;
     font-weight: 700;
@@ -105,25 +105,26 @@
     height: 40px;
 }
 
-.pointIcon{
+.pointIcon {
     height: 90px;
 }
 
 .sec11 {
     background-image: url("../../assets/S11.png");
     background-repeat: no-repeat;
-    background-size:contain;
+    background-size: contain;
     height: 250px;
-    min-width:max-content;
+    min-width: max-content;
 }
-.sec12{
+
+.sec12 {
     background-image: url("../../assets/S12.png");
     background-repeat: no-repeat;
     background-size: contain;
     height: 250px;
 }
 
-.sec21{
+.sec21 {
     background-image: url("../../assets/S21.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -139,7 +140,7 @@
     width: 350px;
 }
 
-.sec31{
+.sec31 {
     background-image: url("../../assets/S31.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -155,7 +156,7 @@
     width: 350px;
 }
 
-.sec41{
+.sec41 {
     background-image: url("../../assets/S41.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -163,7 +164,7 @@
     width: 250px;
 }
 
-.sec42{
+.sec42 {
     background-image: url("../../assets/S42.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -171,7 +172,7 @@
     width: 250px;
 }
 
-.sec43{
+.sec43 {
     background-image: url("../../assets/S43.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -211,7 +212,7 @@
     width: 250px;
 }
 
-.sec54{
+.sec54 {
     background-image: url("../../assets/S54.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -219,7 +220,7 @@
     width: 250px;
 }
 
-.sec61{
+.sec61 {
     background-image: url("../../assets/S61.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -227,7 +228,7 @@
     width: 350px;
 }
 
-.sec62{
+.sec62 {
     background-image: url("../../assets/S62.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -235,7 +236,7 @@
     width: 350px;
 }
 
-.sec71{
+.sec71 {
     background-image: url("../../assets/S71.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -243,7 +244,7 @@
     width: 650px;
 }
 
-.sec81{
+.sec81 {
     background-image: url("../../assets/S81.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -251,7 +252,7 @@
     width: 350px;
 }
 
-.sec82{
+.sec82 {
     background-image: url("../../assets/S82.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -259,13 +260,14 @@
     width: 350px;
 }
 
-.sec83{
+.sec83 {
     background-image: url("../../assets/S83.png");
     background-repeat: no-repeat;
     background-size: contain;
     height: 350px;
     width: 350px;
 }
+
 /* .section1 {
     background-image: url("../../assets/bg2.png");
     background-repeat: no-repeat;
@@ -276,7 +278,7 @@
     margin: 0;
 } */
 
-.zone1 h2{
+.zone1 h2 {
     margin-top: 100px;
 }
 
@@ -286,4 +288,77 @@
 
 .section3 {
     min-height: 100vh;
+}
+
+@media (max-width: 1024px) {
+    .text-primary{
+        font-size: 50px;
+    }
+    .text-secondary{
+        font-size: 30px;
+    }
+    .keys {
+        font-size: 10px;
+        width: auto;
+        font-weight: 400;
+    }
+
+    .pointIcon{
+        height: 50px;
+    }
+    .div1 {
+        height: 300px;
+        border: 1px solid rgba(255, 255, 255, 0);
+        background-image: url("../../assets/bg1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .div2 {
+        height: auto;
+        background-image: url("../../assets/bg2.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: 100px;
+        /* padding-bottom: 100px; */
+
+    }
+
+    .div2 h3 {
+        text-align: center;
+    }
+
+    .sec11-mobile, .sec12-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 350px; /* Adjust as needed */
+        min-height: 150px; /* Adjust as needed */
+        max-width: 100%;
+        max-height: 100%;
+      }
+    
+      .mt-8.flex-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+    .div2 p {
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .div3 {
+        
+        min-height: 50vh; 
+        background-image: url("../../assets/bg3.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+
 }

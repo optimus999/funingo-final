@@ -10,6 +10,7 @@ import P5000 from "./5000.png"
 
 import firstBackground from "./bg1.png"
 import activityZoneText from "./Activity Zones.png"
+import activityZoneMobileText from "./activityzonesmobile.png"
 import secondBackground from "./bg2.png"
 import thirdBackground from "./bg3.png"
 import fourBackground from "./bg4.png"
@@ -86,5 +87,6 @@ export {
     sec83,
     bookNow,
     keyIcon,
-    footerImage
+    footerImage,
+    activityZoneMobileText,
 };
