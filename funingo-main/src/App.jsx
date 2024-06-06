@@ -101,34 +101,34 @@ const AppLayout = ({
           }
         }
 
-        if (!user) {
-          setTimeout(() => {
-            dispatch(openPremiumSubscriptionModal());
-          }, 8500);
-        } else {
-          if (!admin && !employee && !windowEmployee) {
-            setTimeout(() => {
-              setShowFreebies(true);
-            }, 6000);
-          }
-        }
+        // if (!user) {
+        //   setTimeout(() => {
+        //     dispatch(openPremiumSubscriptionModal());
+        //   }, 8500);
+        // } else {
+        //   if (!admin && !employee && !windowEmployee) {
+        //     setTimeout(() => {
+        //       setShowFreebies(true);
+        //     }, 6000);
+        //   }
+        // }
       })
     );
 
     dispatch(getPhoneNumbers());
     dispatch(getAllImages());
 
-    if (!employee && !admin && !windowEmployee) {
-      setloading(true);
-      setTimeout(() => {
-        setloading(false);
-      }, 3500);
-    }
+    // if (!employee && !admin && !windowEmployee) {
+    //   setloading(true);
+    //   setTimeout(() => {
+    //     setloading(false);
+    //   }, 3500);
+    // }
   }, []);
 
-  useEffect(() => {
-    scrollToTop();
-  }, [pathname]);
+  // useEffect(() => {
+  //   scrollToTop();
+  // }, [pathname]);
 
   return (
     <Grid
