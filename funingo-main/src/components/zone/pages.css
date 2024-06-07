@@ -83,6 +83,7 @@
 }
 
 .text-primary {
+    font-weight: 520;
     font-size: 45px;
     color: white;
     font-family: Poppins;
@@ -91,14 +92,15 @@
 .text-secondary {
     font-size: 45px;
     color: #3fcf3a;
+    /* color: red; */
     font-family: Poppins;
-    font-weight: 200;
+    font-weight: 600;
 }
 
 .keys {
     color: white;
     font-family: Poppins;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .textwithIcon {
@@ -352,12 +354,21 @@
     }
 
     .div3 {
-        
-        min-height: 50vh; 
+        height: 100vh; 
         background-image: url("../../assets/bg3.png");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+    }
+
+    .div4{
+        height: 100vh;
+    }
+    .div7, .div8{
+        height: 100vh;
+    }
+    .div9{
+        height: 150vh;
     }
 
 

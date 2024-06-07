@@ -86,51 +86,73 @@ export default function first() {
       </Grid>
 
       <Grid className='zone-hover'>
-        <Typography className='sub'>Zone A</Typography>
+        <Typography className='sub'>Zone 1</Typography>
         <Typography className='sub2' mt='5px'>
-          Paintball (field-1)
-        </Typography>
-        <Typography className='sub2' mt='10px'>
-          Paintball (field-2)
+          Tampoline Treasure Island
         </Typography>
 
-        <Typography className='sub'>Zone B</Typography>
+        <Typography className='sub'>Zone 2</Typography>
         <Typography className='sub2' mt='5px'>
-          Paintball (field-1)
+          Paintball Arena
         </Typography>
-        <Typography className='sub2' mt='10px'>
-          Paintball (field-2)
+        <Typography className='sub2' >
+          Get Blaster Arena
         </Typography>
 
-        <Typography className='sub'>Zone C</Typography>
+        <Typography className='sub'>Zone 3</Typography>
         <Typography className='sub2' mt='5px'>
-          Paintball (field-1)
+          Low Ropes Challenge
         </Typography>
         <Typography className='sub2' mt='10px'>
-          Paintball (field-2)
+          High Ropes Haven
         </Typography>
       </Grid>
 
       <Grid className='zone-hover'>
         <Typography className='sub' ml='1rem'>
-          Zone D
+          Zone 4
         </Typography>
         <Typography className='sub2' mt='5px'>
-          Paintball (field-1)
+          Giant Swing
         </Typography>
         <Typography className='sub2' mt='10px'>
-          Paintball (field-2)
+          Sky Cyclist's Trails
+        </Typography>
+        <Typography className='sub2' mt='5px'>
+          Commando Climb Net
+        </Typography>
+        <Typography className='sub2' mt='5px'>
+          Peak Rock Climb
         </Typography>
 
         <Typography className='sub' ml='1rem'>
-          Zone E
+          Zone 5
         </Typography>
         <Typography className='sub2' mt='5px'>
-          Paintball (field-1)
+          Metldown Madness
         </Typography>
         <Typography className='sub2' mt='10px'>
-          Paintball (field-2)
+          Bucking Bull Arena
         </Typography>
+        <Typography className='sub2' mt='10px'>
+          Kid's Obstacle Odyssey
+        </Typography>
+        <Typography className='sub2' mt='10px'>
+          Sumo Showdown
+        </Typography>
+      </Grid>
+
+      <Grid className='zone-hover'>
+        <Typography className='sub' ml='1rem'>
+          Zone 6
+        </Typography>
+        <Typography className='sub2' mt='5px'>
+          Archer Alley
+        </Typography>
+        <Typography className='sub2' mt='10px'>
+          Shooter's Range
+        </Typography>
+
 
         <Button
           variant='contained'
