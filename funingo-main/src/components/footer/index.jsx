@@ -44,11 +44,12 @@ const Footer = () => {
       >
         <Grid className='container-footer' display={'flex'}>
           <Typography className='heading'>Contact Us</Typography>
-          {phone_numbers.map(contact => (
-            <Typography key={contact._id}>
-              {contact.name}&nbsp;-&nbsp;{contact.number}
-            </Typography>
-          ))}
+          <Typography>Part Manager - 123 456 7890 </Typography>
+          <Typography>Ticket Counter - 123 456 7890 </Typography>
+          <Typography>Franchise - 123 456 7890</Typography>
+          <Typography>Corporate Deals - 123 456 7890</Typography>
+          <Typography>Safety Incharge - 123 456 7890</Typography>
+          <Typography>Director - 123 456 7890</Typography>
         </Grid>
         <Grid className='container-footer' display={{ xs: 'none', md: 'flex' }}>
           {isLoggedIn ? (
