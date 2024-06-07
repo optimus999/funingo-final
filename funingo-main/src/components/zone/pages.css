@@ -83,6 +83,7 @@
 }
 
 .text-primary {
+    font-weight: 520;
     font-size: 45px;
     color: white;
     font-family: Poppins;
@@ -91,14 +92,15 @@
 .text-secondary {
     font-size: 45px;
     color: #3fcf3a;
+    /* color: red; */
     font-family: Poppins;
-    font-weight: 200;
+    font-weight: 600;
 }
 
 .keys {
     color: white;
     font-family: Poppins;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .textwithIcon {

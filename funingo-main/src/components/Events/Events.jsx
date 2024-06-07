@@ -1,15 +1,15 @@
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
-import birthday from './images/birthday.png';
+import birthday from './images/birthday.jpg';
 import bg6 from './images/bg6.png';
 import bg4 from './images/bg4.png';
 import bg5 from './images/bg5.png';
 import './styles.scss';
 import { useNavigate } from 'react-router';
 import birthdayParty from './images/birthdayParty.png';
-import wedding from './images/wedding.png';
+import wedding from './images/gettogether.jpg';
 import babyshowerheading from './images/babyshowerheading.png';
-import babyshower from './images/babyshower.png';
+import babyshower from './images/kittyparty.jpg';
 import prewedding from './images/prewedding.png';
 import { scrollToBottom } from '../../utils';
 
@@ -86,10 +86,11 @@ const Events = () => {
             <Grid className='content-box'>
               <h4>
                 {' '}
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et
-                inventore repellat commodi delectus error animi voluptatem,
-                maxime consectetur culpa perferendis tenetur, velit nam ullam
-                rem dicta nisi provident laborum quasi!
+                At Funingo Adventure Arena, birthdays are more than just
+celebrations-they're unforgettable adventures! Treat your
+child to a day filled with excitement and joy as they explore
+our wide range of thrilling activities, creating memories that
+will last a lifetime
               </h4>
             </Grid>
             <Button

@@ -19,7 +19,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../../assets/logo.jpg';
+import Logo from '../../assets/logo.svg';
 import { useTheme } from '@emotion/react';
 import './styles.scss';
 import Login from '../auth/signup';

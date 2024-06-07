@@ -1,8 +1,10 @@
 import React from 'react'
 import './pages.css'
 import { P1000, P1500, P2000, P2500, P3000, P500, P5000, activityZoneMobileText, activityZoneText, bookNow, keyIcon, sec11, sec12, sec21, sec22, sec31, sec32, sec41, sec42, sec43, sec44, sec51, sec52, sec53, sec54, sec61, sec62, sec71, sec81, sec82, sec83 } from '../../assets'
-
-const zone = () => {
+import { useNavigate } from 'react-router';
+import { Grid, Typography, Button } from '@mui/material';
+const Zone = () => {
+  const navigate = useNavigate();
   return (
     <div className=''>
       <section className='section0 w-full'>
@@ -17,7 +19,7 @@ const zone = () => {
       </section>
 
 
-      <section >
+      <section>
         <div className='div2 max-sm:block lg:flex justify-center align-middle items-center pl-20 space-x-52'>
           <div className='block text-left'>
             <h3 className='text-primary'>Zone 1</h3>
@@ -31,9 +33,27 @@ const zone = () => {
               {/* Your logo goes here */}
               <img src={P2500} className='pointIcon' alt="Logo" />
             </div>
-            <button className="mt-8 flex max-sm:justify-center max-sm:mt-2">
-              <img src={bookNow} alt="" />
-            </button>
+            <Button
+              variant='contained'
+              sx={{
+                background: '#2CC248',
+                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+                borderRadius: '50px',
+                padding: '10px 50px',
+                fontFamily: 'Luckiest Guy',
+                fontSize: '24px',
+                marginTop: '20px',
+
+                '&:hover': {
+                  background: '#1e8e33'
+                }
+              }}
+              onClick={() => {
+                navigate('/book');
+              }}
+            >
+              Book Now
+            </Button>
             <div className='mt-8 flex-col items-center justify-center lg:hidden'>
               <img src={sec11} alt="" className="sec11-mobile mb-4" />
               <img src={sec12} alt="" className='sec12-mobile' />
@@ -69,9 +89,27 @@ const zone = () => {
               <img className='pointIcon mt-2 lg:mt-0' src={P1500} alt="" />
             </div>
 
-            <button className="book-now mt-8">
-              <img src={bookNow} alt="" />
-            </button>
+            <Button
+              variant='contained'
+              sx={{
+                background: '#2CC248',
+                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+                borderRadius: '50px',
+                padding: '10px 50px',
+                fontFamily: 'Luckiest Guy',
+                fontSize: '24px',
+                marginTop: '20px',
+
+                '&:hover': {
+                  background: '#1e8e33'
+                }
+              }}
+              onClick={() => {
+                navigate('/book');
+              }}
+            >
+              Book Now
+            </Button>
           </div>
 
           <div className='flex flex-row space-x-8 justify-center items-center'>
@@ -106,9 +144,27 @@ const zone = () => {
               <img className='pointIcon ml-3' src={P1500} alt="" />
             </div>
 
-            <button className="book-now mt-8">
-              <img src={bookNow} alt="" />
-            </button>
+            <Button
+              variant='contained'
+              sx={{
+                background: '#2CC248',
+                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+                borderRadius: '50px',
+                padding: '10px 50px',
+                fontFamily: 'Luckiest Guy',
+                fontSize: '24px',
+                marginTop: '20px',
+
+                '&:hover': {
+                  background: '#1e8e33'
+                }
+              }}
+              onClick={() => {
+                navigate('/book');
+              }}
+            >
+              Book Now
+            </Button>
           </div>
 
           <div className='flex flex-row space-x-8'>
@@ -154,9 +210,27 @@ const zone = () => {
               </div>
             </div>
 
-            <button className="book-now mt-8">
-              <img src={bookNow} alt="" />
-            </button>
+            <Button
+              variant='contained'
+              sx={{
+                background: '#2CC248',
+                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+                borderRadius: '50px',
+                padding: '10px 50px',
+                fontFamily: 'Luckiest Guy',
+                fontSize: '24px',
+                marginTop: '20px',
+
+                '&:hover': {
+                  background: '#1e8e33'
+                }
+              }}
+              onClick={() => {
+                navigate('/book');
+              }}
+            >
+              Book Now
+            </Button>
           </div>
 
           <div className='flex flex-col space-y-5'>
@@ -211,9 +285,27 @@ const zone = () => {
               </div>
             </div>
 
-            <button className="book-now mt-8">
-              <img src={bookNow} alt="" />
-            </button>
+            <Button
+              variant='contained'
+              sx={{
+                background: '#2CC248',
+                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+                borderRadius: '50px',
+                padding: '10px 50px',
+                fontFamily: 'Luckiest Guy',
+                fontSize: '24px',
+                marginTop: '20px',
+
+                '&:hover': {
+                  background: '#1e8e33'
+                }
+              }}
+              onClick={() => {
+                navigate('/book');
+              }}
+            >
+              Book Now
+            </Button>
           </div>
 
           <div className='flex flex-col space-y-5'>
@@ -252,9 +344,27 @@ const zone = () => {
               <img className='pointIcon ml-5' src={P1000} alt="" />
             </div>
 
-            <button className="book-now mt-8">
-              <img src={bookNow} alt="" />
-            </button>
+            <Button
+              variant='contained'
+              sx={{
+                background: '#2CC248',
+                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+                borderRadius: '50px',
+                padding: '10px 50px',
+                fontFamily: 'Luckiest Guy',
+                fontSize: '24px',
+                marginTop: '20px',
+
+                '&:hover': {
+                  background: '#1e8e33'
+                }
+              }}
+              onClick={() => {
+                navigate('/book');
+              }}
+            >
+              Book Now
+            </Button>
           </div>
 
           <div className='flex flex-col space-y-5'>
@@ -286,9 +396,27 @@ const zone = () => {
               <img className='pointIcon mt-5 lg:hidden' src={P1000} alt="" />
             </div>
 
-            <button className="book-now mt-4">
-              <img src={bookNow} alt="" />
-            </button>
+            <Button
+              variant='contained'
+              sx={{
+                background: '#2CC248',
+                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+                borderRadius: '50px',
+                padding: '10px 50px',
+                fontFamily: 'Luckiest Guy',
+                fontSize: '24px',
+                marginTop: '20px',
+
+                '&:hover': {
+                  background: '#1e8e33'
+                }
+              }}
+              onClick={() => {
+                navigate('/book');
+              }}
+            >
+              Book Now
+            </Button>
           </div>
 
           <div className='flex flex-col space-y-5'>
@@ -326,9 +454,27 @@ const zone = () => {
               <img className='pointIcon ml-5' src={P1000} alt="" />
             </div>
 
-            <button className="book-now mt-8">
-              <img src={bookNow} alt="" />
-            </button>
+            <Button
+              variant='contained'
+              sx={{
+                background: '#2CC248',
+                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+                borderRadius: '50px',
+                padding: '10px 50px',
+                fontFamily: 'Luckiest Guy',
+                fontSize: '24px',
+                marginTop: '20px',
+
+                '&:hover': {
+                  background: '#1e8e33'
+                }
+              }}
+              onClick={() => {
+                navigate('/book');
+              }}
+            >
+              Book Now
+            </Button>
           </div>
 
           <div className='flex flex-col space-y-5'>
@@ -351,4 +497,4 @@ const zone = () => {
   )
 }
 
-export default zone
+export default Zone
