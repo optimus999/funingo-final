@@ -147,9 +147,9 @@ const Navbar = () => {
                 sx={{
                   position: 'absolute',
                   top: '88px',
-                  left: '-18vw',
+                  left: '-23vw',
                   display: 'none',
-                  width: '54rem',
+                  width: '84rem',
                   justifyContent: 'center',
                   overflowY: 'auto',
                   overflowX: 'hidden',
@@ -242,6 +242,7 @@ const Navbar = () => {
                 School X
               </Button>
             )}
+            
             {employee ? (
               <Button
                 onClick={() => navigate('/e/redeem')}

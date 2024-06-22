@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Grid,
   Typography,
@@ -8,26 +9,35 @@ import {
   useMediaQuery
 } from '@mui/material';
 import HomeCarousel from '../home-carousel';
-
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-
 import FranchiseBackground from './images/franchise-background.png';
-import Img1 from './images/img1.png';
-import Img2 from './images/img2.png';
-import Img3 from './images/img3.png';
-import Img4 from './images/img4.png';
-import Img5 from './images/img5.png';
 import stroke from './images/paint-stroke.png';
 import Gallery from './carousel';
-
 import './styles.scss';
 import FranchiseDataForm from '../franchise/franchise-data-form';
 import { useNavigate } from 'react-router-dom';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'; // Importing the icon
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'; // Importing the icon
+import { zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8 } from '../../assets';
 
 function Home({}) {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery('(max-width:900px');
+  const isMobile = useMediaQuery('(max-width:900px)');
+  const [showAllZones, setShowAllZones] = useState(false);
+
+  const zones = [
+    { img: zone1, title: 'Zone 1' },
+    { img: zone2, title: 'Zone 2' },
+    { img: zone3, title: 'Zone 3' },
+    { img: zone4, title: 'Zone 4' },
+    { img: zone5, title: 'Zone 5' },
+    { img: zone6, title: 'Zone 6' },
+    { img: zone7, title: 'Zone 7' },
+    { img: zone8, title: 'Zone 8' },
+  ];
+
+  const displayedZones = showAllZones ? zones : zones.slice(0, 4);
 
   return (
     <Grid className='home'>
@@ -47,62 +57,42 @@ function Home({}) {
                   justifyItems: 'center',
                   maxWidth: '100vw',
                   overflow: 'auto',
-                  p: '0px 10px'
+                  p: '0px 10px',
                 }}
               >
-                <div className='example'>
-                  <img src={Img1} alt='house' />
-                  <h1>Zone A</h1>
-                  <div className='fadedbox'>
-                    <div className='title text'> Book Now </div>
+                {displayedZones.map((zone, index) => (
+                  <div key={index} className='example'>
+                    <img src={zone.img} alt='house' />
+                    <h1>{zone.title}</h1>
+                    <div className='fadedbox'>
+                      <div className='title text'> Book Now </div>
+                    </div>
                   </div>
-                </div>
-
-                <div className='example'>
-                  <img src={Img2} alt='house' />
-                  <h1>Zone B</h1>
-                  <div className='fadedbox'>
-                    <div className='title text'> Book Now </div>
-                  </div>
-                </div>
-
-                <Grid className='example' display='block'>
-                  <img src={Img3} alt='house' />
-                  <h1>Zone C</h1>
-                  <div className='fadedbox'>
-                    <div className='title text'> Book Now </div>
-                  </div>
-                </Grid>
-
-                <Grid className='example' display='block'>
-                  <img src={Img4} alt='house' />
-                  <h1>Zone D</h1>
-                  <div className='fadedbox'>
-                    <div className='title text'> Book Now </div>
-                  </div>
-                </Grid>
+                ))}
               </Grid>
+
               <Button
                 variant='contained'
                 sx={{
-                  background: 'white',
+                  background: '#2474d2',
                   boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
-                  borderRadius: '5px',
-                  color: '#2474d2',
+                  borderRadius: '50px',
+                  color: 'white',
                   fontWeight: '600',
                   fontSize: '22px',
                   mt: '50px',
+                  width: '200px',
 
                   '&:hover': {
-                    background: 'white'
+                    background: '#1e62ba'
                   }
                 }}
                 onClick={e => {
                   e.preventDefault();
-                  navigate('/zone');
+                  setShowAllZones(!showAllZones);
                 }}
               >
-                Explore More
+                {showAllZones ? <ArrowUpwardIcon /> : 'View All'}
               </Button>
             </div>
           </Grid>

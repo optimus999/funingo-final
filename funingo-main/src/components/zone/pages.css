@@ -248,24 +248,24 @@
     background-image: url("../../assets/S81.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 350px;
-    width: 350px;
+    height: 250px;
+    width: 250px;
 }
 
 .sec82 {
     background-image: url("../../assets/S82.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 350px;
-    width: 350px;
+    height: 250px;
+    width: 250px;
 }
 
 .sec83 {
     background-image: url("../../assets/S83.png");
     background-repeat: no-repeat;
     background-size: contain;
-    height: 350px;
-    width: 350px;
+    height: 250px;
+    width: 250px;
 }
 
 /* .section1 {
@@ -298,9 +298,10 @@
         font-size: 30px;
     }
     .keys {
-        font-size: 10px;
+        font-size: 20px;
         width: auto;
         font-weight: 400;
+        text-align: left;
     }
 
     .pointIcon{
@@ -366,7 +367,8 @@
         height: 100vh;
     }
     .div9{
-        height: 150vh;
+        height: 70vh;
+        margin-bottom: 500px;
     }
 
 

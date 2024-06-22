@@ -1,32 +1,36 @@
 import React from 'react';
-import { Grid, Typography, Button, Box } from '@mui/material';
-import meetingHeading from './images/meetings.png';
-import incentives from './images/incentives.png';
-import meetingMain from './images/meetingsmain.webp';
-import incentivesmain from './images/incentivesmain.jpeg';
-import corporatesmain from './images/corporatesmain.webp';
-import corporategames from './images/corporategames.png';
+import { Grid, Typography, Box } from '@mui/material';
 import bg3Light from './images/bg3Light.png';
 import bg3 from './images/bg3.png';
 import './styles.scss';
 import { useNavigate } from 'react-router';
 import { scrollToBottom } from '../../utils';
+import { bookNow, profile1, profile2, profile3, profile4, profileHeading1, profileHeading2, profileHeading3, profileHeading4 } from '../../assets';
 
 const corporateData = [
   {
     name: 'meeting',
-    heading: meetingHeading,
-    main: meetingMain
+    heading: profileHeading1,
+    main: profile1,
+    text: "Funingo Adventure Arena offers and ideal setting for corporate off-sites. Enjoy professional amenities and adventure activities, blending productivity with team bonding in a serene enviroment"
   },
   {
     name: 'incentives',
-    heading: incentives,
-    main: incentivesmain
+    heading: profileHeading2,
+    main: profile2,
+    text: "Reward your team with exciting adventures at Funingo. Our activites and serene enviroment promote positive reinforcement, motivating and recognizing your employees effectively"
   },
   {
     name: 'corporategame',
-    heading: corporategames,
-    main: corporatesmain
+    heading: profileHeading3,
+    main: profile3,
+    text: "Enhance team spirit with our team building retreats. Engage in activities that boost collaboration, communication, and leadership, creating a stronger, more cohesive team"
+  },
+  {
+    name: 'corporategame',
+    heading: profileHeading4,
+    main: profile4,
+    text: "Celebrate retirement in style at Funingo Adventure Arena! Enjoy customizable event planning, thrilling activities, and delicious catering options, all set in our unique venue. Make this milestone unforgettable-contact us to plan a retirement party to remember!"
   }
 ];
 
@@ -56,7 +60,7 @@ const Corporate = () => {
           <Grid className='first'>
             <Box
               component={'img'}
-              sx={{ borderRadius: '10px' }}
+              sx={{ borderRadius: '1px' }}
               className='main-img'
               src={data.main}
               alt={'Corporate Event'}
@@ -71,33 +75,11 @@ const Corporate = () => {
               <img className='heading-img' src={data.heading} alt={'Heading'} />
             </Grid>
             <Grid className='content-box'>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et
-              inventore repellat commodi delectus error animi voluptatem, maxime
-              consectetur culpa perferendis tenetur, velit nam ullam rem dicta
-              nisi provident laborum quasi!
+              {data.text}
             </Grid>
-            <Button
-              variant='contained'
-              sx={{
-                background: '#2CC248',
-                boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
-                borderRadius: '50px',
-                padding: '20px 50px',
-                fontFamily: 'Luckiest Guy',
-                fontSize: '24px',
-                marginTop: '20px',
-                marginLeft: '20px',
-
-                '&:hover': {
-                  background: '#1e8e33'
-                }
-              }}
-              onClick={() => {
+            <img className='lg:mt-5' onClick={() => {
                 scrollToBottom();
-              }}
-            >
-              <p> Book Now </p>
-            </Button>
+              }} src={bookNow} alt="" />
           </Grid>
         </Grid>
       ))}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Divider, Grid, IconButton, Typography, Button } from '@mui/material';
 import './first.scss';
 import img1 from './image/img1.png';
+import { zoneNavbarImage } from '../../assets';
 
 // const hoverdata= [
 //   {
@@ -81,8 +82,8 @@ import img1 from './image/img1.png';
 export default function first() {
   return (
     <Grid id='main'>
-      <Grid className='pic'>
-        <img src={img1}></img>
+      <Grid className='pic flex items-center justify-center'>
+        <img src={zoneNavbarImage} />
       </Grid>
 
       <Grid className='zone-hover'>
@@ -95,7 +96,7 @@ export default function first() {
         <Typography className='sub2' mt='5px'>
           Paintball Arena
         </Typography>
-        <Typography className='sub2' >
+        <Typography className='sub2'>
           Get Blaster Arena
         </Typography>
 
@@ -153,7 +154,28 @@ export default function first() {
           Shooter's Range
         </Typography>
 
+        <Typography className='sub' ml='1rem'>
+          Zone 7
+        </Typography>
+        <Typography className='sub2' mt='5px'>
+          Pedal Power Go Kart
+        </Typography>
 
+        <Typography className='sub' ml='1rem'>
+          Zone 8
+        </Typography>
+        <Typography className='sub2' mt='5px'>
+          Rocket Ejector Launch
+        </Typography>
+        <Typography className='sub2' mt='5px'>
+          Gyro Sphere 360
+        </Typography>
+        <Typography className='sub2' mt='5px'>
+          Cyclone Cycle 360
+        </Typography>
+      </Grid>
+
+      <Grid className='zone-hover'>
         <Button
           variant='contained'
           sx={{
@@ -174,5 +196,6 @@ export default function first() {
         </Button>
       </Grid>
     </Grid>
+
   );
 }

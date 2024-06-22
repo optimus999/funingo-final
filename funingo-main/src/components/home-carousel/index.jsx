@@ -10,6 +10,7 @@ import { Box, Grid, Button } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { openPremiumSubscriptionModal } from '../../utils/store/slice/appSlice';
+import { mainBackground3 } from '../../assets';
 
 const HomeCarousel = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const HomeCarousel = () => {
 
   return (
     <Grid position={'relative'}>
-      {showText && (
+      {showText && currentSlide !== 2 && (
         <Grid
           sx={{
             position: 'absolute',
@@ -91,6 +92,7 @@ const HomeCarousel = () => {
           showThumbs={false}
           stopOnHover={false}
           onChange={curr => {
+            setCurrentSlide(curr);
             if (curr === 1) {
               setShowText(false);
               setTimeout(() => {
@@ -100,7 +102,6 @@ const HomeCarousel = () => {
               setTimeout(() => {
                 setShowText(true);
               }, 500);
-              setCurrentSlide(curr);
             }
           }}
         >
@@ -110,6 +111,9 @@ const HomeCarousel = () => {
           <Box maxHeight={'calc(100vh - 84px)'}>
             <img src={Slide1} alt={'slide 1'} />
           </Box>
+          <Box maxHeight={'calc(100vh - 84px)'}>
+            <img src={mainBackground3} alt={'slide 3'} />
+          </Box>
           {banner?.map(img => (
             <Box maxHeight={'calc(100vh - 84px)'} key={img._id}>
               <img src={img.url} alt={'banner image'} />
@@ -118,7 +122,7 @@ const HomeCarousel = () => {
         </Carousel>
       </Grid>
 
-      {showText && (
+      {showText && currentSlide !== 2 && (
         <Grid>
           <Grid className='car-bottom-btn'>
             <Button

@@ -46,7 +46,49 @@ import keyIcon from "./list.png"
 
 import footerImage from "./footer.png"
 
+import packageDiv from "./packagePageImages/Frame 9.png"
+import packageText from "./packagePageImages/PACKAGES.png"
+import maskGroup from "./packagePageImages/Mask group.png"
+import maskGroup2 from "./packagePageImages/Mask group (1).png"
+import textofPackage from "./packagePageImages/text.png"
+import groupButtons from "./packagePageImages/Group 87.png"
+import mobileTextPackages from "./packagePageImages/mobileTextPackages.png"
+import mobileGroupButtons from "./packagePageImages/mobileGroup87.png"
+
+import profile1 from "./corporateImages/profile1.png"
+import profile2 from "./corporateImages/profile2.png"
+import profile3 from "./corporateImages/profile3.png"
+import profile4 from "./corporateImages/profile4.png"
+import profileHeading1 from "./corporateImages/profileHeading1.png"
+import profileHeading2 from "./corporateImages/profileHeading2.png"
+import profileHeading3 from "./corporateImages/profileHeading3.png"
+import profileHeading4 from "./corporateImages/profileHeading4.png"
+
+import zone1 from "./zones/zone1.png"
+import zone2 from "./zones/zone2.png"
+import zone3 from "./zones/zone3.png"
+import zone4 from "./zones/zone4.png"
+import zone5 from "./zones/zone5.png"
+import zone6 from "./zones/zone6.png"
+import zone7 from "./zones/zone7.png"
+import zone8 from "./zones/zone8.png"
+
+import unload from "./unload.svg"
+import zoneNavbarImage from "./zoneNavbar.png"
+import mainBackground3 from "./images/mainBackground3.jpg"
+
+import heart from "./heart.png"
+import loaderGif from "./spinner.gif"
+
 export {
+    packageDiv,
+    packageText,
+    maskGroup,
+    maskGroup2,
+    textofPackage,
+    groupButtons,
+    mobileTextPackages,
+    mobileGroupButtons,
     logo,
     P500,
     P1000,
@@ -89,4 +131,18 @@ export {
     keyIcon,
     footerImage,
     activityZoneMobileText,
+
+    profile1,
+    profile2,
+    profile3,
+    profile4,
+    profileHeading1,
+    profileHeading2,
+    profileHeading3,
+    profileHeading4,
+
+    zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8,
+    unload,zoneNavbarImage,mainBackground3,
+
+    heart,loaderGif,
 };
