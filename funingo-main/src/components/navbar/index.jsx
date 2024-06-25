@@ -101,10 +101,9 @@ const Navbar = () => {
       <Grid
         sx={{
           position: 'fixed',
-          background: 'white',
           width: '100vw',
           top: '0px',
-          zIndex: 1000
+          zIndex: 1000,
         }}
         className='nav'
       >
@@ -120,6 +119,7 @@ const Navbar = () => {
             <img src={Logo} alt='funingo-logo' width={'130px'} />
           </Link>
           <Grid
+            className='font'
             display={{ xs: 'none', lg: 'flex' }}
             gap='20px'
             alignItems={'center'}
@@ -139,6 +139,7 @@ const Navbar = () => {
                   }
                 }
               }}
+              className='navText'
             >
               Zones
               <Grid
@@ -173,6 +174,7 @@ const Navbar = () => {
                 }
               }}
               name='events-btn'
+              className='navText'
             >
               Events
               <Grid
@@ -206,6 +208,7 @@ const Navbar = () => {
                 }
               }}
               name='corporate-btn'
+              className='navText'
             >
               Corporate X
               <Grid
@@ -231,6 +234,7 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/admin/stats')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Statistics
               </Button>
@@ -238,6 +242,7 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/packages')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 School X
               </Button>
@@ -247,6 +252,7 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/e/redeem')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Redeem
               </Button>
@@ -254,6 +260,7 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/franchise')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Franchise
               </Button>
@@ -263,6 +270,7 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/we/get-qr-tickets')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Generate QR
               </Button>
@@ -270,6 +278,7 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/gallery')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Gallery
               </Button>
@@ -278,6 +287,7 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/we/window-purchase')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Book tickets
               </Button>
@@ -288,6 +298,7 @@ const Navbar = () => {
                   scrollToBottom()
                 }
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Contact
               </Button>
