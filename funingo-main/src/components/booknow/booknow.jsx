@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Grid,
   Typography,
@@ -43,7 +43,7 @@ import { Tour } from "@mui/icons-material";
 import InfoIcon from "@mui/icons-material/Info";
 import Ticket from "./ticket";
 import ConfirmationModal from "../windowPurchase/modal";
-import { P1000, P1500, P2000, P2500, P3000, P500, P5000 } from "../../assets";
+import { P1000, P1500, P2000, P2500, P3000, P500, P5000, arrow } from "../../assets";
 import { red } from "@mui/material/colors";
 
 export const genderOptions = [
@@ -570,10 +570,31 @@ const Booknow = () => {
     }
   }, [userData]);
 
-  
+  // For mobile version of Charges Information
+
+  const [isVisible, setIsVisible] = useState(false);
+  const gridRef = useRef(null);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
+  const handleClickOutside = (event) => {
+    if (gridRef.current && !gridRef.current.contains(event.target)) {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
 
   return (
-
     <Grid className="booknow">
       {isLoading && (
         <Grid className="loading-overlay">
@@ -596,8 +617,35 @@ const Booknow = () => {
         />
       )}
 
-      <Grid className="top2 lg:flex lg:flex-row justify-evenly" mb={"2%"}>
-        <Grid className="bukForm sm:w-[100%]">
+
+      <Grid className="top2 lg:flex lg:justify-evenly lg:flex-row max-md:justify-center max-md:flex" mb={"2%"}>
+        {/* Mobile button  */}
+        <button onClick={toggleVisibility} className="z-50 h-16 w-16 p-3 rounded-r-lg bg-yellow-500 cursor-pointer lg:hidden absolute translate-x-[-190px] translate-y-[50px]">
+          <img
+            src={arrow}
+            className={`${isVisible ? 'rotate-180' : ''} transition-transform duration-300`}
+            alt="right-arrow"
+          />
+        </button>
+
+        {/* Left Information Grid Mobile Version  */}
+        {isVisible && (
+          <Grid className={`bukFormMobile z-[500] absolute w-[100%] lg:hidden ${isVisible ? 'slide-in' : 'slide-out'}`}>
+            {packageInfo.map((info, index) => (
+              <div key={index} className={`flex w-full h-16 ${index % 2 === 0 ? 'bg-yellow-200' : 'bg-red-200'}`}>
+                <div className="text-left justify-center items-center w-1/2 p-4">
+                  <h2>{info.text}</h2>
+                </div>
+                <div className="w-1/2 p-4 flex justify-end items-center">
+                  <img className="w-32" src={info.image} alt={info.text} />
+                </div>
+              </div>
+            ))}
+          </Grid>
+        )}
+
+        {/* Left Informative Grid Desktop Version  */}
+        <Grid className="bukForm max-sm:hidden sm:w-[100%]">
           {packageInfo.map((info, index) => (
             <div key={index} className={`flex w-full h-16 ${index % 2 === 0 ? 'bg-yellow-200' : 'bg-red-200'}`}>
               <div className="text-left justify-center items-center w-1/2 p-4">
@@ -609,6 +657,7 @@ const Booknow = () => {
             </div>
           ))}
         </Grid>
+        {/* Form Grid  */}
         <Grid className="book-form">
           <Grid className="form-heading">BOOK NOW!</Grid>
           {persons && persons.length !== 0 && (
@@ -1610,7 +1659,7 @@ const Booknow = () => {
                 className="paymentButton"
               >
                 <div
-                  
+
                 >
                   <PaymentButton
                     values={values}

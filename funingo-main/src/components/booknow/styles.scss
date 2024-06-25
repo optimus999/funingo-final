@@ -5,7 +5,10 @@
   padding: 0;
 }
 
+
+
 .booknow {
+  position: relative;
   input {
     background-color: white;
   }
@@ -21,10 +24,59 @@
     // align-items: center;
     // margin-bottom: 0px;
 
-    .bukForm {
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+    }
+    
+    .bukFormMobile {
       display: flex;
       flex-direction: column;
-      height: 1000px; /* Adjust height as needed */
+      height: 750px; /* Adjust height as needed */
+      width: 90%;
+      box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.689);
+      border: 1px solid transparent;
+      border-radius: 10px;
+      justify-content: space-between;
+      align-items: center;
+      overflow-y: scroll; /* Add scroll */
+      font-family: "Saira", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      left: 0; /* Ensure it starts from the left */
+      top:40%;
+    }
+    
+    .slide-in {
+      animation: slideIn 0.5s forwards;
+    }
+    
+    .slide-out {
+      animation: slideOut 0.5s forwards;
+    }    
+
+
+    .bukForm {
+      // display: flex;
+      flex-direction: column;
+      height: 700px; /* Adjust height as needed */
       width: 30%;
       box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.689);
       border: 1px solid transparent;

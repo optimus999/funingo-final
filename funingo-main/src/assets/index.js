@@ -79,6 +79,9 @@ import mainBackground3 from "./images/mainBackground3.jpg"
 
 import heart from "./heart.png"
 import loaderGif from "./spinner.gif"
+import arrow from "./arrow.png"
+
+import mobileHomeBG from "./homeImage/Group 60.png"
 
 export {
     packageDiv,
@@ -144,5 +147,7 @@ export {
     zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8,
     unload,zoneNavbarImage,mainBackground3,
 
-    heart,loaderGif,
+    heart,loaderGif,arrow,
+
+    mobileHomeBG,
 };

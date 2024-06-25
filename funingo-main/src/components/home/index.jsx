@@ -19,9 +19,9 @@ import FranchiseDataForm from '../franchise/franchise-data-form';
 import { useNavigate } from 'react-router-dom';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'; // Importing the icon
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'; // Importing the icon
-import { zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8 } from '../../assets';
+import { mobileHomeBG, zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8 } from '../../assets';
 
-function Home({}) {
+function Home({ }) {
   const navigate = useNavigate();
   const isMobile = useMediaQuery('(max-width:900px)');
   const [showAllZones, setShowAllZones] = useState(false);
@@ -43,61 +43,66 @@ function Home({}) {
     <Grid className='home'>
       <HomeCarousel />
       <Grid className='zones'>
-        <img src={stroke} alt='background-img' className='background-event' />
+        <img src={mobileHomeBG} alt='background-img' className='background-event' />
         <Grid>
           <Grid className='data'>
             <div id='combinediv'>
-              <h1 className='headmain'>Activities</h1>
+              <h1 className='headmain z-[1000] max-sm:text-[170px]'>Activity Zones</h1>
 
               <Grid
                 sx={{
-                  display: { xs: 'flex', md: 'grid' },
-                  gridTemplateColumns: { md: '1fr 1fr' },
-                  gap: { xs: '15px', md: '50px' },
-                  justifyItems: 'center',
-                  maxWidth: '100vw',
-                  overflow: 'auto',
-                  p: '0px 10px',
-                }}
-              >
-                {displayedZones.map((zone, index) => (
-                  <div key={index} className='example'>
-                    <img src={zone.img} alt='house' />
-                    <h1>{zone.title}</h1>
-                    <div className='fadedbox'>
-                      <div className='title text'> Book Now </div>
+                  display: { xs: 'grid', md: 'grid' },
+                  gridTemplateColumns: {
+                    xs: 'repeat(1, 1fr)', // one column on small screens
+                    sm: 'repeat(2, 1fr)', // two columns on medium screens
+                    md: 'repeat(2, 1fr)'},// four columns on large screens },
+                    gap: { xs: '15px', md: '50px' },
+                    justifyItems: 'center',
+                    maxWidth: '100vw',
+                    p: '0px 10px',
+                  }
+                }
+                  >
+                {
+                  displayedZones.map((zone, index) => (
+                    <div key={index} className='example'>
+                      <img src={zone.img} alt='house' />
+                      <h1>{zone.title}</h1>
+                      <div className='fadedbox'>
+                        <div className='title text'> Book Now </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                }
               </Grid>
 
-              <Button
-                variant='contained'
-                sx={{
-                  background: '#2474d2',
-                  boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
-                  borderRadius: '50px',
-                  color: 'white',
-                  fontWeight: '600',
-                  fontSize: '22px',
-                  mt: '50px',
-                  width: '200px',
+          <Button
+            variant='contained'
+            sx={{
+              background: '#2474d2',
+              boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+              borderRadius: '50px',
+              color: 'white',
+              fontWeight: '600',
+              fontSize: '22px',
+              mt: '50px',
+              width: '200px',
 
-                  '&:hover': {
-                    background: '#1e62ba'
-                  }
-                }}
-                onClick={e => {
-                  e.preventDefault();
-                  setShowAllZones(!showAllZones);
-                }}
-              >
-                {showAllZones ? <ArrowUpwardIcon /> : 'View All'}
-              </Button>
-            </div>
-          </Grid>
-        </Grid>
+              '&:hover': {
+                background: '#1e62ba'
+              }
+            }}
+            onClick={e => {
+              e.preventDefault();
+              setShowAllZones(!showAllZones);
+            }}
+          >
+            {showAllZones ? <ArrowUpwardIcon /> : 'View All'}
+          </Button>
+        </div>
       </Grid>
+    </Grid>
+      </Grid >
 
       <Grid mt={{ xs: '30px', sm: '75px' }}>
         <Gallery />
@@ -121,7 +126,7 @@ function Home({}) {
 
         <FranchiseDataForm />
       </Grid>
-    </Grid>
+    </Grid >
   );
 }
 
