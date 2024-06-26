@@ -19,7 +19,7 @@ import FranchiseDataForm from '../franchise/franchise-data-form';
 import { useNavigate } from 'react-router-dom';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'; // Importing the icon
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'; // Importing the icon
-import { mobileHomeBG, zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8 } from '../../assets';
+import { homeBG, mobileHomeBG, zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8 } from '../../assets';
 
 function Home({ }) {
   const navigate = useNavigate();
@@ -43,11 +43,11 @@ function Home({ }) {
     <Grid className='home'>
       <HomeCarousel />
       <Grid className='zones'>
-        <img src={mobileHomeBG} alt='background-img' className='background-event' />
+        <img src={homeBG} alt='background-img' className='background-event' />
         <Grid>
           <Grid className='data'>
             <div id='combinediv'>
-              <h1 className='headmain z-[1000] max-sm:text-[170px]'>Activity Zones</h1>
+              <h1 className='headmain'>Activity Zones</h1>
 
               <Grid
                 sx={{
@@ -86,7 +86,7 @@ function Home({ }) {
               fontWeight: '600',
               fontSize: '22px',
               mt: '50px',
-              width: '200px',
+              width: '150px',
 
               '&:hover': {
                 background: '#1e62ba'

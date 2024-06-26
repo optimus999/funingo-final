@@ -83,7 +83,7 @@ export default function first() {
   return (
     <Grid id='main'>
       <Grid className='pic flex items-center justify-center'>
-        <img src={zoneNavbarImage} />
+        <img src={zoneNavbarImage} className="zone-hover-image"   />
       </Grid>
 
       <Grid className='zone-hover'>
@@ -184,15 +184,16 @@ export default function first() {
             borderRadius: '50px',
             padding: '10px 50px',
             fontFamily: 'Luckiest Guy',
-            fontSize: '24px',
             marginTop: '20px',
-
+            fontSize: '18px',
             '&:hover': {
               background: '#1e8e33'
-            }
+            },
+            height: '50px',
+            width: '200px',
           }}
         >
-          All Zone
+          All Zones
         </Button>
       </Grid>
     </Grid>

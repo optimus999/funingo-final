@@ -82,6 +82,10 @@ import loaderGif from "./spinner.gif"
 import arrow from "./arrow.png"
 
 import mobileHomeBG from "./homeImage/Group 60.png"
+import homeBG from "./homeImage/Group 61.png"
+import downArrow from "./img/downArrow.png"
+import eventHoverImage from "./img/eventHoverImage.png"
+import corporateHoverImage from "./img/corporateHoverImage.png"
 
 export {
     packageDiv,
@@ -149,5 +153,5 @@ export {
 
     heart,loaderGif,arrow,
 
-    mobileHomeBG,
+    mobileHomeBG,homeBG,downArrow, eventHoverImage, corporateHoverImage,
 };

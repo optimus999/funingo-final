@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
   }
+
+  
   
   #third {
     background-color: #2474d2;
@@ -10,7 +12,9 @@
     //  width: 100%;
    
  
-  
+    .corporate-hover-image {
+      @apply w-[450px] h-[300px];
+    }
   
     img {
       display: block;
@@ -23,6 +27,10 @@
   
     .zone-hover {
       padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-items: left;
+      justify-content: space-between;
   
    
   
@@ -30,7 +38,7 @@
         color: #fff;
         font-family: Saira;
         font-size: 21px;
-        font-weight: 700;
+        font-weight:500;
         letter-spacing: 0.045em;
         text-align: left;
      

@@ -17,6 +17,14 @@
 //   }
 // }
 
+.arrow-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover .arrow-image {
+  transform: rotate(180deg);
+}
+
 .nav {
   background-color: white;
 
@@ -70,4 +78,5 @@
       background-color: #1477e921;
     }
   }
+  
 }

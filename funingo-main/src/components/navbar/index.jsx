@@ -41,6 +41,7 @@ import {
   openAuthModal,
   openPremiumSubscriptionModal
 } from '../../utils/store/slice/appSlice';
+import { downArrow } from '../../assets';
 
 const ProfileDialog = ({ handleLogout, setShowProfileDialog }) => {
   const navigate = useNavigate();
@@ -133,15 +134,16 @@ const Navbar = () => {
                 color: '#2474D2',
                 height: '100%',
                 position: 'relative',
+                textTransform: 'capitalize',
                 '&:hover': {
                   '& #zone-hover-box': {
                     display: 'flex'
                   }
                 }
               }}
-              className='navText'
             >
               Zones
+              <img className='arrow-image ml-1 h-[10px] w-4' src={downArrow} alt="" />
               <Grid
                 className='hover-box'
                 id='zone-hover-box'
@@ -166,7 +168,7 @@ const Navbar = () => {
                 fontWeight: '600',
                 color: '#2474D2',
                 height: '100%',
-
+                textTransform: 'capitalize',
                 '&:hover': {
                   '& #event-hover-box': {
                     display: 'flex'
@@ -177,6 +179,7 @@ const Navbar = () => {
               className='navText'
             >
               Events
+              <img className='arrow-image ml-1 h-[10px] w-4' src={downArrow} alt="" />
               <Grid
                 className='hover-box'
                 id='event-hover-box'
@@ -184,12 +187,13 @@ const Navbar = () => {
                   position: 'absolute',
                   top: '88px',
                   left: '-18vw',
-                  width: '47rem',
+                  width: '50rem',
                   justifyContent: 'center',
                   overflowY: 'auto',
                   overflowX: 'hidden',
                   display: 'none',
                   background: '#2474d2'
+                  
                 }}
               >
                 <EventHoverComponent />
@@ -201,6 +205,7 @@ const Navbar = () => {
                 fontWeight: '600',
                 height: '100%',
                 color: '#2474D2',
+                textTransform: 'capitalize',
                 '&:hover': {
                   '& #corporate-hover-box': {
                     display: 'flex'
@@ -210,7 +215,8 @@ const Navbar = () => {
               name='corporate-btn'
               className='navText'
             >
-              Corporate X
+              Corporate 
+              <img className='arrow-image ml-1 h-[10px] w-4' src={downArrow} alt="" />
               <Grid
                 className='hover-box'
                 id='corporate-hover-box'
@@ -241,10 +247,10 @@ const Navbar = () => {
             ) : (
               <Button
                 onClick={() => navigate('/packages')}
-                sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                sx={{ fontWeight: '600', color: '#2474D2', height: '100%',textTransform: 'capitalize', }}
                 className='navText'
               >
-                School X
+                Packages
               </Button>
             )}
             
@@ -259,7 +265,7 @@ const Navbar = () => {
             ) : (
               <Button
                 onClick={() => navigate('/franchise')}
-                sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                sx={{ fontWeight: '600', color: '#2474D2', height: '100%',textTransform: 'capitalize', }}
                 className='navText'
               >
                 Franchise
@@ -277,7 +283,7 @@ const Navbar = () => {
             ) : (
               <Button
                 onClick={() => navigate('/gallery')}
-                sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                sx={{ fontWeight: '600', color: '#2474D2', height: '100%',textTransform: 'capitalize', }}
                 className='navText'
               >
                 Gallery
@@ -297,7 +303,7 @@ const Navbar = () => {
                   //  navigate("/contact")
                   scrollToBottom()
                 }
-                sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                sx={{ fontWeight: '600', color: '#2474D2', height: '100%',textTransform: 'capitalize'}}
                 className='navText'
               >
                 Contact
