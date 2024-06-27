@@ -14,14 +14,19 @@
 
     .background-event {
       position: absolute;
-      top: 50%;
+      top: 54%;
       left: 50%;
-      height: 120%;
+      height: 130%;
       // padding: 10%;
       min-width: 100%;
       transform: translate(-50%, -50%);
       z-index: -1;
       overflow: hidden;
+
+      @media (max-width: 600px ) {
+        top:52%;
+        height: 130%;
+      }
     }
 
     .example {

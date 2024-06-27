@@ -596,6 +596,7 @@ const Booknow = () => {
 
   return (
     <Grid className="booknow">
+
       {isLoading && (
         <Grid className="loading-overlay">
           <CircularProgress />
@@ -617,17 +618,19 @@ const Booknow = () => {
         />
       )}
 
-
-      <Grid className="top2 lg:flex lg:justify-evenly lg:flex-row max-md:justify-center max-md:flex" mb={"2%"}>
+      <Grid className="top2 flex lg:justify-evenly lg:flex-row max-md:flex-col max-md:flex-wrap max-md:justify-center max-md:p-5" mb={"2%"}>
         {/* Mobile button  */}
-        <button onClick={toggleVisibility} className="z-50 h-16 w-16 p-3 rounded-r-lg bg-yellow-500 cursor-pointer lg:hidden absolute translate-x-[-190px] translate-y-[50px]">
-          <img
-            src={arrow}
-            className={`${isVisible ? 'rotate-180' : ''} transition-transform duration-300`}
-            alt="right-arrow"
-          />
+        <button 
+          onClick={toggleVisibility}
+          className="
+            z-50 h-10 text-[15px] lg:hidden max-sm:flex
+            content-center items-center justify-center
+            w-44 p-3 rounded-3xl
+            bg-[#03ea2e] buttonText
+            cursor-pointer absolute left-8
+          ">
+          VIEW ACTIVITY COSTS
         </button>
-
         {/* Left Information Grid Mobile Version  */}
         {isVisible && (
           <Grid className={`bukFormMobile z-[500] absolute w-[100%] lg:hidden ${isVisible ? 'slide-in' : 'slide-out'}`}>
@@ -645,7 +648,7 @@ const Booknow = () => {
         )}
 
         {/* Left Informative Grid Desktop Version  */}
-        <Grid className="bukForm max-sm:hidden sm:w-[100%]">
+        <Grid className="bukForm max-md:hidden">
           {packageInfo.map((info, index) => (
             <div key={index} className={`flex w-full h-16 ${index % 2 === 0 ? 'bg-yellow-200' : 'bg-red-200'}`}>
               <div className="text-left justify-center items-center w-1/2 p-4">

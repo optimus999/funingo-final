@@ -10,10 +10,17 @@
 .booknow {
   position: relative;
   input {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
+    color: black;
   }
   .top {
     background: url("./images/top.png") center/cover;
+    @media (max-width: 600px) {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      
+    }
   }
 
   .top2 {
@@ -23,6 +30,10 @@
     // justify-content: center;
     // align-items: center;
     // margin-bottom: 0px;
+    .buttonText{
+      font-family: Luckiest Guy;
+      color: #fff;
+    }
 
     @keyframes slideIn {
       from {
@@ -49,8 +60,8 @@
     .bukFormMobile {
       display: flex;
       flex-direction: column;
-      height: 750px; /* Adjust height as needed */
-      width: 90%;
+      height: 1000px; /* Adjust height as needed */
+      width: 95%;
       box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.689);
       border: 1px solid transparent;
       border-radius: 10px;
@@ -61,7 +72,8 @@
       font-optical-sizing: auto;
       font-weight: 600;
       left: 0; /* Ensure it starts from the left */
-      top:40%;
+      top: auto;
+      margin-top: 50px;
     }
     
     .slide-in {
@@ -131,6 +143,8 @@
       margin-bottom: 50px;
       @media (max-width: 900px) {
         width: 90%;
+        margin-top: 80px;
+        border: none;
       }
 
       .book-now-label {
@@ -314,6 +328,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-items: center;
+    align-items: center;
 
     @media (max-width: 600px) {
       font-size: 36px;

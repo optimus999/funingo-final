@@ -43,7 +43,8 @@ function Home({ }) {
     <Grid className='home'>
       <HomeCarousel />
       <Grid className='zones'>
-        <img src={homeBG} alt='background-img' className='background-event' />
+        <img src={homeBG} alt='background-img' className='background-event max-sm:hidden' />
+        <img src={mobileHomeBG} alt='background-img' className='background-event lg:hidden' />
         <Grid>
           <Grid className='data'>
             <div id='combinediv'>
