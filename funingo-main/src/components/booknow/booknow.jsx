@@ -605,7 +605,7 @@ const Booknow = () => {
       {/* first box */}
       <Grid height="70vh" className="top">
         <Typography height="60vh" className="heading">
-          Happy Holidays
+          Happy Adventuring
         </Typography>
       </Grid>
 

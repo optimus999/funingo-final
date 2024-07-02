@@ -30,10 +30,13 @@ import sec41 from "./S41.png"
 import sec42 from "./S42.png"
 import sec43 from "./S43.png"
 import sec44 from "./S44.png"
+import sec45 from "./S45.png"
+import sec46 from "./S46.png"
 import sec51 from "./S51.png"
 import sec52 from "./S52.png"
 import sec53 from "./S53.png"
 import sec54 from "./S54.png"
+import sec55 from "./S55.png"
 import sec61 from "./S61.png"
 import sec62 from "./S62.png"
 import sec71 from "./S71.png"
@@ -86,6 +89,32 @@ import homeBG from "./homeImage/Group 61.png"
 import downArrow from "./img/downArrow.png"
 import eventHoverImage from "./img/eventHoverImage.png"
 import corporateHoverImage from "./img/corporateHoverImage.png"
+import homeBookNow from "./homeImage/bookNow.png"
+
+
+
+import zone1Point from "./zonePointImages/zone1.png"
+import zone21Point from "./zonePointImages/zone21.png"
+import zone22Point from "./zonePointImages/zone22.png"
+import zone31Point from "./zonePointImages/zone31.png"
+import zone32Point from "./zonePointImages/zone32.png"
+import zone41Point from "./zonePointImages/zone41.png"
+import zone42Point from "./zonePointImages/zone42.png"
+import zone43Point from "./zonePointImages/zone43.png"
+import zone44Point from "./zonePointImages/zone44.png"
+import zone45Point from "./zonePointImages/zone45.png"
+import zone46Point from "./zonePointImages/zone46.png"
+import zone51Point from "./zonePointImages/zone51.png"
+import zone52Point from "./zonePointImages/zone52.png"
+import zone53Point from "./zonePointImages/zone53.png"
+import zone54Point from "./zonePointImages/zone54.png"
+import zone55Point from "./zonePointImages/zone55.png"
+import zone61Point from "./zonePointImages/zone61.png"
+import zone62Point from "./zonePointImages/zone62.png"
+import zone7Point from "./zonePointImages/zone7.png"
+import zone81Point from "./zonePointImages/zone81.png"
+import zone82Point from "./zonePointImages/zone82.png"
+import zone83Point from "./zonePointImages/zone83.png"
 
 export {
     packageDiv,
@@ -124,10 +153,13 @@ export {
     sec42,
     sec43,
     sec44,
+    sec45,
+    sec46,
     sec51,
     sec52,
     sec53,
     sec54,
+    sec55,
     sec61,
     sec62,
     sec71,
@@ -154,4 +186,7 @@ export {
     heart,loaderGif,arrow,
 
     mobileHomeBG,homeBG,downArrow, eventHoverImage, corporateHoverImage,
+    homeBookNow,
+
+    zone1Point, zone21Point, zone22Point, zone31Point, zone32Point, zone41Point, zone42Point, zone43Point, zone44Point, zone45Point, zone46Point, zone51Point, zone52Point, zone53Point, zone54Point, zone55Point, zone61Point, zone62Point, zone7Point, zone81Point, zone82Point, zone83Point,
 };

@@ -175,7 +175,7 @@ export default function first() {
         </Typography>
       </Grid>
 
-      <Grid className='zone-hover'>
+      <Grid className='pic flex items-center justify-center zone-hover'>
         <Button
           variant='contained'
           sx={{

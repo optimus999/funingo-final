@@ -44,12 +44,8 @@ const Footer = () => {
       >
         <Grid className='container-footer' display={'flex'}>
           <Typography className='heading'>Contact Us</Typography>
-          <Typography>Part Manager - 123 456 7890 </Typography>
-          <Typography>Ticket Counter - 123 456 7890 </Typography>
-          <Typography>Franchise - 123 456 7890</Typography>
-          <Typography>Corporate Deals - 123 456 7890</Typography>
-          <Typography>Safety Incharge - 123 456 7890</Typography>
-          <Typography>Director - 123 456 7890</Typography>
+          <a href="tel:+917879333731"><Typography>+91 787-9333-731</Typography></a>
+          <a href="tel:+919425850422"><Typography>+91 942-5850-422</Typography></a>
         </Grid>
         <Grid className='container-footer' display={{ xs: 'none', md: 'flex' }}>
           {isLoggedIn ? (
