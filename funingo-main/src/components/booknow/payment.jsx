@@ -548,7 +548,7 @@ const PaymentButton = ({
             color: 'white'
           }}
         >
-          Buy Now333
+          Buy Now
         </Typography>
       </Button>
     </>

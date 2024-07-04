@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Grid,
   Typography,
@@ -8,106 +9,101 @@ import {
   useMediaQuery
 } from '@mui/material';
 import HomeCarousel from '../home-carousel';
-
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-
 import FranchiseBackground from './images/franchise-background.png';
-import Img1 from './images/img1.png';
-import Img2 from './images/img2.png';
-import Img3 from './images/img3.png';
-import Img4 from './images/img4.png';
-import Img5 from './images/img5.png';
 import stroke from './images/paint-stroke.png';
 import Gallery from './carousel';
-
 import './styles.scss';
 import FranchiseDataForm from '../franchise/franchise-data-form';
 import { useNavigate } from 'react-router-dom';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'; // Importing the icon
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'; // Importing the icon
+import { homeBG, mobileHomeBG, zone1, zone2, zone3, zone4, zone5, zone6, zone7, zone8 } from '../../assets';
 
-function Home({}) {
+function Home({ }) {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery('(max-width:900px');
+  const isMobile = useMediaQuery('(max-width:900px)');
+  const [showAllZones, setShowAllZones] = useState(false);
+
+  const zones = [
+    { img: zone1, title: 'Zone 1' },
+    { img: zone2, title: 'Zone 2' },
+    { img: zone3, title: 'Zone 3' },
+    { img: zone4, title: 'Zone 4' },
+    { img: zone5, title: 'Zone 5' },
+    { img: zone6, title: 'Zone 6' },
+    { img: zone7, title: 'Zone 7' },
+    { img: zone8, title: 'Zone 8' },
+  ];
+
+  const displayedZones = showAllZones ? zones : zones.slice(0, 4);
 
   return (
     <Grid className='home'>
       <HomeCarousel />
       <Grid className='zones'>
-        <img src={stroke} alt='background-img' className='background-event' />
+        <img src={homeBG} alt='background-img' className='background-event max-sm:hidden' />
+        <img src={mobileHomeBG} alt='background-img' className='background-event lg:hidden' />
         <Grid>
           <Grid className='data'>
             <div id='combinediv'>
-              <h1 className='headmain'>Activities</h1>
+              <h1 className='headmain'>Activity Zones</h1>
 
               <Grid
                 sx={{
-                  display: { xs: 'flex', md: 'grid' },
-                  gridTemplateColumns: { md: '1fr 1fr' },
-                  gap: { xs: '15px', md: '50px' },
-                  justifyItems: 'center',
-                  maxWidth: '100vw',
-                  overflow: 'auto',
-                  p: '0px 10px'
-                }}
-              >
-                <div className='example'>
-                  <img src={Img1} alt='house' />
-                  <h1>Zone A</h1>
-                  <div className='fadedbox'>
-                    <div className='title text'> Book Now </div>
-                  </div>
-                </div>
-
-                <div className='example'>
-                  <img src={Img2} alt='house' />
-                  <h1>Zone B</h1>
-                  <div className='fadedbox'>
-                    <div className='title text'> Book Now </div>
-                  </div>
-                </div>
-
-                <Grid className='example' display='block'>
-                  <img src={Img3} alt='house' />
-                  <h1>Zone C</h1>
-                  <div className='fadedbox'>
-                    <div className='title text'> Book Now </div>
-                  </div>
-                </Grid>
-
-                <Grid className='example' display='block'>
-                  <img src={Img4} alt='house' />
-                  <h1>Zone D</h1>
-                  <div className='fadedbox'>
-                    <div className='title text'> Book Now </div>
-                  </div>
-                </Grid>
-              </Grid>
-              <Button
-                variant='contained'
-                sx={{
-                  background: 'white',
-                  boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
-                  borderRadius: '5px',
-                  color: '#2474d2',
-                  fontWeight: '600',
-                  fontSize: '22px',
-                  mt: '50px',
-
-                  '&:hover': {
-                    background: 'white'
+                  display: { xs: 'grid', md: 'grid' },
+                  gridTemplateColumns: {
+                    xs: 'repeat(1, 1fr)', // one column on small screens
+                    sm: 'repeat(2, 1fr)', // two columns on medium screens
+                    md: 'repeat(2, 1fr)'},// four columns on large screens },
+                    gap: { xs: '15px', md: '50px' },
+                    justifyItems: 'center',
+                    maxWidth: '100vw',
+                    p: '0px 10px',
                   }
-                }}
-                onClick={e => {
-                  e.preventDefault();
-                  navigate('/zone');
-                }}
-              >
-                Explore More
-              </Button>
-            </div>
-          </Grid>
-        </Grid>
+                }
+                  >
+                {
+                  displayedZones.map((zone, index) => (
+                    <div key={index} className='example'>
+                      <img src={zone.img} alt='house' />
+                      <h1>{zone.title}</h1>
+                      <div className='fadedbox'>
+                        <div className='title text'> Book Now </div>
+                      </div>
+                    </div>
+                  ))
+                }
+              </Grid>
+
+          <Button
+            variant='contained'
+            sx={{
+              background: '#2474d2',
+              boxShadow: '0px 2.5 9 0px rgba(0, 0, 0, 0.25)',
+              borderRadius: '50px',
+              color: 'white',
+              fontWeight: '600',
+              fontSize: '22px',
+              mt: '50px',
+              width: '150px',
+
+              '&:hover': {
+                background: '#1e62ba'
+              }
+            }}
+            onClick={e => {
+              e.preventDefault();
+              setShowAllZones(!showAllZones);
+            }}
+          >
+            {showAllZones ? <ArrowUpwardIcon /> : 'View All'}
+          </Button>
+        </div>
       </Grid>
+    </Grid>
+      </Grid >
 
       <Grid mt={{ xs: '30px', sm: '75px' }}>
         <Gallery />
@@ -131,7 +127,7 @@ function Home({}) {
 
         <FranchiseDataForm />
       </Grid>
-    </Grid>
+    </Grid >
   );
 }
 
