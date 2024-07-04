@@ -44,12 +44,12 @@ const Footer = () => {
       >
         <Grid className='container-footer' display={'flex'}>
           <Typography className='heading'>Contact Us</Typography>
-          <Typography>Part Manager - 123 456 7890 </Typography>
-          <Typography>Ticket Counter - 123 456 7890 </Typography>
-          <Typography>Franchise - 123 456 7890</Typography>
-          <Typography>Corporate Deals - 123 456 7890</Typography>
-          <Typography>Safety Incharge - 123 456 7890</Typography>
-          <Typography>Director - 123 456 7890</Typography>
+          <Typography sx={{color:'#0077ff',fontWeight:'bold',fontSize:'1.4rem'}}>Co-Founders</Typography>
+          <Typography sx={{fontWeight:'bold',fontSize:'1.2rem'}}>Vasu Gupta  </Typography>
+          <Typography>+917879333731 </Typography>
+          <Typography sx={{fontWeight:'bold',fontSize:'1.2rem'}}>Vedant Diwan </Typography>
+          <Typography>+916264147042 </Typography>
+          {/* <Typography>Director - 123 456 7890</Typography> */}
         </Grid>
         <Grid className='container-footer' display={{ xs: 'none', md: 'flex' }}>
           {isLoggedIn ? (

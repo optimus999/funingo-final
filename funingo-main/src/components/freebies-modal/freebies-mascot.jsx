@@ -1,15 +1,24 @@
 import { Box, Grid, Typography } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react';
 
-import FreebiesGif from '../../assets/freebies.gif';
+import FreebiesGif from '../../assets/freebies-mascot.png';
 import staticMascot from '../../assets/freebies-mascot.png';
 import { useSelector } from 'react-redux';
+
+let userfunmoneyfromnavbar=0;
+
+export const getuser_funingomoney = (userfuningomoney) => {
+  userfunmoneyfromnavbar=userfuningomoney;
+  // userfunmoneyfromnavbar=0;
+};
 
 const FreebiesMascot = ({ small = false, backgroundFilter = true }) => {
   const { freebiesArray: freebies = [] } = useSelector(
     state => state.userSlice
   );
   const [gif, setGif] = useState(FreebiesGif);
+
+  
 
   const reloadGif = () => {
     setGif(staticMascot);
@@ -45,6 +54,8 @@ const FreebiesMascot = ({ small = false, backgroundFilter = true }) => {
     );
   }, [freebies]);
 
+  // console.log("flags",flags);
+
   return (
     <Grid
       sx={{
@@ -63,7 +74,7 @@ const FreebiesMascot = ({ small = false, backgroundFilter = true }) => {
         }}
       />
       <Box>
-        <Typography
+        {/* <Typography
           sx={{
             position: 'absolute',
             top: { xs: '150px', sm: small ? 'none' : '177px' },
@@ -74,8 +85,8 @@ const FreebiesMascot = ({ small = false, backgroundFilter = true }) => {
           }}
         >
           {flags.green}
-        </Typography>
-        <Typography
+        </Typography> */}
+        {/* <Typography
           sx={{
             position: 'absolute',
             top: { xs: '141px', sm: small ? 'none' : '165px' },
@@ -85,20 +96,67 @@ const FreebiesMascot = ({ small = false, backgroundFilter = true }) => {
           }}
         >
           {flags.red}
-        </Typography>
-        <Typography
-          sx={{
-            position: 'absolute',
-            top: { xs: '147px', sm: small ? 'none' : '172px' },
-            right: { xs: '46px', sm: small ? 'none' : '51px' },
-            fontWeight: '600',
-            fontSize: '16px',
-            transform: 'rotate(40deg)'
-          }}
-        >
-          {flags.yellow}
-        </Typography>
-        <Typography
+        </Typography> */}
+        {userfunmoneyfromnavbar === 0 ? (
+  <Typography
+    sx={{
+      position: 'absolute',
+      top: { xs: '176px', sm: small ? 'none' : '205px' },
+      right: { xs: '87px', sm: small ? 'none' : '96px' },
+      fontWeight: '600',
+      fontSize: '13px',
+      transform: 'rotate(0deg)',
+      color: 'white'
+    }}
+  >
+    {userfunmoneyfromnavbar}
+  </Typography>
+) : userfunmoneyfromnavbar < 10000 ? userfunmoneyfromnavbar < 1000 ? (
+  <Typography
+    sx={{
+      position: 'absolute',
+      top: { xs: '174px', sm: small ? 'none' : '204px' },
+      right: { xs: '80px', sm: small ? 'none' : '90px' },
+      fontWeight: '600',
+      fontSize: '13px',
+      transform: 'rotate(0deg)',
+      color: 'white'
+    }}
+  >
+    {userfunmoneyfromnavbar}
+  </Typography>
+) : (
+  <Typography
+    sx={{
+      position: 'absolute',
+      top: { xs: '174px', sm: small ? 'none' : '202px' },
+      right: { xs: '77px', sm: small ? 'none' : '85px' },
+      fontWeight: '600',
+      fontSize: '13px',
+      transform: 'rotate(0deg)',
+      color: 'white'
+    }}
+  >
+    {userfunmoneyfromnavbar}
+  </Typography>
+) : (
+  <Typography
+    sx={{
+      position: 'absolute',
+      top: { xs: '174px', sm: small ? 'none' : '202px' },
+      right: { xs: '74px', sm: small ? 'none' : '82px' },
+      fontWeight: '600',
+      fontSize: '13px',
+      transform: 'rotate(0deg)',
+      color: 'white'
+    }}
+  >
+    {userfunmoneyfromnavbar}
+  </Typography>
+)}
+
+
+        {/* <Typography
           sx={{
             position: 'absolute',
             top: { xs: '168px', sm: small ? 'none' : '196px' },
@@ -109,7 +167,7 @@ const FreebiesMascot = ({ small = false, backgroundFilter = true }) => {
           }}
         >
           {flags.golden}
-        </Typography>
+        </Typography> */}
       </Box>
     </Grid>
   );

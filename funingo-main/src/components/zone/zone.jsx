@@ -3,6 +3,7 @@ import './pages.css'
 import { P1000, P1500, P2000, P2500, P3000, P500, P5000, activityZoneMobileText, activityZoneText, bookNow, keyIcon, sec11, sec12, sec21, sec22, sec31, sec32, sec41, sec42, sec43, sec44, sec51, sec52, sec53, sec54, sec61, sec62, sec71, sec81, sec82, sec83 } from '../../assets'
 import { useNavigate } from 'react-router';
 import { Grid, Typography, Button } from '@mui/material';
+import {scrollToTop} from '../../utils/index';
 const Zone = () => {
   const navigate = useNavigate();
   return (
@@ -50,6 +51,7 @@ const Zone = () => {
               }}
               onClick={() => {
                 navigate('/book');
+                scrollToTop();
               }}
             >
               Book Now
@@ -110,6 +112,7 @@ const Zone = () => {
               }}
               onClick={() => {
                 navigate('/book');
+                scrollToTop();
               }}
             >
               Book Now
@@ -169,6 +172,7 @@ const Zone = () => {
               }}
               onClick={() => {
                 navigate('/book');
+                scrollToTop();
               }}
             >
               Book Now
@@ -244,6 +248,7 @@ const Zone = () => {
               }}
               onClick={() => {
                 navigate('/book');
+                scrollToTop();
               }}
             >
               Book Now
@@ -327,6 +332,7 @@ const Zone = () => {
               }}
               onClick={() => {
                 navigate('/book');
+                scrollToTop();
               }}
             >
               Book Now
@@ -360,7 +366,7 @@ const Zone = () => {
 
             <div className="flex flex-row items-center mt-10 space-x-2">
               <img src={keyIcon} alt="" className="mr-2" />
-              <div className="flex-grow">
+              <div className="flex-grow"> 
                 <p className="text-2xl keys">Archery Alley</p>
               </div>
               <img className='self-start lg:self-center pointIcon' src={P500} alt="" />
@@ -390,6 +396,7 @@ const Zone = () => {
               }}
               onClick={() => {
                 navigate('/book');
+                scrollToTop();
               }}
             >
               Book Now
@@ -442,6 +449,7 @@ const Zone = () => {
               }}
               onClick={() => {
                 navigate('/book');
+                scrollToTop();
               }}
             >
               Book Now
@@ -508,6 +516,7 @@ const Zone = () => {
               }}
               onClick={() => {
                 navigate('/book');
+                scrollToTop();
               }}
             >
               Book Now

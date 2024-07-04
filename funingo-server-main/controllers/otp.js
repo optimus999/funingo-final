@@ -23,12 +23,12 @@ export const sendOtpToPhone = async (req, res) => {
   });
 
   const otpVerification = await OtpVerification.findOne({ user });
-  if (otpVerification) {
+  if (otpVerification){
     otpVerification.otp = otp;
     otpVerification.created_at = Date.now();
     otpVerification.expires_at = Date.now() + 10 * 60 * 60 * 1000;
     await otpVerification.save();
-  } else {
+  }else {
     const newOtpVerification = new OtpVerification({
       otp,
       user,
@@ -37,7 +37,6 @@ export const sendOtpToPhone = async (req, res) => {
     });
     await newOtpVerification.save();
   }
-
   res?.status(200)?.send({
     success: true
   });

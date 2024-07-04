@@ -302,7 +302,7 @@ const addScript = src => {
 let funingocoinsfrombooknow = 0;
 
 export const handleFuningocoinsFromBooknow = (value) => {
-  console.log("value received"+value);
+  // console.log("value received"+value);
   funingocoinsfrombooknow = value;
 };
 
@@ -528,13 +528,18 @@ const PaymentButton = ({
           }
         }}
         onClick={() => {
-          console.log("discount"+discount?.discount+"total"+total);
+          if(!isLoggedIn)
+            {
+              dispatch(openAuthModal());
+              return;
+            }
+          // console.log("discount"+discount?.discount+"total"+total);
           if (isLoggedIn) {
             // handlePayment();
             if (total >= 1000) setConsentFormOpen(true);
             else setAddMoreModalOpen(true);
           } else {
-            openModalAuth();
+            dispatch(openModalAuth());
           }
         }}
         disabled={persons?.length === 0}
@@ -548,7 +553,7 @@ const PaymentButton = ({
             color: 'white'
           }}
         >
-          Buy Now333
+          Buy Now
         </Typography>
       </Button>
     </>

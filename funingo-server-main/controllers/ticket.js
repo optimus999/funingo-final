@@ -434,7 +434,7 @@ export const getQRTickets = async (req, res) => {
 
   const resp = await Promise.all(
     ticket.details.map(async tic => {
-      console.log("tic",tic);
+      // console.log("tic",tic);
       const new_short_id = new ShortUniqueId({
         dictionary: 'hex',
         length: 3
@@ -589,8 +589,8 @@ export const createTicketOrder = async (req, res) => {
 
   totalAmount += Math.ceil(0.18 * totalAmount);
   totalAmount = Math.round((totalAmount + Number.EPSILON) * 100) / 100;
-  console.log("totalAmount calculated", totalAmount);
-  console.log("total_amount received", total_amount);
+  // console.log("totalAmount calculated", totalAmount);
+  // console.log("total_amount received", total_amount);
   total_amount=totalAmount;
   if (totalAmount !== total_amount) {
     throw new ExpressError("Total amount doesn't match ticket.js", 400);

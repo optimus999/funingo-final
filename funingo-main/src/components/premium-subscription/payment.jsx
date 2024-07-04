@@ -138,10 +138,11 @@ const PaymentButton = ({
       <Button
         sx={{
           color: 'white',
-          background: 'linear-gradient(54deg,#e5bc56 40%, #ecd697, #AE8625)',
+          background: 'linear-gradient(54deg,#ff0000 40%, #ff0000, #AE8625)',
           fontWeight: '700',
           borderRadius: '50px',
-          padding: '5px 20px'
+          padding: '5px 20px',
+          boxShadow: '0px 4px 10px rgba(255, 0, 0, 0.9)'
         }}
         disabled={disabled}
         onClick={() => {

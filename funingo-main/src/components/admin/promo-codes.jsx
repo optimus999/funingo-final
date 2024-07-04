@@ -386,6 +386,7 @@ import {
 import { DeleteForever } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
 import Select from 'react-select';
+import "./promo-codes.css"
 
 const Label = styled(Typography)({
   marginBottom: '5px',

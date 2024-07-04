@@ -12,7 +12,7 @@ import { Box } from '@mui/material';
 import './carousel.scss';
 
 const galleryData = {
-  title: 'FRIENDS | FAMILY | FUN FUNINGO',
+  title: 'GALLERY',
   pictures: [
     {
       p1: Img1,
@@ -80,9 +80,9 @@ const Gallery = () => {
         <Grid className='carousel-box'>
           <Box mb='20px'>
             <Typography className='subheading'>
-              FRIENDS | FAMILY | FUN
+              GALLERY
             </Typography>
-            <Typography className='subheading'>FUNINGO</Typography>
+            <Typography className='subheading2'>Sport Events</Typography>
           </Box>
           {!isMobile && (
             <Carousel

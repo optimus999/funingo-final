@@ -8,6 +8,7 @@ import {
   useMediaQuery,
   TextField 
 } from '@mui/material';
+import { getuser_funingomoney } from '../freebies-modal/freebies-mascot';
 
 
 
@@ -88,6 +89,8 @@ const Navbar = () => {
   //   setOpen(false);
   // };
 
+
+
   const [navExpanded, setNavExpanded] = useState(false);
 
   const handleLogout = () => {
@@ -95,6 +98,9 @@ const Navbar = () => {
     localStorage.removeItem('token');
     dispatch(setLoggedIn(false));
   };
+
+  if(isLoggedIn)
+    getuser_funingomoney(user.funingo_money);
 
   return (
     <>
@@ -608,7 +614,7 @@ const Navbar = () => {
                   </Grid>
                 </Link>
 
-                {!admin ? (
+                {!admin? (
                   <Link to='/packages'>
                     <Grid textAlign={'center'}>
                       <Button

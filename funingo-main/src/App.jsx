@@ -101,17 +101,17 @@ const AppLayout = ({
           }
         }
 
-        // if (!user) {
-        //   setTimeout(() => {
-        //     dispatch(openPremiumSubscriptionModal());
-        //   }, 8500);
-        // } else {
-        //   if (!admin && !employee && !windowEmployee) {
-        //     setTimeout(() => {
-        //       setShowFreebies(true);
-        //     }, 6000);
-        //   }
-        // }
+        if (!user) {
+          setTimeout(() => {
+            dispatch(openPremiumSubscriptionModal());
+          }, 8500);
+        } else {
+          if (!admin && !employee && !windowEmployee) {
+            setTimeout(() => {
+              setShowFreebies(true);
+            }, 6000);
+          }
+        }
       })
     );
 

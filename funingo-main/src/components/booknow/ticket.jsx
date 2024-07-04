@@ -4,6 +4,8 @@ import BasicTicketBg from './images/Basic-final-ticket-bg.png';
 import PremiumTicketBg from './images/platinum-ticket-bg2.png';
 import { useNavigate } from 'react-router-dom';
 import { downloadImage } from '../../utils';
+import {scrollToTop} from '../../utils/index'
+import { ConnectingAirportsOutlined } from '@mui/icons-material';
 
 const Label = ({ children, sx, isPremium = false }) => (
   <Box
@@ -72,9 +74,11 @@ export const Ticket = ({
     }
     navigate('/profile');
     window.location.reload();
+    scrollToTop();
   };
 
   const extraFlagValue = useMemo(() => {
+    console.log("ticket",ticket);
     const extraFlags = ticket?.details?.reduce(
       (flags, person) => ({
         red: flags.red + person.extra_red,

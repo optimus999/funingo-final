@@ -185,7 +185,7 @@ import { v4 as uuidv4 } from 'uuid';
 import cloudinary from '../cloudinary/index.js';
 
 export const sendMessageToPhone = async ({ phone_no, message }) => {
-  console.log("entering the function");
+  // console.log("entering the function");
   const params = {
     Message: message,
     PhoneNumber: phone_no,
@@ -207,11 +207,12 @@ export const calculateDiscountPrice = async ({ code, total_amount }) => {
   let discount = 0;
   let msg = '';
   const coupon = await Coupon.findOne({ code });
+  const allcoupons = await Coupon.find({}, { _id: 1, code: 1, count: 1, discount_type: 1, max_discount: 1, discount: 1, min_amount: 1 });
   if (!coupon) {
     // return res.status(404).json({ success: false, error: 'Coupon not found utils.js' });
     msg = `Invalid coupon code`;
-    return { discount, msg };
-  }
+    return { discount, msg, allcoupons };
+  } 
   if (coupon.count > 0) {
     coupon.count -= 1;
   } 
@@ -244,7 +245,7 @@ export const calculateDiscountPrice = async ({ code, total_amount }) => {
   } else {
     msg = `Invalid coupon code`;
   }
-  return { discount, msg};
+  return { discount, msg, allcoupons};
 };
 
 export const calculateFuningoMoneyToAdd = amount => {
