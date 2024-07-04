@@ -8,19 +8,25 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    margin-top: 10%;
+    margin-top: 0%;
     height: 100%;
     padding: 150px 20px;
 
     .background-event {
       position: absolute;
-      top: 50%;
+      top: 54%;
       left: 50%;
-      height: 100%;
-      min-width: 100vw;
+      height: 130%;
+      // padding: 10%;
+      min-width: 100%;
       transform: translate(-50%, -50%);
       z-index: -1;
       overflow: hidden;
+
+      @media (max-width: 600px ) {
+        top:52%;
+        height: 130%;
+      }
     }
 
     .example {
@@ -107,7 +113,7 @@
         font-weight: 400;
         text-align: center;
         letter-spacing: 0.075em;
-        color: #fff;
+        color: #2368ff;
 
         @media (max-width: 441px) {
           font-size: 33px;

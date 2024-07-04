@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Grid,
   Typography,
@@ -44,6 +44,8 @@ import { Tour } from "@mui/icons-material";
 import InfoIcon from "@mui/icons-material/Info";
 import Ticket from "./ticket";
 import ConfirmationModal from "../windowPurchase/modal";
+import { P1000, P1500, P2000, P2500, P3000, P500, P5000, arrow } from "../../assets";
+import { red } from "@mui/material/colors";
 import { openAuthModal } from '../../utils/store/slice/appSlice';
 
 
@@ -52,6 +54,90 @@ export const genderOptions = [
   { value: "female", label: "Female" },
   { value: "others", label: "Others" },
 ];
+
+const packageInfo = [
+  {
+    text: "Tampoline Island",
+    image: P2500,
+  },
+  {
+    text: "Paintball",
+    image: P2500,
+  },
+  {
+    text: "Get Blaster Arena",
+    image: P1500,
+  },
+  {
+    text: "Low Ropes",
+    image: P1500,
+  },
+  {
+    text: "High Ropes",
+    image: P1500,
+  },
+  {
+    text: "Giant Swing",
+    image: P5000,
+  },
+  {
+    text: "Sky Cycle",
+    image: P3000,
+  },
+  {
+    text: "Commando Climb",
+    image: P500,
+  },
+  {
+    text: "Peak Rock Climb",
+    image: P2000,
+  },
+  {
+    text: "Meltdown",
+    image: P1000,
+  },
+  {
+    text: "Bucking Bull Arena",
+    image: P1000,
+  },
+  {
+    text: "Kids Obstacle",
+    image: P500,
+  },
+  {
+    text: "Sumo Showdown",
+    image: P500,
+  },
+  {
+    text: "Archery Alley",
+    image: P500,
+  },
+  {
+    text: "Shooter's Range",
+    image: P1000,
+  },
+  {
+    text: "Pedal Go Kart",
+    image: P1000,
+  },
+  {
+    text: "Sumo Showdown",
+    image: P500,
+  },
+  {
+    text: "Archery Alley",
+    image: P500,
+  },
+  {
+    text: "Shooter's Range",
+    image: P1000,
+  },
+  {
+    text: "Pedal Go Kart",
+    image: P1000,
+  },
+];
+
 const initialValues = {
   id: "",
   name: "",
@@ -199,12 +285,11 @@ const Booknow = () => {
           });
           errmessage += "Invalid Funingo Coins";
         }
-        
-        if ((Number(values.totalfuningocoinsassigned)) + Number((values.funingocoins)) > userData?.funingo_money)
-           {
+
+        if ((Number(values.totalfuningocoinsassigned)) + Number((values.funingocoins)) > userData?.funingo_money) {
           console.log("Number(values.totalfuningocoinsassigned)", (Number(values.totalfuningocoinsassigned)));
           console.log("Number(values.funingocoins)", Number(values.funingocoins));
-          console.log("userData?.funingo_money" , userData?.funingo_money);
+          console.log("userData?.funingo_money", userData?.funingo_money);
           setErrorMsg({
             ...setErrorMsg,
             totalfuningocoinsassigned: "Funingo Coins exceeded",
@@ -219,7 +304,7 @@ const Booknow = () => {
         if (errmessage.length == 0) {
           let weekdayprice = values.isChecked == true ? weekdaypackageprice : 0;
           values.extra_yellow =
-            values.extra_yellow + Number(values.funingocoins) ;
+            values.extra_yellow + Number(values.funingocoins);
           (values.totalfuningocoinsassigned) =
             Number(values.totalfuningocoinsassigned) + Number(values.funingocoins);
           console.log("values.extra_yellow" + values.extra_yellow);
@@ -392,7 +477,7 @@ const Booknow = () => {
               // usedFuningoMoney -
               (couponDiscount?.discount || 0)) +
             Number.EPSILON) *
-            100
+          100
         ) / 100,
         0
       )
@@ -404,12 +489,12 @@ const Booknow = () => {
       premiumDiscount = 0;
 
     persons.forEach((person) => {
-      console.log("person here",person);
+      console.log("person here", person);
       total += person.price;
       if (person.selectedPremium?.premium_type === "50%")
         premiumDiscount += Math.floor(person.price / 2);
     });
-    
+
 
     setTotalPremiumDiscount(premiumDiscount);
     setTotalPrice(total);
@@ -506,20 +591,45 @@ const Booknow = () => {
           email: values.email
             ? values.email
             : userData?.email
-            ? userData.email
-            : "",
+              ? userData.email
+              : "",
           phone: values.phone
             ? values.phone
             : userData?.phone_no
-            ? userData.phone_no.split("-")?.[1]
-            : "",
+              ? userData.phone_no.split("-")?.[1]
+              : "",
         },
       });
     }
   }, [userData]);
 
+  // For mobile version of Charges Information
+
+  const [isVisible, setIsVisible] = useState(false);
+  const gridRef = useRef(null);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
+  const handleClickOutside = (event) => {
+    if (gridRef.current && !gridRef.current.contains(event.target)) {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
+
   return (
     <Grid className="booknow">
+
       {isLoading && (
         <Grid className="loading-overlay">
           <CircularProgress />
@@ -528,7 +638,7 @@ const Booknow = () => {
       {/* first box */}
       <Grid height="70vh" className="top">
         <Typography height="60vh" className="heading">
-          Happy Holidays
+          Happy Adventuring
         </Typography>
       </Grid>
 
@@ -541,7 +651,49 @@ const Booknow = () => {
         />
       )}
 
-      <Grid className="top2" mb={"2%"}>
+      <Grid className="top2 flex lg:justify-evenly lg:flex-row max-md:flex-col max-md:flex-wrap max-md:justify-center max-md:p-5" mb={"2%"}>
+        {/* Mobile button  */}
+        <button 
+          onClick={toggleVisibility}
+          className="
+            z-50 h-10 text-[15px] lg:hidden max-sm:flex
+            content-center items-center justify-center
+            w-44 p-3 rounded-3xl
+            bg-[#03ea2e] buttonText
+            cursor-pointer absolute left-8
+          ">
+          VIEW ACTIVITY COSTS
+        </button>
+        {/* Left Information Grid Mobile Version  */}
+        {isVisible && (
+          <Grid className={`bukFormMobile z-[500] absolute w-[100%] lg:hidden ${isVisible ? 'slide-in' : 'slide-out'}`}>
+            {packageInfo.map((info, index) => (
+              <div key={index} className={`flex w-full h-16 ${index % 2 === 0 ? 'bg-yellow-200' : 'bg-red-200'}`}>
+                <div className="text-left justify-center items-center w-1/2 p-4">
+                  <h2>{info.text}</h2>
+                </div>
+                <div className="w-1/2 p-4 flex justify-end items-center">
+                  <img className="w-32" src={info.image} alt={info.text} />
+                </div>
+              </div>
+            ))}
+          </Grid>
+        )}
+
+        {/* Left Informative Grid Desktop Version  */}
+        <Grid className="bukForm max-md:hidden">
+          {packageInfo.map((info, index) => (
+            <div key={index} className={`flex w-full h-16 ${index % 2 === 0 ? 'bg-yellow-200' : 'bg-red-200'}`}>
+              <div className="text-left justify-center items-center w-1/2 p-4">
+                <h2>{info.text}</h2>
+              </div>
+              <div className="w-1/2 p-4 flex justify-end items-center">
+                <img className="w-32" src={info.image} alt={info.text} />
+              </div>
+            </div>
+          ))}
+        </Grid>
+        {/* Form Grid  */}
         <Grid className="book-form">
           <Grid className="form-heading">BOOK NOW!</Grid>
           {persons && persons.length !== 0 && (
@@ -583,7 +735,7 @@ const Booknow = () => {
                     placeholder="Email ID"
                     value={values.email}
                     // onChange={handleInputChange} 
-                     disabled={disablevar}
+                    disabled={disablevar}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     required={true}
@@ -781,7 +933,7 @@ const Booknow = () => {
                 justifyContent={"space-between"}
                 mb={"15px"}
                 width={"100%"}
-                // border={"2px solid red"}
+              // border={"2px solid red"}
               >
 
                 {/* start */}
@@ -803,7 +955,7 @@ const Booknow = () => {
                     onBlur={handleBlur}
                     placeholder="Select a package..."
                     styles={{
-                      
+
                       control: (provided) => ({
                         ...provided,
                         background: "white",
@@ -824,13 +976,13 @@ const Booknow = () => {
                         },
                       }),
                     }}
-                    required={Number(values.totalfuningocoinsassigned) >200 }
+                    required={Number(values.totalfuningocoinsassigned) > 200}
                     isSearchable={false}
                     options={packageOptions}
                     isClearable
                   />
                 </Grid>
-                    {/* end */}
+                {/* end */}
               </Grid>
 
               {/* <Grid
@@ -839,7 +991,7 @@ const Booknow = () => {
                 mb={"15px"}
               >
                 <Grid className="input-freebies"> */}
-                  {/* <Grid mb='15px' title='One Trampoline flag is for 30 minutes'>
+              {/* <Grid mb='15px' title='One Trampoline flag is for 30 minutes'>
                     <Typography className='book-now-label' fontSize={'16px'}>
                       For Trampoline Park{' '}
                       <Typography
@@ -886,7 +1038,7 @@ const Booknow = () => {
                       onChange={val => setFieldValue('golden_flag', val)}
                     />
                   </Grid> */}
-                  {/* <label className="book-now-label">Funingo coins</label>
+              {/* <label className="book-now-label">Funingo coins</label>
                   <Grid
                     sx={{
                       display: "flex",
@@ -896,7 +1048,7 @@ const Booknow = () => {
                       gap: "10px",
                     }}
                   > */}
-                    {/* <IndividualFlag
+              {/* <IndividualFlag
                       label={
                         <Tour
                           sx={{
@@ -908,7 +1060,7 @@ const Booknow = () => {
                       value={values.extra_red}
                       onChange={val => setFieldValue('extra_red', val)}
                     /> */}
-                    {/* <IndividualFlag
+              {/* <IndividualFlag
                       label={
                         <Tour
                           sx={{
@@ -920,7 +1072,7 @@ const Booknow = () => {
                       value={values.extra_yellow}
                       onChange={(val) => setFieldValue("extra_yellow", val)}
                     /> */}
-                    {/* <IndividualFlag
+              {/* <IndividualFlag
                       label={
                         <Tour
                           sx={{
@@ -932,9 +1084,9 @@ const Booknow = () => {
                       value={values.extra_green}
                       onChange={val => setFieldValue('extra_green', val)}
                     /> */}
-                  {/* </Grid> */}
+              {/* </Grid> */}
 
-                  {/* 
+              {/* 
                   <Grid
                 display={'flex'}
                 justifyContent={'space-between'}
@@ -942,9 +1094,9 @@ const Booknow = () => {
                 flexDirection={isMobile ? 'column' : 'row'}
               > */}
 
-                  {/* /spirits */}
+              {/* /spirits */}
 
-                  {/* {userData?.funingo_money != 0 && (
+              {/* {userData?.funingo_money != 0 && (
                     <Grid className="input-number">
                       <label
                         style={{
@@ -998,21 +1150,21 @@ const Booknow = () => {
                     </Grid>
                   )} */}
 
-                  {/* </Grid> */}
+              {/* </Grid> */}
 
-                  {/* <Grid className='input-checkbox'>
-  <label className='book-now-label'>Unlimited Weekday Package</label>
-  <input
-    name='weekdayPackage'
-    type='checkbox'
-    checked={values.weekdayPackage}
-    onChange={handleCheckbox}
-    onBlur={handleBlur}
-    // required={true}
-  />
-  </Grid> */}
+              {/* <Grid className='input-checkbox'>
+                  <label className='book-now-label'>Unlimited Weekday Package</label>
+                  <input
+                    name='weekdayPackage'
+                    type='checkbox'
+                    checked={values.weekdayPackage}
+                    onChange={handleCheckbox}
+                    onBlur={handleBlur}
+                    // required={true}
+                  />
+                  </Grid> */}
 
-                  {/* {!isWeekend && (
+              {/* {!isWeekend && (
                     <Grid
                       style={{
                         display: "flex",
@@ -1053,51 +1205,51 @@ const Booknow = () => {
                   )} */}
 
 
-                {/* </Grid> */}
+              {/* </Grid> */}
               {/* </Grid> */}
 
               {/* testing start */}
 
-              {userData?.funingo_money != 0 && (            
-              <Grid
-                display={"flex"}
-                justifyContent={"space-between"}
-                mb={"15px"}
-                width={"100%"}
-              >
-                <Grid className="input-funingo-coins">
-                  <label className="book-now-label">Use Existing Funingo coins</label>
-                  <input
-                        className="input-funingo"
-                        name="funingocoins"
-                        // type="number"
-                        placeholder="Add your Funingo Coins here."
-                        value={Number(values.funingocoins)}
-                        onChange={handleChange}
-                        // onClick={handleFuningoCoin}
-                        onBlur={handleBlur}
-                      />
+              {userData?.funingo_money != 0 && (
+                <Grid
+                  display={"flex"}
+                  justifyContent={"space-between"}
+                  mb={"15px"}
+                  width={"100%"}
+                >
+                  <Grid className="input-funingo-coins">
+                    <label className="book-now-label">Use Existing Funingo coins</label>
+                    <input
+                      className="input-funingo"
+                      name="funingocoins"
+                      // type="number"
+                      placeholder="Add your Funingo Coins here."
+                      value={Number(values.funingocoins)}
+                      onChange={handleChange}
+                      // onClick={handleFuningoCoin}
+                      onBlur={handleBlur}
+                    />
 
-                      {(errorMsg &&
-                        errorMsg?.funingocoins &&
-                        errorMsg.funingocoins.length !== 0 && (
+                    {(errorMsg &&
+                      errorMsg?.funingocoins &&
+                      errorMsg.funingocoins.length !== 0 && (
+                        <Typography
+                          sx={{ color: "red !important", fontSize: "13px" }}
+                        >
+                          {errorMsg.funingocoins}
+                        </Typography>
+                      )) ||
+                      (errorMsg &&
+                        errorMsg?.totalfuningocoinsassigned &&
+                        errorMsg.totalfuningocoinsassigned.length !== 0 && (
                           <Typography
                             sx={{ color: "red !important", fontSize: "13px" }}
                           >
-                            {errorMsg.funingocoins}
+                            {errorMsg.totalfuningocoinsassigned}
                           </Typography>
-                        )) ||
-                        (errorMsg &&
-                          errorMsg?.totalfuningocoinsassigned &&
-                          errorMsg.totalfuningocoinsassigned.length !== 0 && (
-                            <Typography
-                              sx={{ color: "red !important", fontSize: "13px" }}
-                            >
-                              {errorMsg.totalfuningocoinsassigned}
-                            </Typography>
-                          ))}
+                        ))}
+                  </Grid>
                 </Grid>
-              </Grid>  
               )}
 
               {/* weekend start */}
@@ -1305,7 +1457,7 @@ const Booknow = () => {
                       ) ?? null
                     }
                     onChange={(e) => {
-                      setIsTimeSelected(!!e); 
+                      setIsTimeSelected(!!e);
                       setFieldValue("time", e?.value || "");
                       // handleChange(e?.value || '');
                     }}
@@ -1330,13 +1482,13 @@ const Booknow = () => {
                         ...provided,
                         color: state.isSelected ? "white" : "black",
                       }),
-                      
+
                     }}
                     required={true}
                     isSearchable={false}
                     isClearable
                     options={timeOptions}
-                    // isDisabled={disablevar}
+                  // isDisabled={disablevar}
                   />
                 </Grid>
               </Grid>
@@ -1344,7 +1496,7 @@ const Booknow = () => {
 
 
 
-              {/* <Grid width={"100%"} mb={"15px"} gap={"0px"}>
+              <Grid width={"100%"} mb={"15px"} gap={"0px"} className="max-md:mt-[60px]">
                 <label className="book-now-label">Promo Code</label>
                 <TextField
                   fullWidth
@@ -1505,29 +1657,28 @@ const Booknow = () => {
                         color: 'black'
                       },
                       position: 'absolute',
-    overflow: 'hidden',
-    clip: 'rect(0 0 0 0)',
-    height: '1px',
-    width: '1px',
-    margin: '-1px',
-    padding: '0',
-    border: '0',
-    whiteSpace: 'nowrap'
-                      
+                      overflow: 'hidden',
+                      clip: 'rect(0 0 0 0)',
+                      height: '1px',
+                      width: '1px',
+                      margin: '-1px',
+                      padding: '0',
+                      border: '0',
+                      whiteSpace: 'nowrap'
+
                     }}
-                    onChange={e =>
-                      {
-                        setUseFuningoMoney(
+                    onChange={e => {
+                      setUseFuningoMoney(
                         e.target.checked
                           ? Number(values.totalfuningocoinsassigned)
                           : Number(values.totalfuningocoinsassigned)
                       )
-                      console.log("usedFuningoMoney",usedFuningoMoney);
+                      console.log("usedFuningoMoney", usedFuningoMoney);
                     }
                     }
                     checked={usedFuningoMoney !== 0}
                     id='funingo-money'
-                    
+
                   />
                   {/* <Typography component={'label'} htmlFor='funingo-money'>
                     Use {percent_of_fm_to_use}% of your funingo money.
@@ -1602,7 +1753,7 @@ const Booknow = () => {
                           (totalPremiumDiscount || 0) -
                           // (usedFuningoMoney || 0) +
                           Number.EPSILON) *
-                          1
+                        1
                       ) / 1,
                       0
                     )}
@@ -1616,16 +1767,21 @@ const Booknow = () => {
                 width={"100%"}
                 justifyContent={"center"}
                 mb="30px"
+                className="paymentButton"
               >
-                <PaymentButton
-                  values={values}
-                  persons={persons}
-                  setPersons={setPersons}
-                  handleResetBookForm={handleResetBookForm}
-                  discount={couponDiscount}
-                  usedFuningoMoney={usedFuningoMoney}
-                  setShowTicket={setShowTicket}
-                />
+                <div
+
+                >
+                  <PaymentButton
+                    values={values}
+                    persons={persons}
+                    setPersons={setPersons}
+                    handleResetBookForm={handleResetBookForm}
+                    discount={couponDiscount}
+                    usedFuningoMoney={usedFuningoMoney}
+                    setShowTicket={setShowTicket}
+                  />
+                </div>
               </Grid>
             </form>
           </Grid>

@@ -79,10 +79,10 @@ const Gallery = () => {
       <Grid className='top2' mb={'8vh'}>
         <Grid className='carousel-box'>
           <Box mb='20px'>
-            <Typography className='subheading'>
-              GALLERY
+            <Typography className='heading'>
+              Gallery
             </Typography>
-            <Typography className='subheading2'>Sport Events</Typography>
+            <Typography className='subheading'>Sport Events</Typography>
           </Box>
           {!isMobile && (
             <Carousel

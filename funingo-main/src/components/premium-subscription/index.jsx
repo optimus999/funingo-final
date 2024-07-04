@@ -19,30 +19,44 @@ import Mascot from '../../assets/mascot.png';
 import Bar from './images/bar.png';
 import { Clear } from '@mui/icons-material';
 
-const TitleBox = styled(Box)(({ active }) => ({
+const TitleBox = styled(Button)(({ active }) => ({
   flexGrow: 1,
-  background: 'linear-gradient(#1d2a44, #070d18)',
-  height: '45px',
-  // width:'30px',
+  background: active
+    ? 'linear-gradient(135deg, #ffffff, #fbfbfb)'
+    : 'linear-gradient(135deg, #010101, #000000)',
+  color: active ? 'black' : 'white',
+  height: '40px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   cursor: 'pointer',
-  // borderBottom: active ? '1px solid black' : 'none',
-  border:'2px solid white',
-  borderRadius: '13px',
+  borderBottom: active ? '1px solid black' : 'none',
+  borderRadius: '8px',
+  margin: '0 5px',
+  boxShadow: active
+    ? '0 4px 8px rgba(0, 0, 0, 0.708)'
+    : '0 4px 8px rgba(0, 0, 0, 0.3)',
+  '&:hover': {
+    background: active
+      ? 'linear-gradient(135deg,#ffffff, #fbfbfb)'
+      : 'linear-gradient(135deg, #545454, #8a8a8a)',
+    boxShadow: active
+      ? '0 4px 8px rgba(253, 255, 126, 0.896)'
+      : '0 4px 8px rgba(0, 0, 0, 0.5)'
+  }
 }));
+
 const Title = styled(Typography)({
   fontWeight: '600',
-  lineHeight: '15px'
+  lineHeight: '15px',
+  fontSize: '10px',
 });
 
 const PremiumSubscriptionModal = () => {
   const { isPremiumSubscriptionModalOpen } = useSelector(
     state => state.appSlice
   );
-  // const { isLoggedIn } = useSelector(state => state.userSlice);
   const dispatch = useDispatch();
   const [selectedPremium, setSelectedPremium] = useState('50%$6_months');
   const handleClose = () => dispatch(closePremiumSubscriptionModal());
@@ -166,7 +180,7 @@ const PremiumSubscriptionModal = () => {
                 }}
               />
               <Typography color='white' flexGrow={1} fontSize='12px'>
-                Funingo Platinum offers supirior deals to all the adventure
+                Funingo Platinum offers superior deals to all the adventure
                 lovers who enjoy having a&nbsp;
                 <Typography
                   component='span'
@@ -175,7 +189,7 @@ const PremiumSubscriptionModal = () => {
                   'Funingo Time'
                 </Typography>
                 &nbsp; frequently with their families. With multiple plans
-                crafter for benefiting our customers, we aim to provide bliss of
+                crafted for benefiting our customers, we aim to provide bliss of
                 savings with a package of family Joy
               </Typography>
               <Box
@@ -205,17 +219,11 @@ const PremiumSubscriptionModal = () => {
             <Grid
               sx={{
                 display: 'flex',
-                justifyContent:'space-evenly',
-                alignItems:'center'
+                justifyContent: 'space-between',
+                padding: '10px'
               }}
             >
               <TitleBox
-                sx={{
-                  borderRadius: '13px !important',
-                  border:'2px solid white',
-                  width:'15px',
-                  background: 'linear-gradient(#ffffff,#ffffff,#bcfffb) !important',
-                }}   
                 active={selectedPremium === '50%$6_months'}
                 onClick={() => setSelectedPremium('50%$6_months')}
               >
@@ -235,11 +243,6 @@ const PremiumSubscriptionModal = () => {
                 <Title>50% Off Plan</Title>           
               </TitleBox>
               <TitleBox
-                sx={{
-                  // borderRadius: '2px',
-                  width:'15px',
-                  color:'white',
-                }}
                 active={selectedPremium === '50%$100_years'}
                 onClick={() => setSelectedPremium('50%$100_years')}
               >

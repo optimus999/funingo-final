@@ -5,11 +5,14 @@ import './styles.scss';
 import { Cursor } from 'react-simple-typewriter';
 import Slide0 from './images/slide-0.png';
 import Slide1 from './images/slide-1.png';
+import Slide2 from './images/slide-2.jpg';
+import Slide3 from "./images/slide-3.jpg";
 import { Box, Grid, Button } from '@mui/material';
 
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { openPremiumSubscriptionModal } from '../../utils/store/slice/appSlice';
+import { homeBookNow, mainBackground3 } from '../../assets';
 
 const HomeCarousel = () => {
   const navigate = useNavigate();
@@ -52,7 +55,7 @@ const HomeCarousel = () => {
 
   return (
     <Grid position={'relative'}>
-      {showText && (
+      {showText && currentSlide === 0 && (
         <Grid
           sx={{
             position: 'absolute',
@@ -61,13 +64,12 @@ const HomeCarousel = () => {
             zIndex: '10',
             left: '50px',
             width: 'fit-content',
-            display: { xs: currentSlide === 0 ? 'none' : 'flex', md: 'flex' },
+            display: 'flex',
             flexDirection: 'column',
             gap: '10px'
           }}
         >
           <Grid className='car-top-heading'>Get Ready For</Grid>
-          {/* dynamic text */}
           <span className='car-bottom-heading '>
             {text} <Cursor />
           </span>
@@ -91,6 +93,7 @@ const HomeCarousel = () => {
           showThumbs={false}
           stopOnHover={false}
           onChange={curr => {
+            setCurrentSlide(curr);
             if (curr === 1) {
               setShowText(false);
               setTimeout(() => {
@@ -100,7 +103,6 @@ const HomeCarousel = () => {
               setTimeout(() => {
                 setShowText(true);
               }, 500);
-              setCurrentSlide(curr);
             }
           }}
         >
@@ -110,6 +112,12 @@ const HomeCarousel = () => {
           <Box maxHeight={'calc(100vh - 84px)'}>
             <img src={Slide1} alt={'slide 1'} />
           </Box>
+          <Box maxHeight={'calc(100vh - 84px)'}>
+            <img src={Slide2} alt={'slide 2'} />
+          </Box>
+          <Box maxHeight={'calc(100vh - 84px)'}>
+            <img src={Slide3} alt={'slide 3'} />
+          </Box>
           {banner?.map(img => (
             <Box maxHeight={'calc(100vh - 84px)'} key={img._id}>
               <img src={img.url} alt={'banner image'} />
@@ -118,32 +126,19 @@ const HomeCarousel = () => {
         </Carousel>
       </Grid>
 
-      {showText && (
-        <Grid>
+      {showText && currentSlide === 0 && (
+        <Grid className='car-bottom-wrapper'>
           <Grid className='car-bottom-btn'>
             <Button
-              className='car-bottom-botton'
-              variant='contained'
-              sx={{
-                boxShadow: '2px 2.5 9 0px rgba(0, 0, 0, 0.25)',
-                borderRadius: '50px',
-                padding: '10px 30px',
-                fontFamily: 'Luckiest Guy',
-                fontSize: '34px',
-                fontWeight: '400',
-                lineHeight: '34px',
-                letterSpacing: '0em',
-                textAlign: 'left',
-                '&:hover': {
-                  background: '#e1dc3e'
-                }
-              }}
+              className='car-bottom-button'
               onClick={() => navigate('/book')}
             >
-              Book Now
+              <img src={homeBookNow} alt="" />
             </Button>
           </Grid>
-          <Grid className='car-bottom-refer'>Refer & Get 50% OFF</Grid>
+          <Grid className='car-bottom-refer'>
+            Refer&nbsp;a&nbsp;friend&nbsp;to&nbsp;get <br /> <u>50%&nbsp;OFF</u>
+          </Grid>
         </Grid>
       )}
     </Grid>

@@ -42,6 +42,7 @@ import {
   openAuthModal,
   openPremiumSubscriptionModal
 } from '../../utils/store/slice/appSlice';
+import { downArrow } from '../../assets';
 
 const ProfileDialog = ({ handleLogout, setShowProfileDialog }) => {
   const navigate = useNavigate();
@@ -107,10 +108,9 @@ const Navbar = () => {
       <Grid
         sx={{
           position: 'fixed',
-          background: 'white',
           width: '100vw',
           top: '0px',
-          zIndex: 1000
+          zIndex: 1000,
         }}
         className='nav'
       >
@@ -126,6 +126,7 @@ const Navbar = () => {
             <img src={Logo} alt='funingo-logo' width={'130px'} />
           </Link>
           <Grid
+            className='font'
             display={{ xs: 'none', lg: 'flex' }}
             gap='20px'
             alignItems={'center'}
@@ -139,6 +140,7 @@ const Navbar = () => {
                 color: '#2474D2',
                 height: '100%',
                 position: 'relative',
+                textTransform: 'capitalize',
                 '&:hover': {
                   '& #zone-hover-box': {
                     display: 'flex'
@@ -147,15 +149,16 @@ const Navbar = () => {
               }}
             >
               Zones
+              <img className='arrow-image ml-1 h-[10px] w-4' src={downArrow} alt="" />
               <Grid
                 className='hover-box'
                 id='zone-hover-box'
                 sx={{
                   position: 'absolute',
                   top: '88px',
-                  left: '-18vw',
+                  left: '-23vw',
                   display: 'none',
-                  width: '54rem',
+                  width: '84rem',
                   justifyContent: 'center',
                   overflowY: 'auto',
                   overflowX: 'hidden',
@@ -171,7 +174,7 @@ const Navbar = () => {
                 fontWeight: '600',
                 color: '#2474D2',
                 height: '100%',
-
+                textTransform: 'capitalize',
                 '&:hover': {
                   '& #event-hover-box': {
                     display: 'flex'
@@ -179,8 +182,10 @@ const Navbar = () => {
                 }
               }}
               name='events-btn'
+              className='navText'
             >
               Events
+              <img className='arrow-image ml-1 h-[10px] w-4' src={downArrow} alt="" />
               <Grid
                 className='hover-box'
                 id='event-hover-box'
@@ -188,12 +193,13 @@ const Navbar = () => {
                   position: 'absolute',
                   top: '88px',
                   left: '-18vw',
-                  width: '47rem',
+                  width: '50rem',
                   justifyContent: 'center',
                   overflowY: 'auto',
                   overflowX: 'hidden',
                   display: 'none',
                   background: '#2474d2'
+                  
                 }}
               >
                 <EventHoverComponent />
@@ -205,6 +211,7 @@ const Navbar = () => {
                 fontWeight: '600',
                 height: '100%',
                 color: '#2474D2',
+                textTransform: 'capitalize',
                 '&:hover': {
                   '& #corporate-hover-box': {
                     display: 'flex'
@@ -212,8 +219,10 @@ const Navbar = () => {
                 }
               }}
               name='corporate-btn'
+              className='navText'
             >
-              Corporate X
+              Corporate 
+              <img className='arrow-image ml-1 h-[10px] w-4' src={downArrow} alt="" />
               <Grid
                 className='hover-box'
                 id='corporate-hover-box'
@@ -237,28 +246,33 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/admin/stats')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Statistics
               </Button>
             ) : (
               <Button
                 onClick={() => navigate('/packages')}
-                sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                sx={{ fontWeight: '600', color: '#2474D2', height: '100%',textTransform: 'capitalize', }}
+                className='navText'
               >
-                School X
+                Packages
               </Button>
             )}
+            
             {employee ? (
               <Button
                 onClick={() => navigate('/e/redeem')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Redeem
               </Button>
             ) : (
               <Button
                 onClick={() => navigate('/franchise')}
-                sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                sx={{ fontWeight: '600', color: '#2474D2', height: '100%',textTransform: 'capitalize', }}
+                className='navText'
               >
                 Franchise
               </Button>
@@ -268,13 +282,15 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/we/get-qr-tickets')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Generate QR
               </Button>
             ) : (
               <Button
                 onClick={() => navigate('/gallery')}
-                sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                sx={{ fontWeight: '600', color: '#2474D2', height: '100%',textTransform: 'capitalize', }}
+                className='navText'
               >
                 Gallery
               </Button>
@@ -283,6 +299,7 @@ const Navbar = () => {
               <Button
                 onClick={() => navigate('/we/window-purchase')}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                className='navText'
               >
                 Book tickets
               </Button>
@@ -292,7 +309,8 @@ const Navbar = () => {
                   //  navigate("/contact")
                   scrollToBottom()
                 }
-                sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
+                sx={{ fontWeight: '600', color: '#2474D2', height: '100%',textTransform: 'capitalize'}}
+                className='navText'
               >
                 Contact
               </Button>
