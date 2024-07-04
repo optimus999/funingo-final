@@ -1552,7 +1552,7 @@ const Booknow = () => {
                     Promo code applied!!
                   </Typography>
                 )}
-              </Grid> */}
+              </Grid> 
 
 
 
