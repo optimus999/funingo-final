@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import './pages.css'
+
 import { P1000, P1500, P2000, P2500, P3000, P500, P5000, activityZoneMobileText, activityZoneText, bookNow, heart, keyIcon, loaderGif, sec11, sec12, sec21, sec22, sec31, sec32, sec41, sec42, sec43, sec44, sec45, sec46, sec51, sec52, sec53, sec54, sec55, sec61, sec62, sec71, sec81, sec82, sec83, unload, zone1Point, zone21Point, zone22Point, zone31Point, zone32Point, zone41Point, zone42Point, zone43Point, zone44Point, zone45Point, zone46Point, zone51Point, zone52Point, zone53Point, zone54Point, zone55Point, zone61Point, zone62Point, zone7, zone7Point, zone81Point, zone82Point, zone83Point } from '../../assets'
 import { useNavigate } from 'react-router-dom'
 
@@ -64,6 +65,7 @@ const Zone = () => {
         </div>
       </section>
 
+
       {/* Zone 1  */}
       <section>
         <div className='zone1 flex justify-between lg:p-28 items-center max-sm:flex-col max-sm:p-20 max-sm:space-y-20'>
@@ -74,13 +76,16 @@ const Zone = () => {
               <img src={keyIcon} alt="" className="mr-2 max-sm:w-8" />
               <p className="text-2xl max-md:hidden keys">Trampoline Treasure <br />Island <span className='spanHeading ml-5'>[ Age- 4+ ]</span> </p>
               <p className="text-2xl lg:hidden keys whitespace-nowrap">Trampoline&nbsp;Treasure&nbsp;Island <span className='spanHeadingMobile'>[ Age- 4+ ]</span> </p>
+
             </div>
 
             <div className="mt-8 mb-10 max-sm:mt-2 flex max-sm:justify-center">
               <img src={zone1Point} className='pointIcon' alt="Logo" />
             </div>
+
             <div className='flex max-sm:justify-center'>
               {renderButton()}
+
             </div>
           </div>
 
@@ -123,9 +128,11 @@ const Zone = () => {
                 <img className='flex lg:self-center max-sm:justify-end pointIcon' src={zone22Point} alt="" />
               </div>
             </div>
+
             <div className='lg:mt-28 flex max-sm:justify-center'>
               {renderButton()}
             </div>
+
           </div>
 
           {/* For Desktop Images */}
@@ -191,9 +198,11 @@ const Zone = () => {
               </div>
             </div>
 
+
             <div className='flex lg:mt-28 max-sm:mt-10 max-sm:justify-center'>
               {renderButton()}
             </div>
+
           </div>
 
           {/* For Desktop Images */}
@@ -271,6 +280,7 @@ const Zone = () => {
 
             {/* Mobile View Information  */}
 
+
             <div className='flex-col lg:hidden w-[500px] mt-5'>
               <div className='flex flex-row items-center justify-between px-20' id='firstContainer'>
                 <div className='flex flex-row items-center'>
@@ -329,6 +339,7 @@ const Zone = () => {
             <div className='flex max-sm:mt-10 max-sm:justify-center'>
               {renderButton()}
             </div>
+
           </div>
 
           {/* Desktop Images  */}
@@ -416,6 +427,7 @@ const Zone = () => {
             </div>
 
 
+
             {/* For Mobile View */}
             <div className='flex-col lg:hidden w-[500px] mt-5'>
               <div className='flex flex-row items-center justify-between px-20' id='firstContainer'>
@@ -466,6 +478,7 @@ const Zone = () => {
             <div className='flex lg:mt-2 max-sm:mt-10 max-sm:justify-center'>
               {renderButton()}
             </div>
+
           </div>
 
           {/* For Desktop Images */}
@@ -546,6 +559,7 @@ const Zone = () => {
               </div>
             </div>
 
+
             <div className='flex lg:mt-28 max-sm:mt-10 max-sm:justify-center'>
               {renderButton()}
             </div>
@@ -555,6 +569,7 @@ const Zone = () => {
           <div className='flex flex-row space-x-8 justify-center items-center'>
             <div className='sec61 ml-40 max-sm:hidden'></div>
             <div className='sec62 max-sm:hidden'></div>
+
           </div>
 
           {/* For Mobile Images */}
@@ -588,9 +603,11 @@ const Zone = () => {
               <img className='pointIcon mt-5 lg:hidden' src={zone7Point} alt="" />
             </div>
 
+
             <div className='flex max-sm:justify-center'>
               {renderButton()}
             </div>
+
           </div>
 
           {/* Desktop Version  */}
@@ -645,6 +662,7 @@ const Zone = () => {
               </div>
             </div>
 
+
             {/* For Mobile View */}
             <div className='flex-col lg:hidden w-[500px] mt-5'>
               <div className='flex flex-row items-center justify-between px-20' id='firstContainer'>
@@ -677,6 +695,7 @@ const Zone = () => {
             <div className='flex lg:mt-28 max-sm:mt-10 max-sm:justify-center'>
               {renderButton()}
             </div>
+
           </div>
 
           {/* For Desktop Images */}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './style.scss';
 import { Cursor } from 'react-simple-typewriter';
 import { Grid } from '@mui/material';
-import Logo from '../../assets/logo.jpg';
+import Logo from '../../assets/logo.svg';
 
 const Loader = () => {
   function useTypewriter({ words, loop }) {

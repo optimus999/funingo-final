@@ -1,15 +1,15 @@
 import React from "react";
 import { Grid, Typography, Button, Box } from "@mui/material";
-import birthday from "./images/birthday.png";
+import birthday from "./images/birthday.jpg";
 import bg6 from "./images/bg6.png";
 import bg4 from "./images/bg4.png";
 import bg5 from "./images/bg5.png";
 import "./styles.scss";
 import { useNavigate } from "react-router";
 import birthdayParty from "./images/birthdayParty.png";
-import wedding from "./images/wedding.png";
+import wedding from "./images/gettogether.jpg";
 import babyshowerheading from "./images/babyshowerheading.png";
-import babyshower from "./images/babyshower.png";
+import babyshower from "./images/kittyparty.jpg";
 import prewedding from "./images/prewedding.png";
 import { scrollToBottom } from "../../utils";
 

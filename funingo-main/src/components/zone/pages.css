@@ -211,6 +211,7 @@
 
 
 .text-primary {
+    font-weight: 520;
     font-size: 45px;
     color: white;
     font-family: Poppins;
@@ -219,8 +220,10 @@
 .text-secondary {
     font-size: 45px;
     color: #3fcf3a;
+    /* color: red; */
     font-family: Poppins;
     font-weight: bold;
+
 }
 
 .keys {

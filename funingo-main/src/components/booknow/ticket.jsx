@@ -93,7 +93,7 @@ export const Ticket = ({
       (final, extraFlag) => {
         if (extraFlags[extraFlag])
           return (
-            final + `${firstCapital(extraFlag)} x ${extraFlags[extraFlag]}, `
+            final + `${extraFlags[extraFlag]}, `
           );
         return final;
       },
@@ -170,7 +170,7 @@ export const Ticket = ({
               <Label isPremium={isPremium} sx={{ width: '150px' }}>
                 Funingo Coins
               </Label>
-              <Value>{ticket?.used_funingo_money}</Value>
+              <Value>{ticket?.used_funingo_money+ticket?.details[0].package.yellow}</Value>
             </Container>
           </Grid>
           <Grid display='flex'>
