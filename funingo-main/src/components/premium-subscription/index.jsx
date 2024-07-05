@@ -231,11 +231,11 @@ const PremiumSubscriptionModal = () => {
                 <Title>50% Off Plan</Title>
               </TitleBox>
               <TitleBox
-              sx={{
+              // sx={{
                 // borderRadius: '2px',
-                width:'15px',
-                color:'white',
-              }}
+              //   width:'15px',
+              //   color:'white',
+              // }}
                 active={selectedPremium === '50%$1_year'}
                 onClick={() => setSelectedPremium('50%$1_year')}
               >

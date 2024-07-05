@@ -31,6 +31,7 @@ import { set, useForm } from 'react-hook-form';
 import {
   InputAdornment,
 } from "@mui/material";
+import { scrollToTop } from '../../utils';
 
 const WindowPurchase = () => {
   const navigate = useNavigate();
@@ -925,7 +926,7 @@ const WindowPurchase = () => {
                 Your ticket is booked. <b>TicketId: {shortId}</b>
               </Typography>
               <Button
-                onClick={() => navigate(`/we/get-qr-tickets?tid=${shortId}`)}
+                onClick={() => {navigate(`/we/get-qr-tickets?tid=${shortId}`);scrollToTop();}}
               >
                 Generate QR Tickets
               </Button>

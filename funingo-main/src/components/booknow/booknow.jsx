@@ -1496,7 +1496,7 @@ const Booknow = () => {
 
 
 
-              <Grid width={"100%"} mb={"15px"} gap={"0px"} className="max-md:mt-[60px]">
+              {/* <Grid width={"100%"} mb={"15px"} gap={"0px"} className="max-md:mt-[60px]">
                 <label className="book-now-label">Promo Code</label>
                 <TextField
                   fullWidth
@@ -1552,7 +1552,7 @@ const Booknow = () => {
                     Promo code applied!!
                   </Typography>
                 )}
-              </Grid> 
+              </Grid>  */}
 
 
 

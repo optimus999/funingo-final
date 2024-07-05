@@ -366,7 +366,7 @@ const RedeemTicket = () => {
   };
 
   useEffect(() => {
-    console.log("Updated inputValue:", inputValue);
+    // console.log("Updated inputValue:", inputValue);
   }, [inputValue]);
 
   // const handleSubmit = () => {
@@ -707,6 +707,27 @@ const RedeemTicket = () => {
               <span>Archery Alley</span>
               <div className='funingo-icon-container'>
               <span>500</span>
+              <Coin/>
+              </div>
+            </div>
+            <div className="option" onClick={() => handleSelection(2500,"ZipLine")}>
+              <span>ZipLine</span>
+              <div className='funingo-icon-container'>
+              <span>2500</span>
+              <Coin/>
+              </div>
+            </div>
+            <div className="option" onClick={() => handleSelection(2500,"Wall rappelling")}>
+              <span>Wall rappelling</span>
+              <div className='funingo-icon-container'>
+              <span>2500</span>
+              <Coin/>
+              </div>
+            </div>
+            <div className="option" onClick={() => handleSelection(1000,"Zorbie Fight")}>
+              <span>Zorbie Fight</span>
+              <div className='funingo-icon-container'>
+              <span>1000</span>
               <Coin/>
               </div>
             </div>

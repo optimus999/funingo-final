@@ -70,10 +70,13 @@ export const Ticket = ({
   const downloadTicket = () => {
     
     if (ticketRef?.current && downloadable) {
+      console.log("entering here bro for ticket download");
       downloadImage(ticketRef.current, 'funingo-ticket.png');
     }
     navigate('/profile');
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 800);
     scrollToTop();
   };
 

@@ -35,7 +35,8 @@ import {
   isAdmin,
   isEmployee,
   isWindowEmployee,
-  scrollToBottom
+  scrollToBottom,
+  scrollToTop
 } from '../../utils';
 import {
   closeAuthModal,
@@ -262,7 +263,7 @@ const Navbar = () => {
             
             {employee ? (
               <Button
-                onClick={() => navigate('/e/redeem')}
+                onClick={() => {navigate('/e/redeem');scrollToTop();}}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
                 className='navText'
               >
@@ -280,7 +281,7 @@ const Navbar = () => {
 
             {windowEmployee ? (
               <Button
-                onClick={() => navigate('/we/get-qr-tickets')}
+                onClick={() => {navigate('/we/get-qr-tickets');scrollToTop()}}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
                 className='navText'
               >
@@ -297,7 +298,7 @@ const Navbar = () => {
             )}
             {windowEmployee ? (
               <Button
-                onClick={() => navigate('/we/window-purchase')}
+                onClick={() => {navigate('/we/window-purchase');scrollToTop();}}
                 sx={{ fontWeight: '600', color: '#2474D2', height: '100%' }}
                 className='navText'
               >
@@ -780,7 +781,7 @@ const Navbar = () => {
                         borderBottom: '1px solid #aac1dc'
                         // boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'
                       }}
-                      onClick={() => navigate('/we/window-purchase')}
+                      onClick={() => {navigate('/we/window-purchase');scrollToTop()}}
                     >
                       Book tickets
                     </Button>

@@ -16,7 +16,7 @@ const Zone = () => {
     <button
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={() => navigate('/book')}
+      onClick={() => {navigate('/book');scrollToTop();}}
       style={{ position: 'relative' }}
       className="mt-8 flex max-sm:justify-center max-sm:mt-2"
     >
