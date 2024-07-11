@@ -629,7 +629,7 @@ const Booknow = () => {
             bg-[#03ea2e] buttonText
             cursor-pointer absolute left-8
           ">
-          VIEW ACTIVITY COSTS
+          VIEW COINS PER ACTIVITY
         </button>
         {/* Left Information Grid Mobile Version  */}
         {isVisible && (
