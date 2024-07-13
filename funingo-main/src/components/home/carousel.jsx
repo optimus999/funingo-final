@@ -12,7 +12,7 @@ import { Box } from '@mui/material';
 import './carousel.scss';
 
 const galleryData = {
-  title: 'FRIENDS | FAMILY | FUN FUNINGO',
+  title: 'GALLERY',
   pictures: [
     {
       p1: Img1,

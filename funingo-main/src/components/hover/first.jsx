@@ -119,6 +119,12 @@ export default function first() {
         <Typography className='sub2' mt='10px'>
           Sky Cyclist's Trails
         </Typography>
+        <Typography className='sub2' mt='10px'>
+          Zip Line
+        </Typography>
+        <Typography className='sub2' mt='10px'>
+          Wall Rappelling
+        </Typography>
         <Typography className='sub2' mt='5px'>
           Commando Climb Net
         </Typography>
@@ -137,6 +143,9 @@ export default function first() {
         </Typography>
         <Typography className='sub2' mt='10px'>
           Kid's Obstacle Odyssey
+        </Typography>
+        <Typography className='sub2' mt='10px'>
+          Zorbie Fight
         </Typography>
         <Typography className='sub2' mt='10px'>
           Sumo Showdown

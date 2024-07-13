@@ -11,7 +11,10 @@ export const getDiscount = async ({ code, total_amount, token }) => {
     );
     return response.data;
   } catch (e) {
-    console.log(e);
+    if(e.response.data==='User is not authenticated.')
+      alert(e.response.data);
+    else
+    console.log(e); 
   }
 };
 

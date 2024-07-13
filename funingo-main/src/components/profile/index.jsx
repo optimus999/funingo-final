@@ -213,6 +213,7 @@ const Profile = () => {
                     <TableCell align='right'>Credited Funingo Money</TableCell>
                     <TableCell align='right'>Date</TableCell>
                     <TableCell align='right'>Total Amount</TableCell>
+                    <TableCell align='right'>Preferred Slots</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -252,6 +253,9 @@ const Profile = () => {
                         </TableCell>
                         <TableCell align='right'>
                           Rs. {ticket.total_amount}
+                        </TableCell>
+                        <TableCell align='right'>
+                          {ticket.preferred_slot}
                         </TableCell>
                       </TableRow>
                     ))}

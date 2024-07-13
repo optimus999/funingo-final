@@ -80,7 +80,7 @@ const PremiumSubscriptionModal = () => {
       <Grid
         width={{
           xs: '370px',
-          sm: '450px'
+          sm: '502px'
         }}
         sx={{
           background: 'linear-gradient(250deg, #132234, #05080E)',
@@ -108,7 +108,7 @@ const PremiumSubscriptionModal = () => {
             top: '0px'
           }}
         />
-        <Grid marginTop='65px' p='10px'>
+        <Grid marginTop='65px' p='0px'>
           <Typography
             sx={{
               color: 'white',
@@ -133,7 +133,7 @@ const PremiumSubscriptionModal = () => {
             sx={{
               width: '250px',
               height: '2px',
-              background: 'white',
+              background: '#ededed',
               margin: '10px auto 25px',
               borderRadius: '75%'
             }}
@@ -207,10 +207,12 @@ const PremiumSubscriptionModal = () => {
           <Grid
             sx={{
               background: 'white',
-              margin: '20px',
-              width: 'calc(100% - 40px)',
-              borderRadius: '10px',
-              border: '2px solid #FFE20C',
+              border:'2px solid yellow',
+              paddingTop: '18px',
+              margin: '0px',
+              width: 'calc(100%)',
+              // borderRadius: '10px',
+              // border: '2px solid #FFE20C',
               mt: '30px'
             }}
           >
@@ -229,11 +231,16 @@ const PremiumSubscriptionModal = () => {
                 <Title>50% Off Plan</Title>
               </TitleBox>
               <TitleBox
+              // sx={{
+                // borderRadius: '2px',
+              //   width:'15px',
+              //   color:'white',
+              // }}
                 active={selectedPremium === '50%$1_year'}
                 onClick={() => setSelectedPremium('50%$1_year')}
               >
                 <Title>1 Year</Title>
-                <Title>50% Off Plan</Title>
+                <Title>50% Off Plan</Title>           
               </TitleBox>
               <TitleBox
                 active={selectedPremium === '50%$100_years'}
@@ -285,9 +292,114 @@ const PremiumSubscriptionModal = () => {
                 </Typography>
               </Grid>
             </Grid>
+            <Grid sx={{ display: 'flex', justifyContent: 'space-between', padding: '5px 20px 20px' }}>
+  <PaymentButton
+    disabled={selectedPremium.split('$')?.[0] !== '50%'}
+    premium_data={{
+      expiry: selectedPremium.split('$')?.[1],
+      premium_type: selectedPremium.split('$')?.[0],
+      quantity: 1
+    }}
+    handleClose={handleClose}
+  />
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <span style={{ color: 'red', fontSize: '24px', margin: '0 2px' }}>&#9733;</span>
+    <span style={{ color: 'red', fontSize: '24px', margin: '0 2px' }}>&#9733;</span>
+    <span style={{ color: 'red', fontSize: '24px', margin: '0 2px' }}>&#9733;</span>
+    <span style={{ color: 'red', fontSize: '24px', margin: '0 2px' }}>&#9733;</span>
+    <span style={{ color: 'red', fontSize: '24px', margin: '0 2px' }}>&#9733;</span>
+  </div>
+</Grid>
+
+          </Grid>
+
+          {/* <Grid
+            sx={{
+              background: 'white',
+              margin: '20px',
+              width: 'calc(100% - 40px)',
+              borderRadius: '10px',
+              border: '2px solid #FFE20C'
+            }}
+          >
+            <Grid
+              sx={{
+                display: 'flex'
+              }}
+            >
+              <TitleBox
+                sx={{
+                  borderTopLeftRadius: '8px'
+                }}
+                active={selectedPremium === '100%$6_months'}
+                onClick={() => setSelectedPremium('100%$6_months')}
+              >
+                <Title>6 Months</Title>
+                <Title>Unlimited</Title>
+              </TitleBox>
+              <TitleBox
+                active={selectedPremium === '100%$1_year'}
+                onClick={() => setSelectedPremium('100%$1_year')}
+              >
+                <Title>1 Year</Title>
+                <Title>Unlimited</Title>
+              </TitleBox>
+              <TitleBox
+                sx={{
+                  borderTopRightRadius: '8px'
+                }}
+                active={selectedPremium === '100%$100_years'}
+                onClick={() => setSelectedPremium('100%$100_years')}
+              >
+                <Title>Life Long</Title>
+                <Title>Unlimited</Title>
+              </TitleBox>
+            </Grid>
+            <Grid
+              sx={{
+                p: '20px 15px',
+                display: 'flex',
+                gap: '20px'
+              }}
+            >
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  p: '1px 0px'
+                }}
+              >
+                <Box
+                  component={'img'}
+                  src={Bar}
+                  sx={{
+                    height: '50px',
+                    m: 'auto'
+                  }}
+                />
+              </Box>
+              <Grid
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between'
+                }}
+              >
+                <Typography fontSize={'12px'} lineHeight={'12px'}>
+                  Enjoy free booking any number of times in the desired time
+                </Typography>
+                <Typography fontSize={'12px'} lineHeight={'12px'}>
+                  Unlimited Activities, Unlimited Times
+                </Typography>
+                <Typography fontSize={'12px'} lineHeight={'12px'}>
+                  Free access to new additions also
+                </Typography>
+              </Grid>
+            </Grid>
             <Grid p='5px 20px 20px'>
               <PaymentButton
-                disabled={selectedPremium.split('$')?.[0] !== '50%'}
+                disabled={selectedPremium.split('$')?.[0] !== '100%'}
                 premium_data={{
                   expiry: selectedPremium.split('$')?.[1],
                   premium_type: selectedPremium.split('$')?.[0],
@@ -296,7 +408,7 @@ const PremiumSubscriptionModal = () => {
                 handleClose={handleClose}
               />
             </Grid>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Grid>
     </Dialog>

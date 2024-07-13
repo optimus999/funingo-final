@@ -28,6 +28,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import UserBase from './user';
 import PlayerBase from './player';
 import { useNavigate } from 'react-router-dom';
+import { scrollToTop } from '../../../utils';
 
 ChartJS.register(
   CategoryScale,
@@ -121,6 +122,7 @@ const Stats = () => {
 
   const handleGetDetailsClick = () => {
     navigate(`/admin/showdetails`);
+    scrollToTop();
   }
   const dispatch = useDispatch();
   const [years, setYear] = useState(new Date().getFullYear().toString());
