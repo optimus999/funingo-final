@@ -6,8 +6,7 @@ const AddMoreModal = ({ open, onClose, onContinue, amount }) => {
     <Dialog open={open} onClose={onClose} maxWidth='md'>
       <Grid p='20px'>
         <Typography fontSize={'18px'} mb={'15px'}>
-          Add extra flags worth Rs. {amount} to get funingo money after
-          successful payment!!
+          Please Continue 
         </Typography>
         <Grid
           sx={{
@@ -17,9 +16,9 @@ const AddMoreModal = ({ open, onClose, onContinue, amount }) => {
             justifyContent: 'flex-end'
           }}
         >
-          <Button variant='outlined' onClick={onClose}>
+          {/* <Button variant='outlined' onClick={onClose}>
             Add More
-          </Button>
+          </Button> */}
           <Button
             variant='contained'
             onClick={() => {
@@ -27,7 +26,7 @@ const AddMoreModal = ({ open, onClose, onContinue, amount }) => {
               onContinue();
             }}
           >
-            Skip & Continue
+            Continue
           </Button>
         </Grid>
       </Grid>

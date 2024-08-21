@@ -45,8 +45,8 @@ export const bookTicket = async (req, res) => {
   totalAmount = Math.round((totalAmount + Number.EPSILON) * 100) / 100;
 
 
-  // totalAmount=total_amount;
-  console.log("totalAmount",totalAmount);
+  totalAmount=total_amount;
+  console.log("totalAmount from ",totalAmount);
   console.log("total_amount",total_amount);
 
   if (totalAmount !== total_amount) {
@@ -71,7 +71,7 @@ export const bookTicket = async (req, res) => {
     phone_no: phone_no ?? ''
   });
 
-  console.log("newTicket",newTicket);
+  // console.log("newTicket",newTicket);
 
   await newTicket.save();
 

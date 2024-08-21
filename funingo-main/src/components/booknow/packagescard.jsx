@@ -43,7 +43,7 @@ const Packagecard = ({ data, boolFlag }) => {
         paddingX={"4px"}
         alignItems={"center"}
       >
-        <Typography>{boolFlag ? "Flags :- " : "Freebies :- "}</Typography>
+        <Typography>{boolFlag ? "Coins :- " : "Freebies :- "}</Typography>
         {/* <Typography
           fontWeight={"600"}
           display={"flex"}

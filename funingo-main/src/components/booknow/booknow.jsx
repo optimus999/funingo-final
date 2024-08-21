@@ -21,9 +21,10 @@ import { useFormik } from "formik";
 import Button from "@mui/material/Button";
 import AccordionList from "./accordioncard";
 import shortid from "shortid";
-import axios from "axios";
+
 import { useDispatch, useSelector } from "react-redux";
 import { apiUrl, flag_prices, percent_of_fm_to_use } from "../../constants";
+import axios from "axios";
 import PaymentButton from "./payment";
 import Packagecard from "./packagescard";
 import {
@@ -45,9 +46,12 @@ import InfoIcon from "@mui/icons-material/Info";
 import Ticket from "./ticket";
 import ConfirmationModal from "../windowPurchase/modal";
 import { P1000, P1500, P2000, P2500, P3000, P500, P5000, arrow } from "../../assets";
-import { red } from "@mui/material/colors";
+import { red, yellow } from "@mui/material/colors";
 import { openAuthModal } from '../../utils/store/slice/appSlice';
 
+// export function useCoinsFetchedWithPhoneNo(coined) {
+//   return coined;
+// }
 
 export const genderOptions = [
   { value: "male", label: "Male" },
@@ -89,6 +93,18 @@ const packageInfo = [
     image: P500,
   },
   {
+    text: "Rocket Ejector",
+    image: P2500,
+  },
+  {
+    text: "Gyro Sphere 360",
+    image: P1500,
+  },
+  {
+    text: "Cycle Cycle 360",
+    image: P1000,
+  },
+  {
     text: "Peak Rock Climb",
     image: P2000,
   },
@@ -117,12 +133,12 @@ const packageInfo = [
     image: P1000,
   },
   {
-    text: "Pedal Go Kart",
-    image: P1000,
-  },
-  {
     text: "Sumo Showdown",
     image: P500,
+  },
+  {
+    text: "Burma Bridge",
+    image: P1500,
   },
   {
     text: "Archery Alley",
@@ -134,6 +150,14 @@ const packageInfo = [
   },
   {
     text: "Pedal Go Kart",
+    image: P1000,
+  },
+  {
+    text: "ZipLine",
+    image: P2500,
+  },
+  {
+    text: "Zorbie Fight",
     image: P1000,
   },
 ];
@@ -174,6 +198,8 @@ const initialErrorMsg = {
 const Booknow = () => {
   const dispatch = useDispatch();
 
+
+
   const {
     userData = {},
     token,
@@ -207,12 +233,58 @@ const Booknow = () => {
   const today = new Date().getDay(); // Get the current day of the week (0 for Sunday, 1 for Monday, and so on)
   const isWeekend = today === 0 || today === 6;
   const [promoCodeOptions, setPromoCodeOptions] = useState([]);
+  let [userphoneno,setuserphoneno]=useState(0);
 
 
   useEffect(() => {
     // Set usedFuningoMoney to Number(values.totalfuningocoinsassigned) initially
     setUseFuningoMoney(Number(values.totalfuningocoinsassigned));
+    // console.log("values.phone",values.phone)
+    // fetchYellowTotal(values.phone);
   });
+
+  
+
+  
+  
+
+  
+//     const fetchYellowTotal = async (phone_no) => {
+//         try {
+//             const token = localStorage.getItem('token');
+//             if (!token) {
+//                 throw new Error('Login or SignUp First');
+//             }
+
+//             const headers = {
+//                 token: token,
+//                 'Content-Type': 'application/json'
+//             };
+//             const response = await axios.get(`${apiUrl}/admin/get-yellow-total`, {
+//                 params: { phone_no },
+//                 headers: headers
+//             });
+//             const yellowTotal = response.data.yellowTotal;
+//             setcoinsfetchedwithphoneno(yellowTotal);
+//             console.log('Total yellow:', yellowTotal);
+//         } catch (error) {
+//             console.error('Error fetching yellow total:', error);
+//         }
+//     // console.log()
+//     // userData.funingo_money=coinsfetchedwithphoneno;
+    
+//     if (userData) {
+//       userData.funingo_money = coinsfetchedwithphoneno;
+//   } else {
+//     userData.funingo_money = 0;
+//   }
+//     // userData.funingo_money=coinsfetchedwithphoneno;
+//     // console.log("userData2",userData.funingo_money)
+//     // useCoinsFetchedWithPhoneNo(coinsfetchedwithphoneno);
+// }
+
+
+
 
   const [inputValue, setInputValue] = useState('');
 
@@ -266,7 +338,7 @@ const Booknow = () => {
           });
           errmessage += "Email Address is invalid ";
         }
-
+        
         if (!validatePhoneNumber(values.phone)) {
           setErrorMsg({
             ...setErrorMsg,
@@ -571,6 +643,7 @@ const Booknow = () => {
 
   useEffect(() => {
     if (userData) {
+      console.log("userdata",userData);
       setPremium50Live(
         userData?.premium?.filter(
           (data) =>
@@ -601,6 +674,7 @@ const Booknow = () => {
         },
       });
     }
+    // console.log("values.phone",values.phone)
   }, [userData]);
 
   // For mobile version of Charges Information

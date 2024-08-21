@@ -681,7 +681,8 @@ const Register = () => {
           sx={{
             color: 'green !important',
             fontWeight: '600',
-            lineHeight: '1.2'
+            lineHeight: '1.2',
+            fontSize:'1.1rem'
           }}
           onClick={() => {
             setIsSignstate(true);

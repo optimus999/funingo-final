@@ -1760,6 +1760,48 @@ export const checkConsent = async (req, res) => {
   });
 };
 
+
+export const gettotalcoins = async (req, res) => {
+  console.log("correct hitting");
+  try {
+    let { phone_no } = req.query; 
+
+    if (!phone_no) {
+      return res.status(400).json({ message: 'Phone number is required' });
+    }
+
+    if (!phone_no.startsWith('+91-')) {
+      phone_no = `+91-${phone_no}`;
+    }
+
+    // Find the latest ticket by phone number sorted by fun_date
+    const ticket = await Ticket.findOne({ phone_no }).sort({ fun_date: -1 });
+
+    if (!ticket) {
+      return res.status(404).json({ message: 'Ticket not found' });
+    }
+
+    let yellowTotal = 0;
+
+    for (const detail of ticket.details) {
+      const qrTicket = await QRTicket.findById(detail.qr_ticket);
+      if (qrTicket) {
+        yellowTotal += qrTicket.yellow || 0;
+      }
+    }
+
+    return res.json({ yellowTotal });
+
+  } catch (error) {
+    console.error('Error fetching yellow total:', error);
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+
+
+
 export const Getdetailfunction = async (req, res) => {
   console.log("entring");
   Ticket.find()

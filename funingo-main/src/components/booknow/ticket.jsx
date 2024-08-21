@@ -81,7 +81,7 @@ export const Ticket = ({
   };
 
   const extraFlagValue = useMemo(() => {
-    console.log("ticket",ticket);
+    // console.log("ticket at beginnning of ticket.jsx",ticket);
     const extraFlags = ticket?.details?.reduce(
       (flags, person) => ({
         red: flags.red + person.extra_red,
@@ -173,12 +173,23 @@ export const Ticket = ({
               <Label isPremium={isPremium}>PAX</Label>
               <Value>{ticket?.details?.length}</Value>
             </Container> */}
-            <Container width='230px'>
-              <Label isPremium={isPremium} sx={{ width: '150px' }}>
-                Funingo Coins
-              </Label>
-              <Value>{ticket?.used_funingo_money+ticket?.details[0].package.yellow}</Value>
-            </Container>
+            <Grid display='flex'>
+  {/* Log the ticket object */}
+  {/* {console.log("ticket printing ",ticket)} */}
+
+  {/* <Container width='170px'>
+    <Label isPremium={isPremium}>PAX</Label>
+    <Value>{ticket?.details?.length}</Value>
+  </Container> */}
+  
+  <Container width='230px'>
+    <Label isPremium={isPremium} sx={{ width: '150px' }}>
+      Funingo Coins
+    </Label>
+    <Value>{ticket?.used_funingo_money + ticket?.details[0].package.yellow}</Value>
+  </Container>
+</Grid>
+
           </Grid>
           <Grid display='flex'>
             <Container width='170px'>

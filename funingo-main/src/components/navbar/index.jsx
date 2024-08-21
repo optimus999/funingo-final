@@ -9,6 +9,8 @@ import {
   TextField 
 } from '@mui/material';
 import { getuser_funingomoney } from '../freebies-modal/freebies-mascot';
+import { apiUrl} from "../../constants";
+import axios from "axios";
 
 
 
@@ -94,6 +96,51 @@ const Navbar = () => {
 
 
   const [navExpanded, setNavExpanded] = useState(false);
+  const [yellowTotal, setYellowTotal] = useState(0);
+
+  useEffect(() => {
+    // console.log("user",user);
+    if(user)
+    fetchYellowTotal(user.phone_no)
+}, [isLoggedIn]);
+
+
+
+let[coinsfetchedwithphoneno,setcoinsfetchedwithphoneno]=useState(0)
+
+
+  const fetchYellowTotal = async (phone_no) => {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('Login or SignUp First');
+        }
+
+        const headers = {
+            token: token,
+            'Content-Type': 'application/json'
+        };
+
+        const response = await axios.get(`${apiUrl}/admin/get-yellow-total`, {
+            params: { phone_no },
+            headers: headers
+        });
+
+        const yellowTotal = response.data.yellowTotal;
+        setcoinsfetchedwithphoneno(yellowTotal);
+        console.log("yellowtotal",yellowTotal)
+
+        // localStorage.setItem('yellowTotal', yellowTotal);
+      
+      // console.log('Updated funingo_money:', userData.funingo_money);
+      
+
+    } catch (error) {
+        console.error('Error fetching yellow total:', error);
+    }
+};
+
+
 
   const handleLogout = () => {
     dispatch(removeUser());
@@ -102,7 +149,10 @@ const Navbar = () => {
   };
 
   if(isLoggedIn)
+  {
+    // console.log("user data from navbar.jsx",user)
     getuser_funingomoney(user.funingo_money);
+  }
 
   return (
     <>
@@ -316,6 +366,28 @@ const Navbar = () => {
                 Contact
               </Button>
             )}
+              <Button
+        onClick={() => { navigate('/book'); scrollToTop(); }}
+        sx={{
+          fontWeight: 'bold',
+          color: 'black',
+          height: '40px',
+          textTransform: 'none',
+          // backgroundColor: '#FF5722', // Bright, attention-grabbing color
+          borderRadius: '30px',
+          padding: '0 30px',
+          // fontSize: '18px',
+          border: '2px solid blue',
+          '&:hover': {
+            backgroundColor: 'blue', 
+            color:'white',// Slightly darker on hover
+            border: '2px solid white'
+          },
+        }}
+        className='navText'
+      >
+        BookNow
+      </Button>
           </Grid>
           <Grid
             sx={{
@@ -392,7 +464,7 @@ const Navbar = () => {
 
               {/* change 2-> Adding clear Icon  */}
                 {!isLaptop ? (<>{!navExpanded ? <DehazeIcon sx={{ color: 'black' }} /> 
-                 :<ClearIcon sx={{ color: 'black' }} />}</>) : ( 'Signup')}
+                 :<ClearIcon sx={{ color: 'black' }} />}</>) : ( 'Signup/Login')}
               </Button>
             )}
 
@@ -434,7 +506,7 @@ const Navbar = () => {
                       width: '40px'
                     }}
                   >
-                    {user.funingo_money}
+                    {coinsfetchedwithphoneno}
                   </Typography>
                 </Box>
 

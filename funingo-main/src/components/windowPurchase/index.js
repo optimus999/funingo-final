@@ -20,6 +20,8 @@ import {
 } from '@mui/material';
 import { Tour } from '@mui/icons-material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import ListedOptionLayout from './ListedOptionLayout';
 import { windowPurchase } from '../../actions/exployee';
 import { useSelector } from 'react-redux';
@@ -73,12 +75,41 @@ const WindowPurchase = () => {
     setPhoneNumber(e.target.value);
     setIsValid(true);
   };
+ 
+  let[coinsfetchedwithphoneno,setcoinsfetchedwithphoneno]=useState(0)
+
+  const fetchYellowTotal = async (phone_no) => {
+    // console.log("entering funtion",phone_no);
+    try {
+      const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('Login or SignUp First');
+        }
+
+        const headers = {
+          token: token,
+          'Content-Type': 'application/json'
+        };
+      const response = await axios.get(`${apiUrl}/admin/get-yellow-total`, {
+        params: { phone_no },
+        headers: headers
+      });
+      const yellowTotal = response.data.yellowTotal;
+      setcoinsfetchedwithphoneno(yellowTotal);
+      console.log('Total yellow:', yellowTotal);
+      // You can now use yellowTotal in your frontend logic
+    } catch (error) {
+      console.error('Error fetching yellow total:', error);
+    }
+    // console.log("out already funtion",phone_no);
+  };
 
   const handleCheckClick = () => {
     if (!validatePhoneNumber(phoneNumber)) {
       setHelperText('Invalid phone number');
       setIsValid(false);
     } else {
+      fetchYellowTotal(phoneNumber);
       setHelperText('');
       setIsValid(true);
     }
@@ -105,10 +136,10 @@ const WindowPurchase = () => {
         if (!response.data.success) {
           throw new Error("Couldn't Fetch Freebies");
         }
-        console.log('fetched freebies', response.data);
+        // console.log('fetched freebies', response.data);
         setDummyFreebiesData(response.data.freebies);
       } catch (error) {
-        console.log(error.message, error);
+        // console.log("user not found");
       } finally {
         setIsLoading(false);
       }
@@ -133,6 +164,7 @@ const WindowPurchase = () => {
         for (let i = updatedSelectedSlots.length; i < newCount; i++) {
           updatedSelectedSlots.push({
             package: '',
+            yellow: 0,
             freebies: '',
             extra_red: 0,
             extra_green: 0,
@@ -169,14 +201,36 @@ const WindowPurchase = () => {
     );
   };
 
+
+  const [newValue, setNewValue] = useState(0);
+
+  // Handler for Select change
   const handlePackageSelectChange = (event, index) => {
     const selectedValue = event.target.value;
     setSelectedSlots(prevSelectedSlots => {
       const updatedSelectedSlots = [...prevSelectedSlots];
-      updatedSelectedSlots[index].package = selectedValue;
+      updatedSelectedSlots[index].package = selectedValue; // Here we store only the selected value
+      console.log("updatedSelectedSlots from handlePackageSelectChange",updatedSelectedSlots)
       return updatedSelectedSlots;
     });
   };
+
+  // Handler for TextField change
+  const handleNewValueChange = (event, index) => {
+    const value = parseInt(event.target.value, 10) || 0; // Ensure the value is an integer
+    setNewValue(value);
+
+    // Update the corresponding slot with the new value
+    setSelectedSlots(prevSelectedSlots => {
+      const updatedSelectedSlots = [...prevSelectedSlots];
+      // Storing the custom value separately in selectedSlots
+      updatedSelectedSlots[index].customValue = value;
+      // updatedSelectedSlots[index].package.yellow+=value;
+      console.log("updatedSelectedSlots from handleNewValueChange",updatedSelectedSlots)
+      return updatedSelectedSlots;
+    });
+  };
+  
 
   const handleFreebiesSelectChange = (event, index) => {
     const selectedValue = event.target.value;
@@ -244,7 +298,11 @@ const WindowPurchase = () => {
     }));
     details[0].discount=discount;
     details[0].promo_code=code;
+    console.log("details[0].extra_yellow",details[0].extra_yellow);
+    // console.log("packagecoins",packagecoins);
+    // details[0].extra_yellow=packagecoins;
     console.log("details",details);
+
     try {
       const response = await windowPurchase({
         total_amount: totalPrice,
@@ -477,38 +535,50 @@ const WindowPurchase = () => {
                 }}
               >
                 <Grid
-                  sx={{
-                    width: { xs: '100%', lg: '50%' },
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '10px'
-                  }}
-                >
-                  <FormControl fullWidth>
-                    <InputLabel>Select Package</InputLabel>
-                    <Select
-                      label='Select Package'
-                      value={
-                        selectedSlot?.package === '' ? '' : selectedSlot.package
-                      }
-                      onChange={e => handlePackageSelectChange(e, index)}
-                    >
-                      <MenuItem value=''>
-                        <em>
-                          {getAvailablePackageOptions &&
-                          getAvailablePackageOptions.length === 0
-                            ? 'Deselect packages'
-                            : 'None'}
-                        </em>
-                      </MenuItem>
-                      {getAvailablePackageOptions(index).map((option, i) => (
-                        <MenuItem key={i} value={option}>
-                          <ListedOptionLayout data={option} boolFlag={true} />
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
+  sx={{
+    width: { xs: '100%', lg: '50%' },
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px'
+  }}
+>
+  <FormControl fullWidth>
+    <InputLabel>Select Package</InputLabel>
+    <Select
+      label='Select Package'
+      value={
+        selectedSlot?.package === '' ? '' : selectedSlot.package
+      }
+      onChange={e => handlePackageSelectChange(e, index)}
+    >
+      <MenuItem value=''>
+        <em>
+          {getAvailablePackageOptions && getAvailablePackageOptions.length === 0
+            ? 'Deselect packages'
+            : 'None'}
+        </em>
+      </MenuItem>
+      {getAvailablePackageOptions(index).map((option, i) => (
+        <MenuItem key={i} value={option}>
+          <ListedOptionLayout data={option} boolFlag={true} />
+        </MenuItem>
+      ))}
+    </Select>
+  </FormControl>
+
+  <TextField
+    fullWidth
+    label="Enter New Value"
+    variant="outlined"
+    value={newValue}  // Assuming you have a state to handle this value
+    onChange={e => handleNewValueChange(e, index)}  // Create a handler for this
+    sx={{
+      marginTop: '10px'
+    }}
+  />
+</Grid>
+
+
                 <Grid
                   sx={{
                     width: { xs: '100%', lg: '50%' },

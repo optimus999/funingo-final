@@ -19,10 +19,29 @@ import {
   userLocationDetails,
   usersWRTPremium,
   usersWithUpcomingBday,
-  Getdetailfunction
+  Getdetailfunction,
+  gettotalcoins
 } from '../../controllers/admin/index.js';
 
 const router = express.Router();
+
+
+// router.get(
+//   '/admin/get-yellow-total',
+//   authenticateAdmin,
+//   catchAsync(gettotalcoins)
+// );
+
+router.get(
+  '/get-yellow-total',
+  (req, res, next) => {
+    console.log("entering"); // This logs when the route is accessed
+    next(); // Pass control to the next middleware/handler
+  },
+  // authenticateAdmin,
+  catchAsync(gettotalcoins)
+);
+
 
 router.get('/get-stats', authenticateAdmin, catchAsync(getStatistics));
 router.get(

@@ -198,7 +198,9 @@ export const sendMessageToPhone = async ({ phone_no, message }) => {
   };
   // Sending SMS
   // if (process.env.NODE_ENV === 'production') {
+  console.log("entering here");
     await sns_client.send(new PublishCommand(params));
+    console.log("message sent");
   // }
 };
 

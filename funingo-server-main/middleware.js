@@ -36,6 +36,7 @@ export const authenticateEmployee = async (req, res, next) => {
 };
 
 export const authenticateAdmin = async (req, res, next) => {
+  // console.log("authnticating");
   try {
     const { token } = req.headers;
     const json_secret_key = process.env.JWT_SECRET_KEY;

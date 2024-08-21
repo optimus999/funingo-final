@@ -747,10 +747,12 @@ export const webhookPaymentVerification = async (req, res) => {
       await ticket.save();
       ticket.user.booked_tickets = [...ticket.user.booked_tickets, ticket];
       await ticket.user.save();
+      console.log("here111111111")
       await sendMessageToPhone({
         phone_no: ticket.user.phone_no,
         message: `Your ticket id is ${ticket.short_id}. Please collect your passes from the counter.`
       });
+      console.log("here111111111")
     }
   }
 
